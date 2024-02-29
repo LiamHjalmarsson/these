@@ -7,7 +7,7 @@ const Banner = ({ heading, img }) => {
             <img src={img} className='w-full h-full object-cover object-center' />
 
             <div className='absolute top-0 left-0 h-full w-full flex justify-center items-center bg-black bg-opacity-40'>
-                <Heading heading={heading} />
+                <Heading heading={heading} custom={true} />
             </div>
         </div>
     );

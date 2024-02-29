@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Heading = ({ heading }) => {
+const Heading = ({ heading, custom }) => {
     return (
-        <h1 className='text-7xl font-bold tracking-wider text-white'>
+        <h1 className={`font-bold tracking-wider ${custom ? custom : "text-black text-4xl"} text-center`}>
             {heading}
         </h1>
     );
