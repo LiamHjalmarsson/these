@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import Image from '../../../../components/Elements/Image';
 
 const BestSeller = ({item}) => {
+
+    let itemUrl = item.title.charAt(0).toLowerCase() + item.title.slice(1);
+
     return (
-        <Link to={`/products/${item.id}`} className='group flex-grow h-64 lg:h-96 mb-8 relative'>
+        <Link to={`/products/${itemUrl}`} className='group flex-grow h-64 lg:h-96 mb-8 relative'>
             <div className='flex items-center text-xl absolute z-10 rounded-md -bottom-4 right-4 px-8 py-6 shadow-md shadow-black bg-opacity-90 bg-white'>
                 <div>
                     {

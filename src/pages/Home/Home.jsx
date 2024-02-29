@@ -7,7 +7,6 @@ import womanImage from "/images/woman.jpg";
 import SeasonProduct from './components/Season/SeasonProducts';
 import BestSellers from './components/Best/BestSellers';
 import Newsletter from '../../components/Newsletter/Newsletter';
-import SecondaryButton from '../../components/Elements/SecondaryButton';
 import LinkButton from '../../components/Elements/LinkButton';
 
 
@@ -15,12 +14,12 @@ const Home = () => {
     let news = [
         {
             title: "Dam",
-            path: "/dam",
+            path: "dam",
             img: womanImage
         },
         {
             title: "Herr",
-            path: "/herr",
+            path: "herr",
             img: manImage
         },
     ];
