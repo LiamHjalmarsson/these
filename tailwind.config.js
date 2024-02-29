@@ -11,6 +11,9 @@ export default {
         secondary: "#6F6A64",
         accent: "00FFFF",
         red: "#F5B7B7"
+      },
+      boxShadow: {
+        middle: "0 0px 8px -2px",
       }
     },
   },

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const BestSeller = ({item}) => {
     return (
-        <Link to={`/products/${item.id}`} className='h-[450px] group max-w-96 min-w-64 flex-grow relative rounded-md'>
-            <div className='flex items-center text-xl absolute -bottom-4 left-28 px-8 py-6 rounded-md shadow-md shadow-black bg-opacity-90 bg-white'>
+        <Link to={`/products/${item.id}`} className='group flex-grow h-64 lg:h-96 mb-8 relative'>
+            <div className='flex items-center text-xl absolute -bottom-4 right-4 px-8 py-6 rounded-md shadow-md shadow-black bg-opacity-90 bg-white'>
                 <div>
                     {
                         item.title

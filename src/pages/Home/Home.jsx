@@ -25,23 +25,23 @@ const Home = () => {
 
     let items = [
         {
-            title: "forSeason",
+            title: "Kavaj",
             img: manImage
         },
         {
-            title: "forSeason",
+            title: "Skjorta",
             img: manImage
         },
         {
-            title: "forSeason",
+            title: "Slips",
             img: manImage
         },
         {
-            title: "forSeason",
+            title: "Mösa",
             img: womanImage
         },
         {
-            title: "forSeason",
+            title: "Jacka",
             img: womanImage
         },
     ];
@@ -52,8 +52,8 @@ const Home = () => {
 
             <SeasonProduct items={news} />
 
-            <BestSellers heading="Woman" items={items} />
-            <BestSellers heading="Man" items={items} />
+            <BestSellers heading="Populära produkter Dam" items={items} />
+            <BestSellers heading="Populära produkter Man" items={items} />
 
             <Newsletter />
         </Deafult>
