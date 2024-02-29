@@ -5,6 +5,7 @@ import Gender from '../pages/Gender/Gender';
 import Newsletter from '../pages/Newsletter/Newsletter';
 import Cart from '../pages/Cart/Cart';
 import Dam from '../pages/Gender/Dam';
+import Product from '../pages/Product/Product';
 
 const AllRoutes = () => {
     return (
@@ -12,9 +13,8 @@ const AllRoutes = () => {
             <Routes>
                 <Route path='/' element={<Home/>} />
                 <Route path='/gender' element={<Gender/>} />
-                <Route path='/newsletter' element={<Newsletter/>} />
                 <Route path='/dam' element={<Dam/>} />
-                <Route path='/cart' element={<Cart/>} />
+                <Route path='/products/:id' element={<Product/>} />
             </Routes>
         </BrowserRouter>
     );
