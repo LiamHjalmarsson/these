@@ -1,5 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-    
+    /* Colors */
+    --primary-color: #19140F;
+    --secondary-color: #6c757d;
+    --accent-color: #ffc107;
+    --red: #F5B7B7;
+
+    /* Fonts */
+    --font-family: Arial, sans-serif;
+    --base-font-size: 16px;
+
+    /* Spacing */
+    --spacing-unit: 8px;
+    --padding: var(--spacing-unit);
+    --margin: var(--spacing-unit);
+
+    /* Border */
+    --border-radius: 4px;
+    --border-width: 1px;
+    --border-color: #ced4da;
+
+    /* Box Shadow */
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
