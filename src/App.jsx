@@ -1,7 +1,9 @@
+import AllRoutes from "./routers/AllRoutes"
+
 function App() {
   return (
     <div className="App">
-
+      <AllRoutes />
     </div>
   )
 }
