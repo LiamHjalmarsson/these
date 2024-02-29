@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Nav/Nav';
+import Footer from './Footer/Footer';
 
 const Deafult = ({children}) => {
     return (
@@ -10,9 +11,7 @@ const Deafult = ({children}) => {
                     children
                 }
             </main>
-            <footer>
-                Footer
-            </footer>
+            <Footer />
         </div>
     );
 }
