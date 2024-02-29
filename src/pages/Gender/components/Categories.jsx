@@ -1,7 +1,6 @@
 import React from 'react';
-import Section from '../../../../components/Layouts/Section/Section';
-import Heading from '../../../../components/Heading/Heading';
 import Category from './Category';
+import Section from '../../../components/Layouts/Section/Section';
 
 const Categories = () => {
     return (

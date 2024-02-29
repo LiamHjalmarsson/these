@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Image = () => {
+const Image = ({img, alt, custom}) => {
     return (
-        <div>
-            
-        </div>
+        <img src={img} alt={alt} className={`${custom ? custom : ""} transition duration-500 rounded-md object-cover object-center`}/>
     );
 }
 
