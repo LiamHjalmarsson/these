@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 const NavItem = ({link}) => {
     return (
         <li>
-            <NavLink to={link === "start" ? "/" : link }>
+            <NavLink to={link }>
                 {link}
             </NavLink>
         </li>

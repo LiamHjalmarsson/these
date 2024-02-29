@@ -4,14 +4,13 @@ import { RiShoppingBagLine } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 
 const Nav = () => {
-    let links = ["start", "gender", "dam", "nyhetsbrev"];
-
+    let links = ["gender", "dam", "nyhetsbrev"];
     return (
         <nav className="flex w-full items-center p-8 fixed z-10 bg-primary text-white bg-opacity-80">
 
             <div>
                 <h2>
-                    LD Klädder
+                    <a href="/">LD Klädder</a>
                 </h2>
             </div>
 
