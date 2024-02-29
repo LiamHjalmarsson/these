@@ -14,17 +14,11 @@ const Footer = () => {
                         <h3>
                             Butiker
                         </h3>
-                        <div className='text-sm mt-2'>
-                            finns här
-                        </div>
                     </div>
                     <div>
                         <h3>
                             KundService
                         </h3>
-                        <div className='text-sm mt-2'>
-                            Kontakta oss
-                        </div>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,8 @@ import womanImage from "/images/woman.jpg";
 import SeasonProduct from './components/Season/SeasonProducts';
 import BestSellers from './components/Best/BestSellers';
 import Newsletter from '../../components/Newsletter/Newsletter';
+import SecondaryButton from '../../components/Elements/SecondaryButton';
+import LinkButton from '../../components/Elements/LinkButton';
 
 
 const Home = () => {
@@ -48,12 +50,20 @@ const Home = () => {
 
     return (
         <Deafult>
-            <Banner img={bannerImg} heading="Home" />
+            <Banner img={bannerImg} heading="Home">
+                <div className='text-white mt-4'>
+                    Kvalititets kläder för Herr & Dam
+                </div>
+                <div className='w-96 p-4 flex justify-center items-center gap-8 mt-4'>
+                    <LinkButton to="/" title="Herr" />
+                    <LinkButton to="/" title="Dam" />
+                </div>
+            </Banner>
 
             <SeasonProduct items={news} />
 
-            <BestSellers heading="Populära produkter Dam" items={items} />
-            <BestSellers heading="Populära produkter Man" items={items} />
+            <BestSellers heading="Populära Produkter Dam" items={items} />
+            <BestSellers heading="Populära Produkter Herr" items={items} />
 
             <Newsletter />
         </Deafult>
