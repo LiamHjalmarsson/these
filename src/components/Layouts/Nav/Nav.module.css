@@ -1,0 +1,18 @@
+.nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 1rem;
+}
+
+.nav__ul {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav__iconContainer {
+    display: flex;
+}
