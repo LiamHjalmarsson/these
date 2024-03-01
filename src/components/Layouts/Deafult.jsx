@@ -4,9 +4,9 @@ import Footer from './Footer/Footer';
 
 const Deafult = ({children}) => {
     return (
-        <div>
+        <div className=''>
             <Nav />
-            <main>
+            <main className=''>
                 {
                     children
                 }
