@@ -1,8 +1,9 @@
 import React from 'react';
 import Category from './Category';
 import Section from '../../../components/Layouts/Section/Section';
+import Heading from '../../../components/Heading/Heading';
 
-const Categories = () => {
+const Categories = ({heading, items}) => {
     return (
         <Section>
             <Heading heading={heading} />

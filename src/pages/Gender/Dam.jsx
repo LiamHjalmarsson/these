@@ -5,7 +5,7 @@ import Banner from '../../components/Banner/Banner';
 import bannerImg from "/images/dam_sektion.jpg";
 import womanImage from "/images/woman.jpg";
 import Categories from './components/Categories';
-import BestSellers from '../Home/components/Best/BestSellers';
+
 
 
 export default function Dam() {
@@ -34,7 +34,7 @@ export default function Dam() {
   return (
     <Deafult>
          <Banner img={bannerImg} heading="LD Kläder Dam" color="white" />
-         <Categories heading="Populära produkter Man" items={items} />
+         <Categories heading="Populära produkter Dam" items={items} />
        <Newsletter/>  
     </Deafult>
 
