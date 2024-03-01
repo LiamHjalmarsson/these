@@ -6,6 +6,7 @@ import Newsletter from '../pages/Newsletter/Newsletter';
 import Cart from '../pages/Cart/Cart';
 import Dam from '../pages/Gender/Dam';
 import Product from '../pages/Product/Product';
+import ProfileLanding from '../pages/Profile/ProfileLanding';
 
 const AllRoutes = () => {
     return (
@@ -15,6 +16,7 @@ const AllRoutes = () => {
                 <Route path='/herr' element={<Herr/>} />
                 <Route path='/dam' element={<Dam/>} />
                 <Route path='/products/:id' element={<Product/>} />
+                <Route path='/profile' element={<ProfileLanding/>} />
             </Routes>
         </BrowserRouter>
     );
