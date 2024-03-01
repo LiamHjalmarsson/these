@@ -32,7 +32,7 @@ const Herr = () => {
     ];
   return (
     <Deafult>
-         <Banner img={bannerImg} heading="LD Kläder Herr" color="white" className="custom-banner"/>
+         <Banner img={bannerImg} heading="LD Kläder Herr" color="white" className="custom-banner" custom="object-center-top"/>
          <Categories heading="Populära produkter Herr" items={items} />
        <Newsletter/>  
     </Deafult>

@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      objectPosition: {
+        'center-top': 'center top',
+      },
       colors: {
         primary: "#19140F",
         secondary: "#6F6A64",
