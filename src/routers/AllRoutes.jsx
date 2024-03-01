@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import Home from '../pages/Home/Home';
-import Gender from '../pages/Gender/Gender';
+import Herr from '../pages/Gender/Herr';
 import Newsletter from '../pages/Newsletter/Newsletter';
 import Cart from '../pages/Cart/Cart';
 import Dam from '../pages/Gender/Dam';
@@ -12,7 +12,7 @@ const AllRoutes = () => {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Home/>} />
-                <Route path='/gender' element={<Gender/>} />
+                <Route path='/herr' element={<Herr/>} />
                 <Route path='/dam' element={<Dam/>} />
                 <Route path='/products/:id' element={<Product/>} />
             </Routes>
