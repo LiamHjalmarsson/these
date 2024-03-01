@@ -27,23 +27,28 @@ const Home = () => {
     let items = [
         {
             title: "Kavaj",
-            img: manImage
+            img: manImage,
+            id: 1
         },
         {
             title: "Skjorta",
-            img: manImage
+            img: manImage,
+            id: 2
         },
         {
             title: "Slips",
-            img: manImage
+            img: manImage,
+            id: 3
         },
         {
             title: "Mösa",
-            img: womanImage
+            img: womanImage,
+            id: 4
         },
         {
             title: "Jacka",
-            img: womanImage
+            img: womanImage,
+            id: 5
         },
     ];
 

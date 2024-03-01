@@ -3,12 +3,14 @@ import Devider from '../../../components/Elements/Devider';
 
 
 // Clean up will be made when data is fixed
-const Details = ({sizes}) => {
+const Details = ({sizes, data}) => {
     return (
         <div className='w-full h-full flex flex-col p-6'>
 
             <h3 className='text-5xl'>
-                Kavaj
+                {
+                    data.title
+                }
             </h3>
 
             <div className='mt-4'>
@@ -16,7 +18,9 @@ const Details = ({sizes}) => {
             </div>
 
             <div className='mt-2    '>
-                3500 kr
+                {
+                    data.price + " kr"
+                }
             </div>
 
             <Devider />

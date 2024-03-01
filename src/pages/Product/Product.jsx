@@ -1,23 +1,26 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
-import Image from '../../components/Elements/Image';
 import img from "/images/man.jpg";
-import Devider from '../../components/Elements/Devider';
 import Images from './components/Images';
 import Details from './components/Details';
+import useFetch from '../../hooks/useFetch';
 
 const Product = () => {
     let { id } = useParams();
 
-    let data = {
-        img,
-        // title,
-        // articalNr,
-        // price,
-        // description
-        // sizes
-    }
+    let url = `https://fakestoreapi.com/products/${id}`
+
+    let { data } = useFetch(url);
+
+    // let data = {
+    // img,
+    // title,
+    // articalNr,
+    // price,
+    // description
+    // sizes
+    // }
 
     let sizes = ["s", "m", "l", "xl", "xxl", "3xl"];
 
@@ -26,9 +29,15 @@ const Product = () => {
             <div className='h-screen flex flex-col justify-center items-center mb-20'>
                 <div className='grid grid-cols-2 gap-8 w-[80%] max-w-6xl mt-12'>
 
-                    <Images img={img} />
+                    {
+                        data && (
+                            <>
+                                <Images img={data.image} />
 
-                    <Details sizes={sizes} />
+                                <Details sizes={sizes} data={data} />
+                            </>
+                        )
+                    }
 
                 </div>
             </div>

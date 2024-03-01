@@ -4,7 +4,7 @@ import Image from '../../../../components/Elements/Image';
 
 const BestSeller = ({item}) => {
 
-    let itemUrl = item.title.charAt(0).toLowerCase() + item.title.slice(1);
+    let itemUrl = item.id;
 
     return (
         <Link to={`/products/${itemUrl}`} className='group flex-grow h-64 lg:h-96 mb-8 relative'>
