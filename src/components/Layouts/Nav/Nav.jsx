@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
     let links = ["Herr", "dam", "nyhetsbrev"];
+    
     return (
         <nav className="flex w-full items-center p-8 fixed z-50 bg-primary text-white bg-opacity-80">
 
