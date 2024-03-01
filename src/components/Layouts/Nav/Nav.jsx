@@ -2,7 +2,7 @@ import React from 'react';
 import NavItem from './components/navItem';
 import { RiShoppingBagLine } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Nav = () => {
     let links = ["Herr", "dam", "nyhetsbrev"];
@@ -34,9 +34,9 @@ const Nav = () => {
                 <div>
                     <RiShoppingBagLine />
                 </div>
-                <div>
+                <Link to="/profile">
                     <FaUserAlt />
-                </div>
+                </Link>
             </div>
 
         </nav>
