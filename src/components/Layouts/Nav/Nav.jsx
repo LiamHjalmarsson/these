@@ -8,7 +8,7 @@ const Nav = () => {
     let links = ["Herr", "dam", "nyhetsbrev"];
     
     return (
-        <nav className="flex w-full items-center p-8 fixed z-50 bg-primary text-white bg-opacity-80">
+        <nav className="flex w-full items-center p-8 z-50 bg-primary text-white bg-opacity-80">
 
             <NavLink to="/" className="">
                 <h2 className='text-2xl tracking-wider font-bold'>

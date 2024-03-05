@@ -1,5 +1,5 @@
 import React from 'react';
-import PrimaryButton from '../../../components/Elements/PrimaryButton';
+import LinkButton from '../../../components/Elements/LinkButton';
 
 const ProfileCard = ({heading, details, icon}) => {
     
@@ -15,15 +15,13 @@ const ProfileCard = ({heading, details, icon}) => {
                 <h2 className='text-2xl text-center'>
                     {heading}
                 </h2>
-                <div className='flex gap-8 mt-2 items-center'>
-                    <div>
+                <div className='flex flex-wrap gap-8 mt-2 justify-center items-center'>
+                    <div className='flex-grow text-center'>
                         {
                             details
                         }
                     </div>
-                    <PrimaryButton>
-                        Visa mer
-                    </PrimaryButton>
+                    <LinkButton link="/profile/profile" title="Visa mer" custom="border-primary text-primary " />
                 </div>
             </div>
         </div>

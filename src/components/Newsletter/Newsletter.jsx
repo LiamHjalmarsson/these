@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../Heading/Heading';
+import Heading from '../Elements/Heading/Heading';
 import img from "/images/newsletter.jpg";
 import LinkButton from '../Elements/LinkButton';
 import Image from '../Elements/Image';

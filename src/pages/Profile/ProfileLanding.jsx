@@ -13,12 +13,13 @@ const ProfileLanding = () => {
         <Deafult>
             <Header randomPoints={randomPoints} />
 
-            <div className='max-w-6xl grid grid-cols-2 gap-8 mx-auto py-44'>
+            <div className='max-w-6xl grid grid-cols-2 gap-12 mx-auto mb-40 mt-56'>
                 <ProfileCard heading="Profile" details="Justera profile detaljer och kontkat information" icon={<FaRegUser />} />
                 <ProfileCard heading="Lojalitet" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} />
                 <ProfileCard heading="Achivments" details="Justera profile detaljer och kontkat information" icon={< GoTrophy />} />
                 <ProfileCard heading="Recentioner" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview/>} />
             </div>
+
         </Deafult>
     );
 }

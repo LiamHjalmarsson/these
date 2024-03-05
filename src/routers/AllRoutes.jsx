@@ -7,6 +7,7 @@ import Cart from '../pages/Cart/Cart';
 import Dam from '../pages/Gender/Dam';
 import Product from '../pages/Product/Product';
 import ProfileLanding from '../pages/Profile/ProfileLanding';
+import Profile from '../pages/Profile/Profile';
 
 const AllRoutes = () => {
     return (
@@ -15,8 +16,9 @@ const AllRoutes = () => {
                 <Route path='/' element={<Home/>} />
                 <Route path='/herr' element={<Herr/>} />
                 <Route path='/dam' element={<Dam/>} />
-                <Route path='/products/:id' element={<Product/>} />
-                <Route path='/profile' element={<ProfileLanding/>} />
+                <Route path='/products/:id' element={<Product/> } />
+                <Route path='/profile' element={<ProfileLanding/> } />
+                <Route path='/profile/:id' element={<Profile/> } />
             </Routes>
         </BrowserRouter>
     );

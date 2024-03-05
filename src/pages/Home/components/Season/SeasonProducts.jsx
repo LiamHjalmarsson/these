@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../../../../components/Heading/Heading';
+import Heading from '../../../../components/Elements/Heading/Heading';
 import SeasonProduct from './SeasonProduct';
 import Section from '../../../../components/Layouts/Section/Section';
 

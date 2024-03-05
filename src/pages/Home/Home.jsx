@@ -54,7 +54,7 @@ const Home = () => {
 
     return (
         <Deafult>
-            <Banner img={bannerImg} heading="Home">
+            <Banner img={bannerImg} heading="LD Klädder">
                 <div className='text-white mt-4'>
                     Kvalititets kläder för Herr & Dam
                 </div>
