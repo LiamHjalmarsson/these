@@ -1,7 +1,7 @@
 import React from 'react';
 import Section from '../../../../components/Layouts/Section/Section';
 import BestSeller from './BestSeller';
-import Heading from '../../../../components/Heading/Heading';
+import Heading from '../../../../components/Elements/Heading/Heading';
 
 const BestSellers = ({ heading, items }) => {
     return (

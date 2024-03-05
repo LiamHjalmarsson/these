@@ -1,7 +1,7 @@
 import React from 'react';
-import Heading from '../../../components/Heading/Heading';
 import ProgressBar from './Progressbar';
 import PrimaryButton from '../../../components/Elements/PrimaryButton';
+import Heading from '../../../components/Elements/Heading/Heading';
 
 const Header = ({ randomPoints }) => {
     return (
@@ -11,7 +11,7 @@ const Header = ({ randomPoints }) => {
                 <Heading heading="Hej Välkommen till ditt account" custom="text-white text-4xl" />
             </div>
 
-            <div className='absolute flex flex-col gap-4 p-4 -bottom-1/3 left-1/2 bg-white bg-opacity-90 shadow-middle shadow-primary rounded-md'>
+            <div className='absolute w-1/4 flex flex-col gap-4 p-4 -bottom-1/4 left-1/2 bg-white bg-opacity-90 shadow-middle shadow-primary rounded-md'>
 
                 <h3 className='text-lg font-bold'>
                     Nivå 1
@@ -36,10 +36,10 @@ const Header = ({ randomPoints }) => {
                 </div>
 
                 <ProgressBar points={randomPoints} />
-
+{/* 
                 <PrimaryButton custom="mx-auto">
                     Visa mer
-                </PrimaryButton>
+                </PrimaryButton> */}
             </div>
         </div>
     );

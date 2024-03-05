@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../Heading/Heading';
+import Heading from '../Elements/Heading/Heading';
 
 const Banner = ({ heading, img, color, children, custom }) => {
     return (
