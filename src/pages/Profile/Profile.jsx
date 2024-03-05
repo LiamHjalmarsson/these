@@ -4,10 +4,9 @@ import Deafult from '../../components/Layouts/Deafult';
 import SidebarNav from './components/SidebarNav';
 import SidebarRewards from './components/SidebarRewards';
 import ProdileDetails from "./components/ProdileDetails";
-import Heading from '../../components/Elements/Heading/Heading';
-import ProgressBar from './components/Progressbar';
 import Rewards from './components/Rewards';
 import Achivments from './components/Achivments';
+import Recensioner from './components/Recensioner';
 
 const Profile = () => {
     let { id } = useParams();
@@ -37,6 +36,12 @@ const Profile = () => {
                     {
                         id === "achivments" && (
                             <Achivments />
+                        )
+                    }
+
+                    {
+                        id === "resentioner" && (
+                            <Recensioner />
                         )
                     }
                 </main>

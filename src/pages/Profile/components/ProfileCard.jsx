@@ -1,7 +1,7 @@
 import React from 'react';
 import LinkButton from '../../../components/Elements/LinkButton';
 
-const ProfileCard = ({heading, details, icon}) => {
+const ProfileCard = ({heading, details, icon, link}) => {
     
     return (
         <div className='p-2 relative'>
@@ -21,7 +21,7 @@ const ProfileCard = ({heading, details, icon}) => {
                             details
                         }
                     </div>
-                    <LinkButton link="/profile/profile" title="Visa mer" custom="border-primary text-primary " />
+                    <LinkButton link={`/profile/${link}`} title="Visa mer" custom="border-primary text-primary " />
                 </div>
             </div>
         </div>

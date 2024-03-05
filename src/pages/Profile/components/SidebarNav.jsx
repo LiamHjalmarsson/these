@@ -7,7 +7,7 @@ const SidebarNav = ({ id, links }) => {
             <nav className='flex flex-col gap-8 w-fit'>
                 {
                     links.map((link) => (
-                        <Link to={`/profile/${link}`} className={`${id === link ? "font-bold tracking-wider border-2 border-primary" : ""} text-xl p-4`}>
+                        <Link to={`/profile/${link}`} key={link} className={`${id === link ? "font-bold tracking-wider border-2 border-primary" : ""} text-xl p-4`}>
                             {link}
                         </Link>
                     ))
