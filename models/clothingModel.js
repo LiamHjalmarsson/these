@@ -28,8 +28,12 @@ const ClothingSchema = new mongoose.Schema(
             required: true,
         },
         image: {
-            type: String,
-            required: true,
+            type: [String], // Store array of image URLs
+            default: [
+                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628178/dl-clothing/dam_nfsxjt.jpg",
+                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628181/dl-clothing/herr_m73hux.jpg",
+                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628177/dl-clothing/chris-murray-YGzEX5yLKeA-unsplash_pi3dyz.jpg"
+            ],
         },
     },
     { timestamps: true }

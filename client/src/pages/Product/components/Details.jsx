@@ -3,13 +3,14 @@ import Devider from '../../../components/Elements/Devider';
 
 
 // Clean up will be made when data is fixed
-const Details = ({sizes, data}) => {
+const Details = ({data}) => {
+
     return (
-        <div className='w-full h-full flex flex-col p-6'>
+        <div className='w-full h-full justify-center flex flex-col p-6'>
 
             <h3 className='text-5xl'>
                 {
-                    data.title
+                    data.category
                 }
             </h3>
 
@@ -37,7 +38,7 @@ const Details = ({sizes, data}) => {
 
             <div className='flex gap-8 mt-4'>
                 {
-                    sizes.map(size => (
+                    data.size.map(size => (
                         <button key={size}>
                             {
                                 size
@@ -74,7 +75,7 @@ const Details = ({sizes, data}) => {
             <Devider />
 
             <div className='flex gap-8 mt-4'>
-                {
+                {/* {
                     sizes.map(size => (
                         <button key={size}>
                             {
@@ -82,7 +83,7 @@ const Details = ({sizes, data}) => {
                             }
                         </button>
                     ))
-                }
+                } */}
             </div>
 
         </div>

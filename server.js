@@ -5,6 +5,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 
+
 // Routes
 import authRouter from "./router/authRouter.js";
 import categoryRouter from "./router/categoryRouter.js";
@@ -22,10 +23,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json());
-
-app.get('/api/test', (req, res) => {
-    res.json({ msg: 'test route' });
-});
 
 app.use('/api/auth', authRouter);
 app.use('/api/categories', categoryRouter);
