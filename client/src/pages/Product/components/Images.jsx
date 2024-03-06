@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from '../../../components/Elements/Image';
 
-const Images = ({img}) => {
+const Images = ({ imges }) => {
     return (
-        <div className='w-full h-full p-4 flex flex-col'>
-            <Image img={img} custom="w-full h-full" />
+        <div className='w-full h-full p-4 flex  justify-center items-center flex-col'>
+            <Image img={imges[0]} custom="w-full h-1/2" />
             <div className='flex gap-4 h-40 mt-4'>
-                <Image img={img} custom="w-1/3 h-full" />
-                <Image img={img} custom="w-1/3 h-full" />
-                <Image img={img} custom="w-1/3 h-full" />
+                {imges.map((img, index) => (
+                    <Image key={index} img={img} custom="w-1/3 h-full" />
+                ))}
             </div>
         </div>
     );

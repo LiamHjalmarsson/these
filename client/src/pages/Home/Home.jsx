@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Deafult from '../../components/Layouts/Deafult';
 import Banner from '../../components/Banner/Banner';
 import bannerImg from "/images/banner.jpg";
@@ -8,8 +8,12 @@ import SeasonProduct from './components/Season/SeasonProducts';
 import BestSellers from './components/Best/BestSellers';
 import Newsletter from '../../components/Newsletter/Newsletter';
 import LinkButton from '../../components/Elements/LinkButton';
+import useFetch from '../../hooks/useFetch';
 
 const Home = () => {
+
+    let { data } = useFetch('/api/clothing');
+
     let news = [
         {
             title: "Dam",
@@ -22,45 +26,6 @@ const Home = () => {
             img: manImage
         },
     ];
-
-    let items = [
-        {
-            title: "Kavaj",
-            img: manImage,
-            id: 1
-        },
-        {
-            title: "Skjorta",
-            img: manImage,
-            id: 2
-        },
-        {
-            title: "Slips",
-            img: manImage,
-            id: 3
-        },
-        {
-            title: "Mösa",
-            img: womanImage,
-            id: 4
-        },
-        {
-            title: "Jacka",
-            img: womanImage,
-            id: 5
-        },
-    ];
-
-    useEffect(() => {
-        let fetcg = async () => {
-            let rep = await fetch("/api/categories");
-            let res = await rep.json();
-
-            console.log(res);
-        }
-
-        fetcg()
-    }, [])
 
     return (
         <Deafult>
@@ -79,8 +44,14 @@ const Home = () => {
             <div>
 
             </div>
-            <BestSellers heading="Populära Produkter Dam" items={items} />
-            <BestSellers heading="Populära Produkter Herr" items={items} />
+            {
+                data && (
+                    <>
+                        <BestSellers heading="Populära Produkter Dam" items={data.clothings} />
+                        <BestSellers heading="Populära Produkter Herr" items={data.clothings} />
+                    </>
+                )
+            }
 
             <Newsletter />
         </Deafult>
