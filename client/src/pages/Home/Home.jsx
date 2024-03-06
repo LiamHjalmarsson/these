@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Deafult from '../../components/Layouts/Deafult';
 import Banner from '../../components/Banner/Banner';
 import bannerImg from "/images/banner.jpg";
@@ -8,7 +8,6 @@ import SeasonProduct from './components/Season/SeasonProducts';
 import BestSellers from './components/Best/BestSellers';
 import Newsletter from '../../components/Newsletter/Newsletter';
 import LinkButton from '../../components/Elements/LinkButton';
-
 
 const Home = () => {
     let news = [
@@ -52,6 +51,17 @@ const Home = () => {
         },
     ];
 
+    useEffect(() => {
+        let fetcg = async () => {
+            let rep = await fetch("/api/categories");
+            let res = await rep.json();
+
+            console.log(res);
+        }
+
+        fetcg()
+    }, [])
+
     return (
         <Deafult>
             <Banner img={bannerImg} heading="LD Klädder">
@@ -66,6 +76,9 @@ const Home = () => {
 
             <SeasonProduct items={news} />
 
+            <div>
+
+            </div>
             <BestSellers heading="Populära Produkter Dam" items={items} />
             <BestSellers heading="Populära Produkter Herr" items={items} />
 

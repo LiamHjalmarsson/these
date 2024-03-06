@@ -5,7 +5,14 @@ import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 
-import categoryRouter from './router/categoryRouter.js';
+// Routes
+import authRouter from "./router/authRouter.js";
+import categoryRouter from "./router/categoryRouter.js";
+import userRouter from "./router/userRouter.js";
+
+
+// Middlware
+import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 
 const app = express();
 
@@ -15,16 +22,19 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 
+app.get('/api/test', (req, res) => {
+    res.json({ msg: 'test route' });
+});
+
+app.use('/api/auth', authRouter);
 app.use('/api/categories', categoryRouter);
+app.use('/api/users', userRouter);
 
 app.use('*', (req, res) => {
     res.status(404).json({ msg: 'not found' });
 });
 
-app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(500).json({ msg: 'something went wrong' });
-});
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5100;
 
