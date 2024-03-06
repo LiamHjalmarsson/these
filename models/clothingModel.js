@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Category from "./categoryModel.js";
 
 const ClothingSchema = new mongoose.Schema(
     {
@@ -15,13 +16,11 @@ const ClothingSchema = new mongoose.Schema(
             required: true,
         },
         category: {
-            type: mongoose.Types.ObjectId,
-            ref: 'Category',
+            type: String, 
             required: true,
         },
         size: {
-            type: String,
-            enum: ['XS', 'S', 'M', 'L', 'XL'],
+            type: [String], 
             required: true,
         },
         color: {
@@ -35,5 +34,23 @@ const ClothingSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
+
+ClothingSchema.pre('save', async function(next) {
+    try {
+        
+        let existingCategory = await Category.findOne({ category: this.category });
+
+        if (!existingCategory) {
+            let newCategory = new Category({ category: this.category });
+            await newCategory.save();
+        } else {
+            existingCategory.itemCount += 1;
+            await existingCategory.save();
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
 
 export default mongoose.model('Clothing', ClothingSchema);

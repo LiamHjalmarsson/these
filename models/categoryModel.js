@@ -7,12 +7,13 @@ const CategorySchema = new mongoose.Schema(
             required: true,
             unique: true,
         },
-        description: {
-            type: String,
-            required: true,
-        },
+        itemCount: {
+            type: Number,
+            default: 1
+        }
     },
     { timestamps: true }
 );
+
 
 export default mongoose.model('Category', CategorySchema);

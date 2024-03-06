@@ -17,7 +17,6 @@ const withValidationErrors = (validateValues) => {
 
 export const validateInput = withValidationErrors([
     body('category').notEmpty().withMessage('category is required'),
-    body('description').notEmpty().withMessage('description is required'),
 ]);
 
 export const validateRegisterInput = withValidationErrors([
