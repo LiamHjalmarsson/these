@@ -4,7 +4,6 @@ import { hashPassword, comparePassword } from '../utils/password.js';
 import { createJWT } from '../utils/token.js';
 
 export const register = async (req, res) => {
-
     try {
         let hashedPassword = await hashPassword(req.body.password);
         req.body.password = hashedPassword;

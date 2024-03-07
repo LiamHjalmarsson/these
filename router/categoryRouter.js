@@ -7,7 +7,7 @@ import {
     createCategory,
     updateCategory,
     deleteCategory
-} from "../controllers/categories.js";
+} from "../controllers/categoriesController.js";
 import { validateInput } from '../middleware/validationMiddleware.js';
 
 router.get('/', getAllCategories);
