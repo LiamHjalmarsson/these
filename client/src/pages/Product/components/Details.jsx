@@ -3,7 +3,7 @@ import Devider from '../../../components/Elements/Devider';
 
 
 // Clean up will be made when data is fixed
-const Details = ({data}) => {
+const Details = ({data, onAddToCart}) => {
 
     return (
         <div className='w-full h-full justify-center flex flex-col p-6'>
@@ -49,7 +49,7 @@ const Details = ({data}) => {
             </div>
 
             <div className='mt-4 mb-4'>
-                <button className='bg-primary p-4 text-white'>
+                <button className='bg-primary p-4 text-white' onClick={() => onAddToCart({ id: data._id, name: data.name, price: data.price })}>
                     Lägg till i varukorg
                 </button>
             </div>

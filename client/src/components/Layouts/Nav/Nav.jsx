@@ -3,10 +3,17 @@ import NavItem from './components/navItem';
 import { RiShoppingBagLine } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const Nav = () => {
     let links = ["Herr", "dam", "nyhetsbrev"];
+    let cartItems = useSelector(state => state.cart.cartItems);
     
+    let cartShow = () => {
+        console.log(cartItems);
+    }
+
     return (
         <nav className="flex w-full items-center p-8 z-50 bg-primary text-white bg-opacity-80">
 
@@ -32,7 +39,7 @@ const Nav = () => {
 
             <div className="flex gap-4">
                 <div>
-                    <RiShoppingBagLine />
+                    <RiShoppingBagLine onClick={cartShow}/>
                 </div>
                 <Link to="/profile">
                     <FaUserAlt />
