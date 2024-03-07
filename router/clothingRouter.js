@@ -7,7 +7,7 @@ import {
     createClothing,
     updateClothing,
     deleteClothing
-} from "../controllers/clothings.js";
+} from "../controllers/clothingsController.js";
 
 router.get('/', getAllClothings);
 router.post('/', createClothing);

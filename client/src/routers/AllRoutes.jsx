@@ -8,12 +8,16 @@ import Dam from '../pages/Gender/Dam';
 import Product from '../pages/Product/Product';
 import ProfileLanding from '../pages/Profile/ProfileLanding';
 import Profile from '../pages/Profile/Profile';
+import Register from '../pages/Register/Register';
+import Login from '../pages/Login/Login';
 
 const AllRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Home/>} />
+                <Route path='/register' element={<Register/>} />
+                <Route path='/login' element={<Login/>} />
                 <Route path='/herr' element={<Herr/>} />
                 <Route path='/dam' element={<Dam/>} />
                 <Route path='/products/:id' element={<Product/> } />

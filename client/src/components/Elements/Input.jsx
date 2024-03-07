@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Input = (props) => {
+const Input = ({input, onChange, value}) => {
     let [isActive, setIsActive] = useState(false);
 
     let handleFocus = () => {
@@ -8,7 +8,7 @@ const Input = (props) => {
     };
 
     let handleBlur = () => {
-        if (!props.input.value) {
+        if (!input.value) {
             setIsActive(false);
         }
     };
@@ -16,19 +16,21 @@ const Input = (props) => {
     return (
         <div className={`w-full relative`}>
             <label
-                htmlFor={props.input.id}
-                className={`absolute transition-all text-black duration-300 ${isActive || props.input.value ? 'text-sm -top-2' : 'text-base top-4'
+                htmlFor={input.id}
+                className={`absolute transition-all text-black duration-300 ${isActive || input.value ? 'text-sm -top-2' : 'text-base top-4'
                     }`}
             >
                 {
-                    props.input.id
+                    input.id
                 }
             </label>
             <input
-                {...props.input}
+                {...input}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 className="w-full mt-1 border-b-2 border-b-primary outline-none bg-transparent text-primary p-2"
+                value={value}
+                onChange={onChange}
             />
         </div>
     );
