@@ -1,12 +1,13 @@
 import React from 'react';
 import Heading from '../../../components/Elements/Heading/Heading';
 import useFetch from '../../../hooks/useFetch';
+import { IoLockClosedOutline } from "react-icons/io5";
 
 const Achivments = ({ data }) => {
     let { data: achivmentsData } = useFetch("/api/achivments");
 
-    let hasAchievement = (achievementId) => {
-        return data.achivments.some((achievement) => achievement._id === achievementId);
+    let hasAchievement = (name) => {
+        return data.achivments.some((achievement) => achievement.name === name);
     };
 
     return (
@@ -18,8 +19,11 @@ const Achivments = ({ data }) => {
                     achivmentsData && (
                         achivmentsData.achivments.map((achivment, index) => (
                             <div key={index} className='w-full items-center flex flex-col group'>
-                                <div className={`w-full h-48 ${hasAchievement(achivment._id) ? "bg-green-500" : "bg-gray-300"} relative`}>
-                                    <div className=' group-hover:opacity-100 opacity-0 bg-slate-500 absolute h-full w-full'> </div>
+                                <div className='w-full h-full relative'>
+                                    <img className={`w-full h-full`} src={achivment.image} />
+                                    <div className={`${hasAchievement(achivment.name) ? "hidden" : ""} flex justify-center items-center absolute h-full w-full top-0 bg-black bg-opacity-60`}>
+                                        <IoLockClosedOutline className='text-white text-7xl font-bold'/>
+                                    </div>
                                 </div>
                                 <div className='flex flex-grow gap-2'>
                                     <span>

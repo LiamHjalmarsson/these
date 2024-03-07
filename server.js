@@ -13,7 +13,6 @@ import userRouter from "./router/userRouter.js";
 import clothingRouter from "./router/clothingRouter.js";
 import achivmentsRouter from "./router/achivmentsRouter.js";
 
-
 // Middlware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 
