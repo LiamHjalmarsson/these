@@ -32,15 +32,23 @@ const Register = () => {
             password
         }
 
-        await fetch("/api/auth/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+        try {
+            let rep = await fetch("/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
 
-        navigate("/login");
+            let res = await rep.json();
+
+            localStorage.setItem("user", JSON.stringify(res.user._id));
+
+            navigate("/profile");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -53,7 +61,8 @@ const Register = () => {
                         <Input
                             input={{
                                 id: "name",
-                                type: "name"
+                                type: "name",
+                                autoComplete: "off"
                             }}
                             onChange={handleNameChange}
                             value={name}
@@ -61,7 +70,8 @@ const Register = () => {
                         <Input
                             input={{
                                 id: "email",
-                                type: "email"
+                                type: "email",
+                                autoComplete: "off"
                             }}
                             onChange={handleEmailChange}
                             value={email}
@@ -69,7 +79,8 @@ const Register = () => {
                         <Input
                             input={{
                                 id: "password",
-                                type: "password"
+                                type: "password",
+                                autoComplete: "off"
                             }}
                             onChange={handlePasswordChange}
                             value={password}

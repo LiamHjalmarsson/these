@@ -8,7 +8,7 @@ const Input = ({input, onChange, value}) => {
     };
 
     let handleBlur = () => {
-        if (!input.value) {
+        if (!value) {
             setIsActive(false);
         }
     };
@@ -17,7 +17,7 @@ const Input = ({input, onChange, value}) => {
         <div className={`w-full relative`}>
             <label
                 htmlFor={input.id}
-                className={`absolute transition-all text-black duration-300 ${isActive || input.value ? 'text-sm -top-2' : 'text-base top-4'
+                className={`absolute transition-all text-black duration-300 ${isActive || value ? 'text-sm -top-2' : 'text-base top-4'
                     }`}
             >
                 {

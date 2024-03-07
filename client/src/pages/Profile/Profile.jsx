@@ -12,7 +12,7 @@ import useFetch from '../../hooks/useFetch';
 const Profile = () => {
     let { id } = useParams();
 
-    let { data } = useFetch(`/api/users/65e896d8ea43a4b2212ef562`);
+    let { data } = useFetch(`/api/users/65e9a8654df62f5f148fd245`);
 
     let links = ["profile", "lojalitet", "achivments", "resentioner"];
 

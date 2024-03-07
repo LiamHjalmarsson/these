@@ -8,8 +8,9 @@ import { GoTrophy } from "react-icons/go";
 import useFetch from '../../hooks/useFetch';
 
 const ProfileLanding = () => {
-    let { data } = useFetch(`/api/users/65e896d8ea43a4b2212ef562`);
-    console.log(data);
+    let userId = JSON.parse(localStorage.getItem("user"));
+    let { data } = useFetch(`/api/users/${userId}`);
+
     return (
         <Deafult>
 
