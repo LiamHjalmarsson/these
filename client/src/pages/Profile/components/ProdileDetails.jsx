@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SecondaryButton from '../../../components/Elements/SecondaryButton';
 import Input from '../../../components/Elements/Input';
 import Heading from '../../../components/Elements/Heading/Heading';
 
-const ProdileDetails = () => {
-    return (
+const ProdileDetails = ({data}) => {
+    console.log(data);
+    let [email, setEmail] = useState(data.email);
 
+    let handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    return (
         <div className='h-full flex flex-col gap-8 p-2'>
             <Heading heading="Profile" />
-
             <form className='w-96 flex flex-col gap-8'>
                 <Input
                     input={{

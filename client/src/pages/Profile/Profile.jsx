@@ -7,9 +7,12 @@ import ProdileDetails from "./components/ProdileDetails";
 import Rewards from './components/Rewards';
 import Achivments from './components/Achivments';
 import Recensioner from './components/Recensioner';
+import useFetch from '../../hooks/useFetch';
 
 const Profile = () => {
     let { id } = useParams();
+
+    let { data } = useFetch(`/api/users/65e896d8ea43a4b2212ef562`);
 
     let links = ["profile", "lojalitet", "achivments", "resentioner"];
 
@@ -19,32 +22,36 @@ const Profile = () => {
 
                 <SidebarNav id={id} links={links} />
 
-                <main className='flex-grow flex justify-center items-start'>
+                {
+                    data && (
+                        <main className='flex-grow flex justify-center items-start'>
 
-                    {
-                        id === "profile" && (
-                            <ProdileDetails />
-                        )
-                    }
+                            {
+                                id === "profile" && (
+                                    <ProdileDetails data={data.user} />
+                                )
+                            }
 
-                    {
-                        id === "lojalitet" && (
-                            <Rewards />
-                        )
-                    }
+                            {
+                                id === "lojalitet" && (
+                                    <Rewards data={data.user} />
+                                )
+                            }
 
-                    {
-                        id === "achivments" && (
-                            <Achivments />
-                        )
-                    }
+                            {
+                                id === "achivments" && (
+                                    <Achivments data={data.user} />
+                                )
+                            }
 
-                    {
-                        id === "resentioner" && (
-                            <Recensioner />
-                        )
-                    }
-                </main>
+                            {
+                                id === "resentioner" && (
+                                    <Recensioner data={data.user} />
+                                )
+                            }
+                        </main>
+                    )
+                }
 
                 <SidebarRewards />
 

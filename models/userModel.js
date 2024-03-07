@@ -14,13 +14,18 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    totalPoints: {
+    totalPointsEarned: {
         type: Number,
         default: 0
     },
-    discount: {
+    activePoints:{
         type: Number,
         default: 0
+    },
+    achivments:
+    {
+        type: [String],
+        default: [],
     }
 });
 

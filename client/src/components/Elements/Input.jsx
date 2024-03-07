@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 const Input = (props) => {
-    const [isActive, setIsActive] = useState(false);
+    let [isActive, setIsActive] = useState(false);
 
-    const handleFocus = () => {
+    let handleFocus = () => {
         setIsActive(true);
     };
 
-    const handleBlur = () => {
+    let handleBlur = () => {
         if (!props.input.value) {
             setIsActive(false);
         }

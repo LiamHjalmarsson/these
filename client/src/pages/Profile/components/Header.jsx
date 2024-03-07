@@ -3,7 +3,9 @@ import ProgressBar from './Progressbar';
 import PrimaryButton from '../../../components/Elements/PrimaryButton';
 import Heading from '../../../components/Elements/Heading/Heading';
 
-const Header = ({ randomPoints }) => {
+const Header = ({ data }) => {
+
+    console.log(data);
     return (
         <div className='w-full h-96 flex justify-start items-center bg-indigo-900 relative'>
 
@@ -22,7 +24,9 @@ const Header = ({ randomPoints }) => {
                         Aktiva poäng
                     </div>
                     <div>
-                        350
+                        {
+                            data.activePoints
+                        }
                     </div>
                 </div>
 
@@ -31,15 +35,13 @@ const Header = ({ randomPoints }) => {
                         Värde
                     </div>
                     <div>
-                        30 kr
+                        {
+                            data.activePoints + " kr"
+                        }
                     </div>
                 </div>
 
-                <ProgressBar points={randomPoints} />
-{/* 
-                <PrimaryButton custom="mx-auto">
-                    Visa mer
-                </PrimaryButton> */}
+                <ProgressBar points={data.activePoints} />
             </div>
         </div>
     );
