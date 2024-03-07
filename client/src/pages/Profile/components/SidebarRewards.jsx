@@ -4,19 +4,19 @@ import SecondaryHeading from '../../../components/Elements/Heading/SecondaryHead
 const SidebarRewards = () => {
     return (
         <div className='w-64'>
-            <div className='flex flex-col gap-8 p-4'>
+            <div className='flex justify-end items-end flex-col gap-8 p-4'>
 
                 <div>
                     <SecondaryHeading heading="Belöningar" />
-                    <div className='mt-4'>
-                            check
+                    <div className='mt-4 text-end'>
+                        check
                     </div>
                 </div>
 
                 <div>
-                    <SecondaryHeading heading="Nivå förmåner" />
-                    <div className='mt-4'>
-                            check
+                    <SecondaryHeading heading="Nivå 1" />
+                    <div className='mt-4 text-end'>
+                        check
                     </div>
                 </div>
 

@@ -5,6 +5,7 @@ import Deafult from '../../components/Layouts/Deafult';
 import Heading from '../../components/Elements/Heading/Heading';
 import img from "/images/banner.jpg";
 import PrimaryButton from '../../components/Elements/PrimaryButton';
+import {toast} from "react-toastify";
 
 const Login = () => {
     let navigate = useNavigate();
@@ -37,16 +38,16 @@ const Login = () => {
                 body: JSON.stringify(data)
             });
 
-            console.log(rep);
 
             let res = await rep.json();
-            console.log(res);
 
+            toast.success("Login successful");
             localStorage.setItem("user", JSON.stringify(res.user._id));
 
             navigate("/profile");
         } catch (error) {
             console.log(error);
+            toast.success("Error login in");
         }
     };
 
