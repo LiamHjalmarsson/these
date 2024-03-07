@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Input = ({input, onChange, value}) => {
+const Input = ({input, onChange, value, custom}) => {
     let [isActive, setIsActive] = useState(false);
 
     let handleFocus = () => {
@@ -28,7 +28,7 @@ const Input = ({input, onChange, value}) => {
                 {...input}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                className="w-full mt-1 border-b-2 border-b-primary outline-none bg-transparent text-primary p-2"
+                className={` ${custom ? custom : ""} w-full mt-1 border-b-2 border-b-primary outline-none bg-transparent text-primary p-2`}
                 value={value}
                 onChange={onChange}
             />

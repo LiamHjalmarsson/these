@@ -12,6 +12,7 @@ const Login = () => {
 
     let [name, setName] = useState('');
     let [password, setPassword] = useState('');
+    let [error, setError] = useState({});
 
     let handleNameChange = (e) => {
         setName(e.target.value);
@@ -23,6 +24,7 @@ const Login = () => {
 
     let submitHandler = async (e) => {
         e.preventDefault();
+        setError({});
 
         let data = {
             name,
@@ -37,17 +39,20 @@ const Login = () => {
                 },
                 body: JSON.stringify(data)
             });
-
-
+            
             let res = await rep.json();
+            
+            if (res.errorMessages) {
+                throw new Error(res.errorMessages);
+            }
 
             toast.success("Login successful");
             localStorage.setItem("user", JSON.stringify(res.user._id));
 
             navigate("/profile");
         } catch (error) {
-            console.log(error);
-            toast.success("Error login in");
+            setError(error);
+            toast.error(error.message);
         }
     };
 

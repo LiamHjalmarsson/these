@@ -1,20 +1,26 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from '../../../utils/stringUtils';
+import { toast } from 'react-toastify';
 
 const SidebarNav = ({ id, links }) => {
     let navigate = useNavigate();
 
     let logoutHandler = async () => {
-        let rep = await fetch("/api/auth/logout");
-        let res = await rep.json();
-        localStorage.removeItem("user");
 
-        navigate("/");
+        try {
+            await fetch("/api/auth/logout");
+            localStorage.removeItem("user");
+    
+            toast.success("Loggade ut");
+            navigate("/");
+        } catch (error) {
+            toast.error("Error to Log out");
+        }
     }
 
     return (
-        <div className='w-64'>
+        <div className='w-64 absolute'>
             <nav className='flex flex-col gap-8 w-fit'>
                 {
                     links.map((link) => (

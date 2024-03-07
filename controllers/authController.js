@@ -44,7 +44,7 @@ export const register = async (req, res) => {
 
         res.status(StatusCodes.CREATED).json({ user });
     } catch (error) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error })
+        return res.status(400).json({ error });
     }
 };
 

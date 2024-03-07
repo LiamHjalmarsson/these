@@ -54,7 +54,7 @@ const Profile = () => {
                     )
                 }
 
-                <SidebarRewards />
+                {/* <SidebarRewards /> */}
 
             </div>
         </Deafult>
