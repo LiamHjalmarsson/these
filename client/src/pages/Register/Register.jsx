@@ -3,7 +3,7 @@ import Input from '../../components/Elements/Input';
 import { Link, useNavigate } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
 import Heading from '../../components/Elements/Heading/Heading';
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import img from "/images/banner.jpg";
 import PrimaryButton from '../../components/Elements/PrimaryButton';
 
@@ -13,7 +13,7 @@ const Register = () => {
     let [name, setName] = useState('');
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
-    let [error, setError] = useState([]);
+    let [error, setError] = useState({});
 
     let handleNameChange = (e) => {
         setName(e.target.value);
@@ -36,6 +36,8 @@ const Register = () => {
             password
         }
 
+        setError({});
+
         try {
             let rep = await fetch("/api/auth/register", {
                 method: "POST",
@@ -47,13 +49,17 @@ const Register = () => {
 
             let res = await rep.json();
 
+            if (res.errorMessages) {
+                throw new Error(res.errorMessages);
+            }
+
             localStorage.setItem("user", JSON.stringify(res.user._id));
             toast.success("User registration");
 
             navigate("/profile");
         } catch (error) {
-            toast.error("e");
-            return;
+            setError(error);
+            toast.error(error.message);
         }
     };
 
@@ -64,6 +70,15 @@ const Register = () => {
                 <div className='flex-grow h-full absolute w-full flex justify-center items-center'>
                     <form className="flex flex-col w-1/4 min-w-96 gap-8 bg-white p-8" onSubmit={submitHandler}>
                         <Heading heading="Register" />
+                        {
+                            error && (
+                                <div className='text-center mt-2'>
+                                    {
+                                        error.message
+                                    }
+                                </div>
+                            )
+                        }
                         <Input
                             input={{
                                 id: "Name",

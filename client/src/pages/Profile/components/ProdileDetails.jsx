@@ -45,6 +45,19 @@ const ProdileDetails = ({data}) => {
     
     }
 
+    let logoutHandler = async () => {
+
+        try {
+            await fetch("/api/auth/logout");
+            localStorage.removeItem("user");
+    
+            toast.success("Loggade ut");
+            navigate("/");
+        } catch (error) {
+            toast.error("Error to Log out");
+        }
+    }
+
     return (
         <div className='h-full flex flex-col gap-8 p-2'>
             <Heading heading="Profile" />
@@ -72,9 +85,9 @@ const ProdileDetails = ({data}) => {
             </form>
 
             <div className='text-center'>
-                <Link className=''>
+                <button className='' onClick={logoutHandler}>
                     Logga ut
-                </Link>
+                </button>
             </div>
 
         </div>
