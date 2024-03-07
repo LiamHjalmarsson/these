@@ -18,7 +18,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
 
     try {
-        let user = await User.findOne({ email: req.body.email });
+        let user = await User.findOne({ name: req.body.name });
 
         if (!user) {
             return res.status(400).json({ msg: "error user" })
@@ -33,9 +33,9 @@ export const login = async (req, res) => {
             return res.status(400).json({ msg: "error password" })
         }
 
-        let token = createJWT({ userId: user._id });
+        // let token = createJWT({ userId: user._id });
 
-        res.json({ token });
+        res.json({ user });
     } catch (error) {
 
         return res.status(StatusCodes.NON_AUTHORITATIVE_INFORMATION).json({ error });

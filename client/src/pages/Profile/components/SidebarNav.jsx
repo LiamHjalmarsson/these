@@ -1,7 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SidebarNav = ({ id, links }) => {
+    let navigate = useNavigate();
+
+    let logoutHandler = async () => {
+        let rep = await fetch("/api/auth/logout");
+        let res = await rep.json();
+        localStorage.removeItem("user");
+
+        navigate("/");
+    }
+
     return (
         <div className='w-64'>
             <nav className='flex flex-col gap-8 w-fit'>
@@ -12,6 +22,12 @@ const SidebarNav = ({ id, links }) => {
                         </Link>
                     ))
                 }
+
+                <div className='text-sm text-center  p-4'>
+                    <button onClick={logoutHandler}>
+                        logga ut
+                    </button>
+                </div>  
             </nav>
         </div>
     );

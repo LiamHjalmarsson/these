@@ -9,7 +9,7 @@ import Product from '../pages/Product/Product';
 import ProfileLanding from '../pages/Profile/ProfileLanding';
 import Profile from '../pages/Profile/Profile';
 import Register from '../pages/Register/Register';
-import Login from '../pages/Login/Login';
+import Login from '../pages/Auth/Login';
 
 const AllRoutes = () => {
     return (
