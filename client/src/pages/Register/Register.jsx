@@ -3,6 +3,7 @@ import Input from '../../components/Elements/Input';
 import { Link, useNavigate } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
 import Heading from '../../components/Elements/Heading/Heading';
+import {toast} from "react-toastify";
 
 const Register = () => {
     let navigate = useNavigate();
@@ -44,15 +45,13 @@ const Register = () => {
 
             let res = await rep.json();
 
-            if (res.errorMessages) {
-                setError(res.errorMessages);
-            } 
-
             localStorage.setItem("user", JSON.stringify(res.user._id));
+            toast.success("User registration");
 
             navigate("/profile");
         } catch (error) {
-            console.log(error);
+            toast.error("e");
+            return;
         }
     };
 
