@@ -12,7 +12,7 @@ const Rewards = ({data}) => {
                 </div>
                 <div className='flex flex-col w-96'>
                     <ProgressBar points={data.activePoints} />
-                    <div className='w-full flex justify-between'>
+                    <div className='w-full flex justify-between px-2'>
                         <div>
                             0
                         </div>
@@ -30,7 +30,7 @@ const Rewards = ({data}) => {
                 </div>
                 <div className='flex flex-col w-96'>
                     <ProgressBar points={data.totalPointsEarned} />
-                    <div className='w-full flex justify-between'>
+                    <div className='w-full flex justify-between px-2'>
                         <div>
                             0
                         </div>

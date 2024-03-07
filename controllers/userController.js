@@ -12,5 +12,19 @@ export const getCurrentUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-    res.status(StatusCodes.OK).json({ msg: 'update user' });
+    let userId = req.body.userId; 
+    let { name, email } = req.body; 
+
+    try {
+        let updatedUser = await User.findByIdAndUpdate(userId, { name, email }, { new: true });
+
+        if (!updatedUser) {
+            return res.status(StatusCodes.NOT_FOUND).json({ error: 'User not found' });
+        }
+
+        res.status(StatusCodes.OK).json({ user: updatedUser });
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
+    }
 };
