@@ -25,7 +25,6 @@ export const validateRegisterInput = withValidationErrors([
     body('password').notEmpty().withMessage('password is required').isLength({ min: 8 }).withMessage("Password must be at least 8 characters"),
 ]);
 
-
 export const validateLoginInput = withValidationErrors([
     body('email')
         .notEmpty()
@@ -33,4 +32,10 @@ export const validateLoginInput = withValidationErrors([
         .isEmail()
         .withMessage('invalid email format'),
     body('password').notEmpty().withMessage('password is required'),
+]);
+
+export const validateAcivments = withValidationErrors([
+    body('name').notEmpty().withMessage('name is required'),
+    body('description').notEmpty().withMessage('description is required'),
+    body('points').notEmpty().withMessage('points is required'),
 ]);

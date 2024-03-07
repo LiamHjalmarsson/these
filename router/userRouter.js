@@ -6,6 +6,6 @@ import {
     updateUser,
 } from '../controllers/userController.js';
 
-router.get('/current-user', getCurrentUser);
+router.get('/:id', getCurrentUser);
 router.patch('/update-user', updateUser);
 export default router;

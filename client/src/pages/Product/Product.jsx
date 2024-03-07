@@ -7,10 +7,8 @@ import useFetch from '../../hooks/useFetch';
 
 const Product = () => {
     let { id } = useParams();
-    console.log(id);
-    let url = `/api/clothing/${id}`
 
-    let { data } = useFetch(url);
+    let { data } = useFetch(`/api/clothing/${id}`);
 
     return (
         <Deafult>
@@ -24,7 +22,6 @@ const Product = () => {
                         </div>
                     )
                 }
-
             </div>
         </Deafult>
     );

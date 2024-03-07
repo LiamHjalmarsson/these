@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from '../../../components/Elements/Heading/Heading';
 import SecondaryButton from '../../../components/Elements/SecondaryButton';
 
-const Recensioner = () => {
+const Recensioner = ({data}) => {
     let db = [
         {
             user: "first purchase",

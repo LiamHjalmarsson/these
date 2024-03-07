@@ -11,6 +11,7 @@ import authRouter from "./router/authRouter.js";
 import categoryRouter from "./router/categoryRouter.js";
 import userRouter from "./router/userRouter.js";
 import clothingRouter from "./router/clothingRouter.js";
+import achivmentsRouter from "./router/achivmentsRouter.js";
 
 
 // Middlware
@@ -28,6 +29,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/users', userRouter);
 app.use('/api/clothing', clothingRouter);
+app.use('/api/achivments', achivmentsRouter);
 
 app.use('*', (req, res) => {
     res.status(404).json({ msg: 'not found' });

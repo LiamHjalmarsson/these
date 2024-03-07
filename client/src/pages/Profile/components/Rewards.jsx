@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from '../../../components/Elements/Heading/Heading';
 import ProgressBar from './Progressbar';
 
-const Rewards = () => {
+const Rewards = ({data}) => {
     return (
         <div className='h-1/2 flex flex-col justify-between gap-8 p-2 w-1/2'>
             <div className='flex flex-col gap-4 w-full items-center'>
@@ -11,7 +11,7 @@ const Rewards = () => {
                     Poäng in samlade
                 </div>
                 <div className='flex flex-col w-96'>
-                    <ProgressBar points={60} />
+                    <ProgressBar points={data.activePoints} />
                     <div className='w-full flex justify-between'>
                         <div>
                             0
@@ -29,13 +29,13 @@ const Rewards = () => {
                     Poäng in samlade
                 </div>
                 <div className='flex flex-col w-96'>
-                    <ProgressBar points={60} />
+                    <ProgressBar points={data.totalPointsEarned} />
                     <div className='w-full flex justify-between'>
                         <div>
                             0
                         </div>
                         <div>
-                            1000
+                            2000
                         </div>
                     </div>
                 </div>

@@ -7,14 +7,12 @@ export const getAllCategories = async (req, res) => {
 };
 
 export const createCategory = async (req, res) => {
-
     try {
         let newCategory = await Category.create(req.body );
         res.status(StatusCodes.CREATED).json({ data: newCategory });
     } catch (error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({error})
     }
-
 };
 
 export const getCategory = async (req, res) => {
