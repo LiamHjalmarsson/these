@@ -1,6 +1,5 @@
 import React from 'react';
 import ProgressBar from './Progressbar';
-import PrimaryButton from '../../../components/Elements/PrimaryButton';
 import Heading from '../../../components/Elements/Heading/Heading';
 
 const Header = ({ data }) => {
@@ -9,8 +8,8 @@ const Header = ({ data }) => {
     return (
         <div className='w-full h-96 flex justify-start items-center bg-indigo-900 relative'>
 
-            <div className='w-1/2 p-4'>
-                <Heading heading="Hej Välkommen till ditt account" custom="text-white text-4xl" />
+            <div className='w-1/2 m-auto p-4'>
+                <Heading heading={`Hej ${data.name} Välkommen till ditt account`} custom="text-white text-4xl w-96" />
             </div>
 
             <div className='absolute w-1/4 flex flex-col gap-4 p-4 -bottom-1/4 left-1/2 bg-white bg-opacity-90 shadow-middle shadow-primary rounded-md'>
