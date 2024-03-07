@@ -13,7 +13,7 @@ const Profile = () => {
     let { id } = useParams();
     let userId = JSON.parse(localStorage.getItem("user"));
 
-    let { data } = useFetch(`/api/users/${userId ? userId : "65e9ab0d3fd117ecd88b0582"}`);
+    let { data } = useFetch(`/api/users/${userId}`);
 
     let links = ["profile", "lojalitet", "achivments", "resentioner"];
 

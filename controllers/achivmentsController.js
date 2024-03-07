@@ -1,7 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import Achivments from "../models/achivmentsModel.js";
 
-
 export const getAllAchivments = async (req, res) => {
     let achivments = await Achivments.find({});
     res.status(StatusCodes.OK).json({ achivments });
@@ -25,3 +24,4 @@ export const getAchivment = async (req, res) => {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({error})
     }
 }
+

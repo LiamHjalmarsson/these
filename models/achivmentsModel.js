@@ -12,11 +12,11 @@ const AchievementSchema = new mongoose.Schema({
     },
     points: {
         type: Number,
-        required: true
+        default: 100
     },
     image: {
         type: String,
-        default: "https://cdn.dribbble.com/users/189524/screenshots/1825724/achievementsgif_v1_still_2x.gif?resize=400x0"
+        default: "https://res.cloudinary.com/dx6tdy5de/image/upload/v1709829147/dl-clothing/trophy_y5giwk.jpg"
     },
 });
 

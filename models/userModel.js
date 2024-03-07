@@ -22,10 +22,19 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    achivments:
-    {
-        type: [String],
-        default: [],
+    achivments: {
+        type: [{
+            name: {
+                type: String,
+            },
+            points: {
+                type: Number,
+            }
+        }],
+        default: [{
+            name: "member",
+            points: 100
+        }]
     }
 });
 

@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
 import Heading from '../../components/Elements/Heading/Heading';
 import {toast} from "react-toastify";
+import img from "/images/banner.jpg";
+import PrimaryButton from '../../components/Elements/PrimaryButton';
 
 const Register = () => {
     let navigate = useNavigate();
@@ -57,14 +59,14 @@ const Register = () => {
 
     return (
         <Deafult>
-            <div className='h-[76vh] flex'>
-                <div className='h-full w-96 bg-black'></div>
-                <div className='flex-grow h-full flex justify-center items-center'>
-                    <form className="flex flex-col w-96 gap-8" onSubmit={submitHandler}>
+            <div className='h-[72.5vh] flex relative'>
+                <img className='h-full w-full object-cover' src={img} />
+                <div className='flex-grow h-full absolute w-full flex justify-center items-center'>
+                    <form className="flex flex-col w-1/4 min-w-96 gap-8 bg-white p-8" onSubmit={submitHandler}>
                         <Heading heading="Register" />
                         <Input
                             input={{
-                                id: "name",
+                                id: "Name",
                                 type: "name",
                                 autoComplete: "off"
                             }}
@@ -73,7 +75,7 @@ const Register = () => {
                         />
                         <Input
                             input={{
-                                id: "email",
+                                id: "Email",
                                 type: "email",
                                 autoComplete: "off"
                             }}
@@ -82,27 +84,26 @@ const Register = () => {
                         />
                         <Input
                             input={{
-                                id: "password",
+                                id: "Password",
                                 type: "password",
                                 autoComplete: "off"
                             }}
                             onChange={handlePasswordChange}
                             value={password}
                         />
-                        <button>
+                        <PrimaryButton>
                             Register
-                        </button>
+                        </PrimaryButton>
                         <div className='flex flex-col items-center'>
                             <div>
                                 Already a member?
                             </div>
-                            <Link to='/login'>
+                            <Link to='/login' className='underline'>
                                 Login
                             </Link>
                         </div>
                     </form>
                 </div>
-                <div className='h-full w-96 bg-black'></div>
             </div>
         </Deafult>
     );

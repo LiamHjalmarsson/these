@@ -3,6 +3,8 @@ import Input from '../../components/Elements/Input';
 import { Link, useNavigate } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
 import Heading from '../../components/Elements/Heading/Heading';
+import img from "/images/banner.jpg";
+import PrimaryButton from '../../components/Elements/PrimaryButton';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -36,10 +38,10 @@ const Login = () => {
             });
 
             console.log(rep);
-            
+
             let res = await rep.json();
             console.log(res);
-            
+
             localStorage.setItem("user", JSON.stringify(res.user._id));
 
             navigate("/profile");
@@ -50,14 +52,14 @@ const Login = () => {
 
     return (
         <Deafult>
-            <div className='h-[76vh] flex'>
-                <div className='h-full w-96 bg-black'></div>
-                <div className='flex-grow h-full flex justify-center items-center'>
-                    <form className="flex flex-col w-96 gap-8" onSubmit={submitHandler}>
+            <div className='h-[72.5vh] relative flex'>
+                <img className='h-full w-full object-cover' src={img} />
+                <div className='flex-grow h-full absolute w-full flex justify-center items-center'>
+                    <form className="flex flex-col w-1/4 min-w-96 gap-8 bg-white p-8" onSubmit={submitHandler}>
                         <Heading heading="Login" />
                         <Input
                             input={{
-                                id: "name",
+                                id: "Name",
                                 type: "name",
                                 autoComplete: "off"
                             }}
@@ -66,27 +68,26 @@ const Login = () => {
                         />
                         <Input
                             input={{
-                                id: "password",
+                                id: "Password",
                                 type: "password",
                                 autoComplete: "off"
                             }}
                             onChange={handlePasswordChange}
                             value={password}
                         />
-                        <button>
+                        <PrimaryButton>
                             Login
-                        </button>
+                        </PrimaryButton>
                         <div className='flex flex-col items-center'>
                             <div>
                                 Not a member?
                             </div>
-                            <Link to='/register'>
+                            <Link to='/register' className='underline'>
                                 Register
                             </Link>
                         </div>
                     </form>
                 </div>
-                <div className='h-full w-96 bg-black'></div>
             </div>
         </Deafult>
     );
