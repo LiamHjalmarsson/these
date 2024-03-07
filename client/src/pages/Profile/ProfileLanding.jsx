@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Deafult from '../../components/Layouts/Deafult';
 import Header from './components/Header';
 import ProfileCard from './components/ProfileCard';
@@ -6,14 +6,21 @@ import { FaRegUser } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
 import useFetch from '../../hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileLanding = () => {
+    let navigate = useNavigate()
     let userId = JSON.parse(localStorage.getItem("user"));
     let { data } = useFetch(`/api/users/${userId}`);
 
+    useEffect(() => {
+        if (!userId) {
+            navigate("/register");
+        }
+    }, []);
+
     return (
         <Deafult>
-
             {
                 data && (
                     <>
@@ -28,7 +35,6 @@ const ProfileLanding = () => {
                     </>
                 )
             }
-
         </Deafult>
     );
 }

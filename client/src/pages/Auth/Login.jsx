@@ -4,20 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
 import Heading from '../../components/Elements/Heading/Heading';
 
-const Register = () => {
+const Login = () => {
     let navigate = useNavigate();
 
     let [name, setName] = useState('');
-    let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
-    let [error, setError] = useState([]);
 
     let handleNameChange = (e) => {
         setName(e.target.value);
-    };
-
-    let handleEmailChange = (e) => {
-        setEmail(e.target.value);
     };
 
     let handlePasswordChange = (e) => {
@@ -29,12 +23,11 @@ const Register = () => {
 
         let data = {
             name,
-            email,
-            password
+            password,
         }
 
         try {
-            let rep = await fetch("/api/auth/register", {
+            let rep = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -42,12 +35,11 @@ const Register = () => {
                 body: JSON.stringify(data)
             });
 
+            console.log(rep);
+            
             let res = await rep.json();
-
-            if (res.errorMessages) {
-                setError(res.errorMessages);
-            } 
-
+            console.log(res);
+            
             localStorage.setItem("user", JSON.stringify(res.user._id));
 
             navigate("/profile");
@@ -62,7 +54,7 @@ const Register = () => {
                 <div className='h-full w-96 bg-black'></div>
                 <div className='flex-grow h-full flex justify-center items-center'>
                     <form className="flex flex-col w-96 gap-8" onSubmit={submitHandler}>
-                        <Heading heading="Register" />
+                        <Heading heading="Login" />
                         <Input
                             input={{
                                 id: "name",
@@ -74,15 +66,6 @@ const Register = () => {
                         />
                         <Input
                             input={{
-                                id: "email",
-                                type: "email",
-                                autoComplete: "off"
-                            }}
-                            onChange={handleEmailChange}
-                            value={email}
-                        />
-                        <Input
-                            input={{
                                 id: "password",
                                 type: "password",
                                 autoComplete: "off"
@@ -91,14 +74,14 @@ const Register = () => {
                             value={password}
                         />
                         <button>
-                            Register
+                            Login
                         </button>
                         <div className='flex flex-col items-center'>
                             <div>
-                                Already a member?
+                                Not a member?
                             </div>
-                            <Link to='/login'>
-                                Login
+                            <Link to='/register'>
+                                Register
                             </Link>
                         </div>
                     </form>
@@ -109,4 +92,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default Login;

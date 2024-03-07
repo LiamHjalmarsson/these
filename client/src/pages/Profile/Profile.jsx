@@ -11,8 +11,9 @@ import useFetch from '../../hooks/useFetch';
 
 const Profile = () => {
     let { id } = useParams();
+    let userId = JSON.parse(localStorage.getItem("user"));
 
-    let { data } = useFetch(`/api/users/65e9a8654df62f5f148fd245`);
+    let { data } = useFetch(`/api/users/${userId ? userId : "65e9ab0d3fd117ecd88b0582"}`);
 
     let links = ["profile", "lojalitet", "achivments", "resentioner"];
 

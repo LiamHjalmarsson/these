@@ -22,15 +22,13 @@ export const validateInput = withValidationErrors([
 export const validateRegisterInput = withValidationErrors([
     body('name').notEmpty().withMessage('name is required'),
     body('email').notEmpty().withMessage('email is required').isEmail().withMessage("Please enter a valid email address"),
-    body('password').notEmpty().withMessage('password is required').isLength({ min: 8 }).withMessage("Password must be at least 8 characters"),
+    body('password').notEmpty().withMessage('password is required').isLength({ min: 4 }).withMessage("Password must be at least 4 characters"),
 ]);
 
 export const validateLoginInput = withValidationErrors([
-    body('email')
+    body('name')
         .notEmpty()
-        .withMessage('email is required')
-        .isEmail()
-        .withMessage('invalid email format'),
+        .withMessage('name is required'),
     body('password').notEmpty().withMessage('password is required'),
 ]);
 
