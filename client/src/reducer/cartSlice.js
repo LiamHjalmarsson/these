@@ -10,15 +10,21 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addItemToCart: (state, action) => {
-            let newItem = action.payload;
-            state.cartItems.push(newItem);
+            const newItem = action.payload;
+            const existingItem = state.cartItems.find(item => item.id === newItem.id);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                state.cartItems.push({ ...newItem, quantity: 1 });
+            }
             state.total += newItem.price;
         },
         removeItemFromCart: (state, action) => {
-            let index = state.cartItems.findIndex(item => item.id === action.payload.id);
+            const index = state.cartItems.findIndex(item => item.id === action.payload.id);
             if (index !== -1) {
                 const removedItem = state.cartItems.splice(index, 1)[0];
-                state.total -= removedItem.price;
+                state.total -= removedItem.price * removedItem.quantity;
             }
         },
         clearCart: (state) => {

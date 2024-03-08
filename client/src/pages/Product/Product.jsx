@@ -6,6 +6,7 @@ import Details from './components/Details';
 import useFetch from '../../hooks/useFetch';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../reducer/cartSlice.js';
+import { toast } from 'react-toastify';
 
 const Product = () => {
     let { id } = useParams();
@@ -16,6 +17,8 @@ const Product = () => {
 
     let handleAddToCart = (item) => {
         dispatch(addItemToCart(item));
+
+        toast.success("Item added to cart")
     };
 
     return (

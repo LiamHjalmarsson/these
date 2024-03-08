@@ -11,6 +11,7 @@ const Deafult = ({ children }) => {
             <ToastContainer
                 pauseOnHover={false}
                 closeOnClick
+                className={"absolute top-24"}
             />
             {
                 children
