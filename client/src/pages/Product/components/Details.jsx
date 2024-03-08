@@ -1,6 +1,6 @@
 import React from 'react';
 import Devider from '../../../components/Elements/Devider';
-
+import { capitalizeFirstLetter } from '../../../utils/stringUtils';
 
 // Clean up will be made when data is fixed
 const Details = ({data, onAddToCart}) => {
@@ -41,7 +41,7 @@ const Details = ({data, onAddToCart}) => {
                     data.size.map(size => (
                         <button key={size}>
                             {
-                                size
+                                capitalizeFirstLetter(size)
                             }
                         </button>
                     ))
