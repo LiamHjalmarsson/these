@@ -2,11 +2,10 @@ import React from 'react';
 import Devider from '../../../components/Elements/Devider';
 import { capitalizeFirstLetter } from '../../../utils/stringUtils';
 
-// Clean up will be made when data is fixed
 const Details = ({data, onAddToCart}) => {
 
     return (
-        <div className='w-full h-full justify-center flex flex-col p-6'>
+        <div className='w-fit h-full justify-center flex flex-col p-6 mb-10'>
 
             <h3 className='text-5xl'>
                 {

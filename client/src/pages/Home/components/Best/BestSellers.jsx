@@ -7,8 +7,8 @@ const BestSellers = ({ heading, items }) => {
     return (
         <Section>
             <Heading heading={heading} />
-            <div className='w-full flex justify-center items-center'>
-                <div className='flex flex-wrap gap-8 w-full mt-8 max-w-4xl'>
+            <div className='w-full flex justify-center items-center my-8'>
+                <div className='flex flex-wrap gap-8 w-full mt-8 px-10'>
                     {
                         items.map((item, index) => (
                             <BestSeller item={item} key={index} />

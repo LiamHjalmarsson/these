@@ -19,16 +19,23 @@ const ClothingSchema = new mongoose.Schema(
             type: String, 
             required: true,
         },
-        size: {
-            type: [String], 
+        genderType: {
+            type: String, 
             required: true,
+        },
+        size: {
+            type: [{
+                type: String,
+                enum: ['xs', 's', 'm', 'l', 'xl', 'xxl']
+            }], 
+            default: ['xs', 's', 'm', 'l', 'xl', 'xxl']
         },
         color: {
             type: String,
             required: true,
         },
         image: {
-            type: [String], // Store array of image URLs
+            type: [String], 
             default: [
                 "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628178/dl-clothing/dam_nfsxjt.jpg",
                 "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628181/dl-clothing/herr_m73hux.jpg",

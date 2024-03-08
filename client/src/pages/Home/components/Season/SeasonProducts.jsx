@@ -3,7 +3,7 @@ import Heading from '../../../../components/Elements/Heading/Heading';
 import SeasonProduct from './SeasonProduct';
 import Section from '../../../../components/Layouts/Section/Section';
 
-const SeasonProducts = ({items, heading}) => {
+const SeasonProducts = ({ items, heading }) => {
     return (
         <Section>
             <Heading heading={heading} />
