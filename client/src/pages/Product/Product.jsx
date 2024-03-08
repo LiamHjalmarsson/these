@@ -10,11 +10,10 @@ import { toast } from 'react-toastify';
 
 const Product = () => {
     let { id } = useParams();
-
     let { data } = useFetch(`/api/clothing/${id}`);
 
     let dispatch = useDispatch();
-
+    
     let handleAddToCart = (item) => {
         dispatch(addItemToCart(item));
 
@@ -23,16 +22,18 @@ const Product = () => {
 
     return (
         <Deafult>
-            <div className='h-[80vh] flex flex-col justify-center items-center'>
-                {
-                    data && (
-                        <div className='grid grid-cols-2 gap-8 h-full max-w-6x'>
-                            <Images imges={data.clothing.image} />
+            <div className='min-h-[80vh] flex flex-col justify-center items-center'>
+                <div className='h-[80%] w-[80%] flex justify-center items-center flex-wrap'>
+                    {
+                        data && (
+                            <>
+                                <Images imges={data.clothing.image} />
 
-                            <Details data={data.clothing} onAddToCart={handleAddToCart} />
-                        </div>
-                    )
-                }
+                                <Details data={data.clothing} onAddToCart={handleAddToCart} />
+                            </>
+                        )
+                    }
+                </div>
             </div>
         </Deafult>
     );

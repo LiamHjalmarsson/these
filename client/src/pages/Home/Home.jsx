@@ -11,8 +11,14 @@ import LinkButton from '../../components/Elements/LinkButton';
 import useFetch from '../../hooks/useFetch';
 
 const Home = () => {
-
     let { data } = useFetch('/api/clothing');
+
+    let filterClothingsByGender = (gender) => {
+        return data?.clothings.filter(clothing => clothing.genderType === gender).slice(0, 6);
+    };
+
+    let menClothings = filterClothingsByGender('male');
+    let womenClothings = filterClothingsByGender('female');
 
     let news = [
         {
@@ -30,25 +36,22 @@ const Home = () => {
     return (
         <Deafult>
             <Banner img={bannerImg} heading="LD Klädder">
-                <div className='text-white mt-4'>
+                <div className='text-white mt-4 text-lg tracking-wide font-bold'>
                     Kvalititets kläder för Herr & Dam
                 </div>
                 <div className='w-96 p-4 flex justify-center items-center gap-8 mt-4'>
-                    <LinkButton to="/" title="Herr" />
-                    <LinkButton to="/" title="Dam" />
+                    <LinkButton link="/gender/herr" title="Herr" />
+                    <LinkButton link="/gender/dam" title="Dam" />
                 </div>
             </Banner>
 
             <SeasonProduct items={news} />
 
-            <div>
-
-            </div>
             {
                 data && (
                     <>
-                        <BestSellers heading="Populära Produkter Dam" items={data.clothings} />
-                        <BestSellers heading="Populära Produkter Herr" items={data.clothings} />
+                        <BestSellers heading="Populära Produkter Dam" items={womenClothings} />
+                        <BestSellers heading="Populära Produkter Herr" items={menClothings} />
                     </>
                 )
             }
