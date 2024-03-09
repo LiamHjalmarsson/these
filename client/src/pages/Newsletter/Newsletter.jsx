@@ -4,19 +4,22 @@ import Section from '../../components/Layouts/Section/Section';
 import Gifts from './components/Gifts';
 import Image from '../../components/Elements/Image';
 import Heading from '../../components/Elements/Heading/Heading';
-import LinkButton from '../../components/Elements/LinkButton';
 import img from "/images/newsletter.jpg"
 import Input from '../../components/Elements/Input';
+import PrimaryButton from '../../components/Elements/PrimaryButton';
 
 const NewsletterPage = () => {
-    let [selectedGift, setSelectedGift] = useState(null);
+    const [selectedGift, setSelectedGift] = useState(null);
+    const [submitted, setSubmitted] = useState(false);
 
-    let handleGiftSelection = (index) => {
+    const handleGiftSelection = (index) => {
         setSelectedGift(index);
     };
 
-    let handleSubscription = () => {
+    const submitHandler = (e) => {
+        e.preventDefault();
         console.log("Subscribed with gift:", selectedGift);
+        setSubmitted(true);
     };
 
     let gifts = [
@@ -33,9 +36,8 @@ const NewsletterPage = () => {
 
     return (
         <Deafult>
-
             <Section>
-                <Gifts gifts={gifts} handleGiftSelection={handleGiftSelection} selectedGift={selectedGift} />
+                <Gifts gifts={gifts} handleGiftSelection={handleGiftSelection} selectedGift={selectedGift} submitted={submitted} />
             </Section>
 
             <div className='w-full h-[500px] flex gap-8 relative'>
@@ -44,16 +46,17 @@ const NewsletterPage = () => {
                 </div>
 
                 <div className='h-full w-full flex flex-col gap-8 justify-center items-center absolute '>
-                    <form className='p-6 rounded-md bg-secondary bg-opacity-40 gap-4 text-white flex flex-col justify-center items-center max-w-md shadow-middle shadow-secondary' onSubmit={handleSubscription}>
+                    <form className='p-6 rounded-md bg-secondary bg-opacity-40 gap-4 text-white flex flex-col justify-center items-center max-w-md shadow-middle shadow-secondary' onSubmit={submitHandler}>
                         <Heading heading="Gå med för att ta del av din mystery gift" custom="text-white text-3xl" />
                         <Input
                             input={{ type: "email" }}
                             custom="border-b-white text-white mb-4"
                         />
-                        <LinkButton title="Premenurera" />
+                        <PrimaryButton>
+                            Premenurera
+                        </PrimaryButton>
                     </form>
                 </div>
-
             </div>
         </Deafult>
     );
