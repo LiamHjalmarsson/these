@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const SeasonProduct = ({item}) => {
     return (
-        <Link to={`/${item.path}`} className='relative w-[450px] group cursor-pointer'>
+        <Link to={`/gender/${item.path}`} className='relative h-96 w-96 group cursor-pointer'>
             <div className='h-[450px] overflow-hidden shadow-middle shadow-black rounded-md'>
                 <Image img={item.img} custom='group-hover:scale-105 group-hover:opacity-90' />
             </div>

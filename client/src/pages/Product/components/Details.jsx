@@ -9,7 +9,7 @@ const Details = ({data, onAddToCart}) => {
 
             <h3 className='text-5xl'>
                 {
-                    data.category
+                    capitalizeFirstLetter(data.category)
                 }
             </h3>
 
