@@ -16,7 +16,7 @@ const Nav = () => {
     }
 
     return (
-        <nav className="flex w-full items-center text-xl p-8 z-50 bg-primary text-white bg-opacity-80">
+        <nav className="flex w-full items-center text-xl p-8 z-50 bg-primary text-white">
             
             <NavLink to="/" className="">
                 <h2 className='text-3xl tracking-wider font-bold'>
@@ -27,7 +27,7 @@ const Nav = () => {
             <ul className="flex flex-grow justify-center items-center gap-4">
                 {
                     links.map((link) => (
-                        <NavLink to={`${link === "herr" || "dam" ? `/gender/${link}` : link}`} key={link}>
+                        <NavLink to={`${link === "nyhetsbrev" ? `/${link}` : `/gender/${link}`}`} key={link}>
                             {
                                 capitalizeFirstLetter(link)
                             }

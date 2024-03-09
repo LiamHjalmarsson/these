@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import Home from '../pages/Home/Home';
-import Newsletter from '../pages/Newsletter/Newsletter';
+import NewsletterPage from '../pages/Newsletter/Newsletter';
 import Cart from '../pages/Cart/Cart';
 import Product from '../pages/Product/Product';
 import ProfileLanding from '../pages/Profile/ProfileLanding';
@@ -23,6 +23,8 @@ const AllRoutes = () => {
                 <Route path='/products/:id' element={<Product/> } />
                 <Route path='/profile' element={<ProfileLanding/> } />
                 <Route path='/profile/:id' element={<Profile/> } />
+                <Route path='/nyhetsbrev' element={<NewsletterPage/> } />
+                <Route path='/cart' element={<Cart/> } />
             </Routes>
         </BrowserRouter>
     );

@@ -28,7 +28,7 @@ const Input = ({input, onChange, value, custom}) => {
                 {...input}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                className={` ${custom ? custom : ""} w-full mt-1 border-b-2 border-b-primary outline-none bg-transparent text-primary p-2`}
+                className={` ${custom ? custom : "border-b-primary text-primary"} p-2 w-full mt-1 border-b-2 outline-none bg-transparent `}
                 value={value}
                 onChange={onChange}
             />
