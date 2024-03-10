@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Deafult = ({ children }) => {
     return (
-        <div>
+        <>
             <Nav />
             <ToastContainer
                 pauseOnHover={false}
@@ -17,7 +17,7 @@ const Deafult = ({ children }) => {
                 children
             }
             <Footer />
-        </div>
+        </>
     );
 }
 
