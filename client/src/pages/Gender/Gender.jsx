@@ -3,7 +3,7 @@ import Deafult from '../../components/Layouts/Deafult'
 import Newsletter from '../../components/Newsletter/Newsletter';
 import Banner from '../../components/Banner/Banner';
 import bannerImgDam from "/images/dam_sektion.jpg";
-import bannerImgHerr from "/images/man_section.jpg";
+import bannerImgHerr from "/images/banner.jpg";
 import Categories from './components/Categories';
 import useFetch from '../../hooks/useFetch';
 import { useParams } from 'react-router-dom';

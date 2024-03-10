@@ -10,8 +10,8 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addItemToCart: (state, action) => {
-            const newItem = action.payload;
-            const existingItem = state.cartItems.find(item => item.id === newItem.id);
+            let newItem = action.payload;
+            let existingItem = state.cartItems.find(item => item.id === newItem.id);
 
             if (existingItem) {
                 existingItem.quantity++;
@@ -21,18 +21,37 @@ const cartSlice = createSlice({
             state.total += newItem.price;
         },
         removeItemFromCart: (state, action) => {
-            const index = state.cartItems.findIndex(item => item.id === action.payload.id);
+            let index = state.cartItems.findIndex(item => item.id === action.payload.id);
             if (index !== -1) {
-                const removedItem = state.cartItems.splice(index, 1)[0];
+                let removedItem = state.cartItems.splice(index, 1)[0];
                 state.total -= removedItem.price * removedItem.quantity;
             }
         },
         clearCart: (state) => {
             state.cartItems = [];
             state.total = 0;
+        },
+        increaseQuantity: (state, action) => {
+            let item = state.cartItems.find(item => item.id === action.payload.id);
+            if (item) {
+                item.quantity++;
+                state.total += item.price;
+            }
+        },
+        decreaseQuantity: (state, action) => {
+            let item = state.cartItems.find(item => item.id === action.payload.id);
+            if (item) {
+                if (item.quantity === 1) {
+                    state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
+                    state.total -= item.price;
+                } else {
+                    item.quantity--;
+                    state.total -= item.price;
+                }
+            }
         }
     }
 });
 
-export const { addItemToCart, removeItemFromCart, clearCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart, clearCart, increaseQuantity, decreaseQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

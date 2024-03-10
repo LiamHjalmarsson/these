@@ -7,7 +7,6 @@ const Banner = ({ heading, img, color, children, custom }) => {
             <img src={img} className={`w-full h-full object-cover ${custom ? custom : "object-center" }`} />
 
             <div className='absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center bg-black bg-opacity-40'>
-                {/* <Heading heading={heading} custom={ true } style={{ color: color || 'black' }}/> */}
                 <Heading heading={heading} custom="text-7xl text-white" />
                 {
                     children

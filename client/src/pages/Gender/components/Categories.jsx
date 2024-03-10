@@ -8,7 +8,7 @@ const Categories = ({ heading, items }) => {
         <Section>
             <Heading heading={heading} />
             <div className='w-full flex justify-center items-center'>
-                <div className='flex flex-wrap gap-12 w-full mt-8 px-10'>
+                <div className='flex flex-wrap gap-12 w-full mt-8 px-10 justify-center '>
                     {
                         items.map((item, index) => (
                             <Category item={item} key={index} />

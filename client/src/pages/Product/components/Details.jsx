@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Devider from '../../../components/Elements/Devider';
 import { capitalizeFirstLetter } from '../../../utils/stringUtils';
+import SecondaryButton from '../../../components/Elements/SecondaryButton';
 
 const Details = ({data, onAddToCart}) => {
+
+    let [selectedSize, setSelectedSize] = useState(null);
+
+    let handleSizeSelection = (size) => {
+        setSelectedSize(size);
+    };
 
     return (
         <div className='w-fit h-full justify-center flex flex-col p-6 mb-10'>
@@ -35,20 +42,22 @@ const Details = ({data, onAddToCart}) => {
                 </p>
             </div>
 
-            <div className='flex gap-8 mt-4'>
+            <div className='flex gap-8 my-4'>
                 {
                     data.size.map(size => (
-                        <button key={size}>
+                        <SecondaryButton key={size}                         
+                        custom={`border-primary text-primary hover:bg-primary hover:text-white ${selectedSize === size ? 'bg-primary text-white' : ''}`}
+                        onClick={() => handleSizeSelection(size)}>
                             {
                                 capitalizeFirstLetter(size)
                             }
-                        </button>
+                        </SecondaryButton>
                     ))
                 }
             </div>
 
             <div className='mt-4 mb-4'>
-                <button className='bg-primary p-4 text-white' onClick={() => onAddToCart({ id: data._id, name: data.name, price: data.price, image: data.image })}>
+                <button className='text-xl px-6 py-3 border-2 flex-grow text-center rounded-md bg-primary hover:bg-opacity-90 transition duration-300 text-white' onClick={() => onAddToCart({ id: data._id, name: data.name, price: data.price, image: data.image, size: selectedSize })}>
                     Lägg till i varukorg
                 </button>
             </div>
@@ -72,18 +81,6 @@ const Details = ({data, onAddToCart}) => {
             </div>
 
             <Devider />
-
-            <div className='flex gap-8 mt-4'>
-                {/* {
-                    sizes.map(size => (
-                        <button key={size}>
-                            {
-                                size
-                            }
-                        </button>
-                    ))
-                } */}
-            </div>
 
         </div>
     );

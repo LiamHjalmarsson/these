@@ -4,11 +4,11 @@ import Image from '../../../../components/Elements/Image';
 
 const BestSeller = ({item}) => {
     return (
-        <Link to={`/products/${item._id}`} className='group flex-grow w-80 h-sm max-h-[600px] mb-8 relative'>
-            <div className='flex items-center text-xl absolute z-10 rounded-md -bottom-4 right-4 px-8 py-6 shadow-md shadow-black bg-opacity-90 bg-white'>
+        <Link to={`/products/${item._id}`} className='group flex-grow max-w-sm mb-8 relative'>
+            <div className='flex items-center text-xl absolute z-10 rounded-md -bottom-4 right-4 px-8 py-6 shadow-middle shadow-primary bg-opacity-90 bg-white'>
                 <div>
                     {
-                        item.name
+                        item.name.charAt(0).toUpperCase() + item.name.slice(1)
                     }
                 </div>
             </div>
