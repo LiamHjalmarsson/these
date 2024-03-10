@@ -19,7 +19,7 @@ const Items = ({ category }) => {
     return (
         <Section>
             <div className='w-full flex justify-center items-center'>
-                <ul className='flex flex-wrap gap-12 w-full mt-8 px-10'>
+                <ul className='flex flex-wrap gap-12 w-full mt-8 px-10 justify-center'>
                     {clothes.map((clothing, index) => (
                         <Item item={clothing} key={index} />
                     ))}

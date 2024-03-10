@@ -14,7 +14,7 @@ const Cart = ({ cartItems }) => {
                 {cartItems.map((item, index) => (
                     <li key={index} className='flex pr-4'>
                         <div className='flex-grow'>
-                        {capitalizeFirstLetter(item.name)} - {item.price} kr 
+                            {capitalizeFirstLetter(item.name)} - {capitalizeFirstLetter(item.size)} - {item.price} kr
                         </div>
                         <div>
                             {item.quantity}
@@ -28,7 +28,7 @@ const Cart = ({ cartItems }) => {
                     Till kassa
                 </Link>
             </div>
-            
+
         </div>
     );
 }
