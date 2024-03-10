@@ -24,7 +24,7 @@ const AllRoutes = () => {
                 <Route path='/profile' element={<ProfileLanding/> } />
                 <Route path='/profile/:id' element={<Profile/> } />
                 <Route path='/nyhetsbrev' element={<NewsletterPage/> } />
-                <Route path='/cart' element={<Cart/> } />
+                <Route path='/kassa' element={<Cart/> } />
             </Routes>
         </BrowserRouter>
     );

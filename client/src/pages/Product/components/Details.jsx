@@ -48,7 +48,7 @@ const Details = ({data, onAddToCart}) => {
             </div>
 
             <div className='mt-4 mb-4'>
-                <button className='bg-primary p-4 text-white' onClick={() => onAddToCart({ id: data._id, name: data.name, price: data.price })}>
+                <button className='bg-primary p-4 text-white' onClick={() => onAddToCart({ id: data._id, name: data.name, price: data.price, image: data.image })}>
                     Lägg till i varukorg
                 </button>
             </div>
