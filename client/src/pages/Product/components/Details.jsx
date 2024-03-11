@@ -46,7 +46,7 @@ const Details = ({data, onAddToCart}) => {
                 {
                     data.size.map(size => (
                         <SecondaryButton key={size}                         
-                        custom={`border-primary text-primary hover:bg-primary hover:text-white ${selectedSize === size ? 'bg-primary text-white' : ''}`}
+                        custom={`border-primary text-primary hover:bg-primary hover:text-white ${selectedSize === size ? 'bg-primary text-white bg-opacity-85' : ''}`}
                         onClick={() => handleSizeSelection(size)}>
                             {
                                 capitalizeFirstLetter(size)
