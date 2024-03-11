@@ -32,12 +32,12 @@ const Cart = () => {
                             {!cartItems || cartItems.length === 0 ? (
                                 <EmptyCart />
                             ) : (
-                                <CartItems cartItems={cartItems} onDecreaseQuantity={handleDecreaseQuantity} onIncreaseQuantity={handleIncreaseQuantity}/>
+                                <CartItems cartItems={cartItems} onDecreaseQuantity={handleDecreaseQuantity} onIncreaseQuantity={handleIncreaseQuantity} />
                             )}
 
                             <CartOrder price={totalPrice} />
                         </div>
-                        </div>
+                    </div>
                 </Section>
             </div>
         </Deafult>

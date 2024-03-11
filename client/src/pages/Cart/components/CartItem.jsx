@@ -9,20 +9,22 @@ const CartItem = ({ item, onDecreaseQuantity, onIncreaseQuantity }) => {
                 <div className='flex-grow flex justify-between items-center'>
                     <div className='w-full'>
                         <h3 className='text-xl'>
-                            {item.name}
+                            {
+                                item.name.charAt(0).toUpperCase() + item.name.slice(1)
+                            }
                         </h3>
                         <div className='flex w-full justify-between items-center'>
-                            <div>
+                            <div className='w-1/3'>
                                 {
-                                    "Storlek: " + item.size
+                                    "Storlek: " + item.size.charAt(0).toUpperCase() + item.size.slice(1)
                                 }
                             </div>
-                            <div>
+                            <div className='w-1/3 text-center'>
                                 {
-                                    "Pris: " + item.price
+                                    item.price
                                 } 
                             </div>
-                            <div className='flex items-center gap-4'>
+                            <div className='flex items-center gap-4 w-1/3 justify-end'>
                                 <button onClick={() => onDecreaseQuantity(item)} className='bg-primary text-white px-4 py-2 rounded-md mr-2'>
                                     -
                                 </button>

@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CartOrderDetail from './CartOrderDetail';
 import SecondaryButton from '../../../components/Elements/SecondaryButton';
 import Input from '../../../components/Elements/Input';
+import useFetch from '../../../hooks/useFetch';
+import PrimaryButton from '../../../components/Elements/PrimaryButton';
 
-const CartOrder = ({price}) => {
+const CartOrder = ({ price }) => {
+    let activeUser = JSON.parse(localStorage.getItem("user"));
+    let { data } = useFetch(`/api/users/${activeUser}`);
+    
+    let [userPoints, setUserPoints] = useState("");
+    let [error, setError] = useState("");
+    let [pointsValidated, setPointsValidated] = useState(false);
+    let [discountedPrice, setDiscountedPrice] = useState(price);
+
+    let handleUserPoints = (e) => {
+        setUserPoints(e.target.value);
+        if (data) {
+            if (data.user.activePoints < e.target.value) {
+                setError("Inte tillräckligt med poäng");
+            } else {
+                setError("");
+            }
+        }
+    }
+
+    let applyDiscount = () => {
+        if (!error) {
+            setDiscountedPrice(price - userPoints); 
+            setPointsValidated(true);
+        } else {
+            setPointsValidated(false);
+        }
+    }
+
+    let submitHandler = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <div className='w-1/2 flex justify-center items-start'>
             <div className='flex flex-col gap-8 max-w-lg w-full'>
@@ -11,22 +45,66 @@ const CartOrder = ({price}) => {
                     Order
                 </h3>
 
-                <CartOrderDetail text="Summa artiklar" detail={price + " kr"} />
+                <CartOrderDetail text="Summa artiklar" detail={discountedPrice  + " kr"} />
 
-                <CartOrderDetail text="Fraktavgifter" detail={price >= 1000 && "0" || "75" + " kr"} />
+                <CartOrderDetail text="Fraktavgifter" detail={discountedPrice >= 1000 && "0" || "75" + " kr"} />
 
-                <CartOrderDetail text="Totalt inkl. moms:" detail={price + " kr"} />
+                <CartOrderDetail text="Totalt inkl. moms:" detail={discountedPrice  + " kr"} />
 
-                <CartOrderDetail text={` Du tjänar ${price} poäng på ditt köp`} />
+                {
+                    activeUser &&
+                    <CartOrderDetail text={`Du tjänar ${price} poäng på ditt köp`} />
+                    ||
+                    <CartOrderDetail text={`Du tjänar ${price} poäng på ditt köp om du blir medlem`} />
+                }
 
-                <div className='flex justify-center items-center gap-8'>
-                    <div className='flex-grow'>
-                        <Input input={{ id: "värdekod", type: "text" }} />
+                <div className='flex flex-col'>
+                    <div className='flex-grow flex justify-center items-center gap-8 '>
+                        <Input
+                            input={{
+                                type: "number",
+                                min: 0,
+                            }}
+                            custom={`${error ? "border-b-red text-red" : ""}`}
+                            onChange={handleUserPoints}
+                            value={userPoints}
+                        />
+                        <SecondaryButton custom='border-primary text-primary' onClick={applyDiscount}>
+                            Ange
+                        </SecondaryButton>
                     </div>
-                    <SecondaryButton custom='border-primary text-primary'>
-                        Ange
-                    </SecondaryButton>
+                    {
+                        error && (
+                            <div className='mt-2 text-red'>
+                                {
+                                    error
+                                }
+                            </div>
+                        )
+                    }
                 </div>
+
+
+                {
+                    data && (
+                        <div className='flex w-full'>
+                            <h2 className='flex-grow'>
+                                Dinna samlade poäng
+                            </h2>
+                            <div>
+                                {
+                                    data.user.activePoints
+                                }
+                            </div>
+                        </div>
+                    )
+                }
+
+                <form onSubmit={submitHandler}>
+                    <PrimaryButton custom="w-full mb-12">
+                        Köp
+                    </PrimaryButton>
+                </form>
             </div>
         </div>
     );
