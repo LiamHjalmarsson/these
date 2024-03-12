@@ -19,8 +19,8 @@ const SidebarNav = ({ id, links }) => {
     }
 
     return (
-        <div className='w-64 absolute'>
-            <nav className='flex flex-col gap-8 w-fit'>
+        <div className='w-full'>
+            <nav className='flex gap-8 w-fit mx-auto mb-10'>
                 {
                     links.map((link) => (
                         <Link to={`/profile/${link}`} key={link} className={`${id === link ? "font-bold tracking-wider border-2 border-primary" : ""} text-xl p-4`}>

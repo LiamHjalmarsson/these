@@ -5,7 +5,6 @@ import Input from '../../../components/Elements/Input';
 import PrimaryButton from '../../../components/Elements/PrimaryButton';
 
 const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) => {
-    
     let [userPoints, setUserPoints] = useState("");
     let [error, setError] = useState("");
 
@@ -42,11 +41,13 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                     Order
                 </h3>
 
-                <CartOrderDetail text="Summa artiklar" detail={price  + " kr"} />
+                <CartOrderDetail text="Total Summa: " detail={price + " kr"} />
 
                 <CartOrderDetail text="Fraktavgifter" detail={price >= 1000 && "0" || "75" + " kr"} />
 
-                <CartOrderDetail text="Totalt inkl. moms:" detail={price  + " kr"} />
+                {
+                    discount > 0 && <CartOrderDetail text="Summa att betla" detail={discount  + " kr"} />
+                }
 
                 {
                     user &&
@@ -80,7 +81,6 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                         )
                     }
                 </div>
-
 
                 {
                     data && (

@@ -1,35 +1,28 @@
 import React from 'react';
 import ProgressBar from './Progressbar';
 import Heading from '../../../components/Elements/Heading/Heading';
+import Image from '../../../components/Elements/Image';
+import img from "/images/x.jpg"
 
-const Header = ({ data }) => {
-    console.log(data);
+const Header = ({ data, rank }) => {
     return (
-        <div className='w-full h-96 flex justify-start items-center bg-indigo-900 relative'>
-            <div className='w-1/2 m-auto p-4'>
-                <Heading heading={`Hej ${data.name} Välkommen till ditt account`} custom="text-white text-4xl w-96" />
+        <div className='w-full h-96 flex justify-start items-center relative'>
+            <div className='h-full w-full bg-slate-950 absolute'>
+                <Image img={img} custom='w-full h-full opacity-60 group-hover:scale-105 group-hover:opacity-90 w-full h-full object-cover' />
             </div>
 
-            <div className='absolute w-1/4  flex flex-col gap-4 p-4 -bottom-1/4 left-1/2 bg-white bg-opacity-90 shadow-middle shadow-primary rounded-md'>
+            <div className='w-96 flex lg:mx-auto p-4 z-10'>
+                <Heading heading={`Hej ${data.name} Välkommen till ditt account`} custom="text-white text-2xl md:text-3xl lg:text-4xl w-96" />
+            </div>
 
+            <div className='absolute w-1/4 min-w-96 flex flex-col gap-4 p-4 -bottom-1/4 left-1/4 lg:left-1/2 bg-white bg-opacity-90 shadow-middle shadow-primary rounded-md'>
                 <h3 className='text-lg font-bold'>
-                    Nivå 1
+  
                 </h3>
 
                 <div className='flex'>
                     <div className='flex-grow'>
-                        Aktiva poäng
-                    </div>
-                    <div>
-                        {
-                            data.activePoints
-                        }
-                    </div>
-                </div>
-
-                <div className='flex'>
-                    <div className='flex-grow'>
-                        Värde
+                        Samlade poäng
                     </div>
                     <div>
                         {
@@ -38,7 +31,7 @@ const Header = ({ data }) => {
                     </div>
                 </div>
 
-                <ProgressBar points={data.activePoints} />
+                <ProgressBar points={data.totalPointsEarned} />
             </div>
         </div>
     );

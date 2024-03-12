@@ -1,5 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import User from "../models/userModel.js";
+import Comment from '../models/commentsModel.js';
 
 export const getCurrentUser = async (req, res) => {
     try {
@@ -25,5 +26,35 @@ export const updateUser = async (req, res) => {
     } catch (error) {
         console.error('Error updating user:', error);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
+    }
+};
+
+
+export const addComment = async (req, res) => {
+    try {
+        let { id } = req.params;
+
+        let { content } = req.body;
+
+        let user = await User.findById(id);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        let comment = new Comment({
+            user: id,
+            content
+        });
+
+        await comment.save();
+
+        user.comments.push(comment._id);
+        await user.save();
+
+        res.status(201).json({ message: "Comment added successfully", comment });
+    } catch (error) {
+        console.error("Error adding comment:", error);
+        res.status(500).json({ message: "Failed to add comment" });
     }
 };

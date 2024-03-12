@@ -10,9 +10,11 @@ import { increaseQuantity, decreaseQuantity, clearCart } from '../../reducer/car
 import { toast } from 'react-toastify';
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import { updateAchievements } from '../../utils/updateAchievements ';
 
 const Cart = () => {
     let navigation = useNavigate();
+
     let user = JSON.parse(localStorage.getItem("user"));
 
     let { data } = useFetch(`/api/users/${user}`);
@@ -34,24 +36,28 @@ const Cart = () => {
 
     let submitCart = async () => {
         try {
-
             if (user) {
                 let updatedActivePoints;
+                let updatedAch;
 
                 if (discountedPrice > 0) {
-                    updatedActivePoints = data.user.activePoints - totalPrice - discountedPrice;
+                    updatedActivePoints = data.user.activePoints - (totalPrice - discountedPrice);
                 } else {
                     updatedActivePoints = data.user.activePoints + totalPrice;
                 }
 
                 let totalPointsUpdate = data.user.totalPointsEarned + (totalPrice - discountedPrice);
+                
+                if (data.user.purchases.length <= 0) {
+                    updatedAch = updateAchievements(data, "första beställning", 100);
+                }
 
                 await fetch(`/api/users/${user}`, {
                     method: "PATCH",
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ activePoints: updatedActivePoints, totalPointsEarned: totalPointsUpdate })
+                    body: JSON.stringify({ activePoints: updatedActivePoints, totalPointsEarned: totalPointsUpdate, achivments: updatedAch })
                 })
             }
 
@@ -78,7 +84,7 @@ const Cart = () => {
 
                 dispatch(clearCart());
 
-                navigation("/profile")
+                navigation("/profile");
 
             } else {
                 toast.success("Problem med att genomföra köp!");
@@ -86,7 +92,6 @@ const Cart = () => {
 
         } catch (error) {
             toast.success("Problem med att genomföra köp!");
-            console.error('Error submitting cart:', error);
         }
     };
 

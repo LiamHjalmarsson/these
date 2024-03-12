@@ -8,12 +8,12 @@ import { createJWT } from '../utils/token.js';
 
 async function initializeDefaultAchievement(userId) {
     try {
-        let memberAchievement = await Achivments.findOne({ name: 'member' });
+        let memberAchievement = await Achivments.findOne({ name: 'medlem' });
 
         if (!memberAchievement) {
             await Achivments.create({
-                name: 'member',
-                description: 'Member Achievement',
+                name: 'medlem',
+                description: 'Du har blivit medlem',
                 points: 100,
             });
         }

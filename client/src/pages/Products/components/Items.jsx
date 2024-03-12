@@ -3,14 +3,16 @@ import useFetch from '../../../hooks/useFetch';
 import Section from '../../../components/Layouts/Section/Section';
 import Item from './Item';
 
-const Items = ({ category }) => {
+const Items = ({ category, gender }) => {
     let { data } = useFetch('/api/clothing');
     let [clothes, setClothes] = useState([]);
 
+    let genderType = gender === 'herr' ? 'male' : 'female';
+
     useEffect(() => {
         if (data) {
-            const filteredClothes = data.clothings.filter(clothing =>
-                clothing.category === category.category
+            let filteredClothes = data.clothings.filter(clothing =>
+                clothing.category === category.category && clothing.genderType === genderType
             );
             setClothes(filteredClothes);
         }

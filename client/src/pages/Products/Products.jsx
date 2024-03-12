@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Deafult from '../../components/Layouts/Deafult'
 import Newsletter from '../../components/Newsletter/Newsletter';
 import useFetch from '../../hooks/useFetch';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Banner from '../../components/Banner/Banner';
 import Items from './components/Items';
 
 const Products = () => {
     let { id } = useParams();
+
+    let location = useLocation(); 
+
+    let gender = location.pathname.split('/')[2];
 
     let { data } = useFetch(`/api/categories/${id}`);
 
@@ -16,8 +20,9 @@ const Products = () => {
             {
                 data && (
                     <>
-                        <Banner img={data.category.image} heading={`LD Kläder ${data.category.category}`} />
-                        <Items category={data.category} />
+                        <Banner img={ gender === "herr" ? data.category.image[1] : data.category.image[0]} heading={`LD Kläder ${data.category.category}`} />
+
+                        <Items category={data.category} gender={gender} />
                     </>
                 )
             }

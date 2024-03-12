@@ -13,7 +13,9 @@ const Category = ({ item }) => {
                 }
             </div>
             <div className=' absolute p-4 flex justify-center items-center -top-2 z-10 -left-4 bg-white bg-opcaity-90 shadow-middle rounded-md shadow-primary '>
-                {item.itemCount}
+                {
+                    item.itemCount } {item.itemCount > 1 ? " varor" : " vara"
+                }
             </div>
             <div className='h-full w-full overflow-hidden shadow-middle shadow-black rounded-md'>
                 {

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Rank from "./rankModel.js";
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -36,13 +37,34 @@ const UserSchema = new mongoose.Schema({
             }
         }],
         default: [{
-            name: "member",
+            name: "medlem",
             points: 100
         }]
     },
-    discounts:[{
+    discounts: [{
         type: String
-    }]
+    }],
+    rank: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Rank',
+        default: "65f09e197c19bc143c3a376d" 
+    }
+});
+
+UserSchema.pre('save', async function (next) {
+    try {
+        let rank = await Rank.findOne({ thresholdPoints: { $lte: this.totalPointsEarned } })
+            .sort({ thresholdPoints: -1 })
+            .limit(1);
+
+        if (rank) {
+            this.rank = rank._id;
+        }
+
+        next();
+    } catch (error) {
+        next(error);
+    }
 });
 
 export default mongoose.model('User', UserSchema);
