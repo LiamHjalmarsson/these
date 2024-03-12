@@ -12,10 +12,7 @@ const ProfileLanding = () => {
     let navigate = useNavigate()
     let userId = JSON.parse(localStorage.getItem("user"));
     let { data } = useFetch(`/api/users/${userId}`);
-    let { data: dataRank } = useFetch(`/api/rank`);
 
-    console.log(dataRank);
-    console.log(data);
     useEffect(() => {
         if (!userId) {
             navigate("/register");
@@ -27,7 +24,7 @@ const ProfileLanding = () => {
             {
                 data && (
                     <>
-                        <Header data={data.user} rank={dataRank} />
+                        <Header user={data.user} />
 
                         <div className='max-w-6xl grid grid-cols-2 gap-12 mx-auto mb-40 mt-56'>
                             <ProfileCard heading="Profile" details="Justera profile detaljer och kontkat information" icon={<FaRegUser />} link="profile" data={data} />

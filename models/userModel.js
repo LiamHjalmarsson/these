@@ -47,7 +47,7 @@ const UserSchema = new mongoose.Schema({
     rank: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Rank',
-        default: "65f09e197c19bc143c3a376d" 
+        default: "65f0c2fcdeac73dee618dbf7" 
     }
 });
 
