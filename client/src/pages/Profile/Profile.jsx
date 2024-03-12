@@ -19,7 +19,7 @@ const Profile = () => {
 
     return (
         <Deafult>
-            <div className='flex my-12 px-10 min-h-[69vh]'>
+            <div className='flex my-12 px-10 min-h-[69vh] flex-col'>
 
                 <SidebarNav id={id} links={links} />
 

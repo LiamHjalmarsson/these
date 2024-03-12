@@ -14,11 +14,11 @@ const Achivments = ({ data }) => {
         <div className='h-full w-full items-center flex flex-col gap-8 p-2'>
             <Heading heading="Achivments" />
 
-            <div className='max-w-6xl w-full grid grid-cols-4 gap-12'>
+            <div className='max-w-7xl w-full flex flex-wrap gap-12 justify-center'>
                 {
                     achivmentsData && (
                         achivmentsData.achivments.map((achivment, index) => (
-                            <div key={index} className='w-full items-center flex flex-col group'>
+                            <div key={index} className='w-96 items-center flex flex-col group'>
                                 <div className='w-full h-full relative'>
                                     <img className={`w-full h-full`} src={achivment.image} />
                                     <div className={`${hasAchievement(achivment.name) ? "hidden" : ""} flex justify-center items-center absolute h-full w-full top-0 bg-black bg-opacity-60`}>

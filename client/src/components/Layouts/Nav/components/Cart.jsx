@@ -4,7 +4,7 @@ import CartItem from './CartItem';
 
 const Cart = ({ cartItems }) => {
     return (
-        <div className="absolute top-14 -right-8 bg-primary text-white w-96 p-4 z-50 flex flex-col gap-4">
+        <div className="absolute top-14 -right-8 bg-primary shadow-md shadow-primary text-white w-96 p-4 z-50 flex flex-col gap-4">
 
             <h2 className='text-2xl'>
                 Kundvagn

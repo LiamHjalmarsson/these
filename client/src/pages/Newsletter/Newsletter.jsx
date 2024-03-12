@@ -9,6 +9,7 @@ import Input from '../../components/Elements/Input';
 import PrimaryButton from '../../components/Elements/PrimaryButton';
 import useFetch from '../../hooks/useFetch';
 import { toast } from 'react-toastify';
+import { updateAchievements } from '../../utils/updateAchievements ';
 
 const NewsletterPage = () => {
     let [selectedGift, setSelectedGift] = useState(null);
@@ -29,33 +30,20 @@ const NewsletterPage = () => {
         if (data) {
             let updatedDiscounts = [...data.user.discounts, selectedGift];
 
-            let ach;
+            let updatedAch = updateAchievements(data, "nyhetsbrev", 100);
 
-            if (data.user.achivments) {
-                let memberAch = data.user.achivments.find(achiv => achiv.name !== "Newsletter");
-
-                if (!memberAch) {
-                    ach = {
-                        name: "Newsletter",
-                        points: 100
-                    }
-                }
-            }
-
-            let updatedAch = [...data.user.achivments, ach];
-
-            let rep = await fetch(`/api/users/${user}`, {
+            let response = await fetch(`/api/users/${user}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ discounts: updatedDiscounts })
+                body: JSON.stringify({ discounts: updatedDiscounts, achivments: updatedAch }) 
             });
 
-            if (!rep.ok) {
-                toast.error("Ett problem uppstod prova igen")
+            if (!response.ok) {
+                toast.error("Ett problem uppstod, försök igen");
             } else {
-                toast.success("Du har nu fått en gåva")
+                toast.success("Du har nu fått en gåva och prenumererar på nyhetsbrevet");
             }
         }
     };

@@ -13,6 +13,7 @@ import userRouter from "./router/userRouter.js";
 import clothingRouter from "./router/clothingRouter.js";
 import achivmentsRouter from "./router/achivmentsRouter.js";
 import purchaseRouter from "./router/purchaseRouter.js";
+import rankRouder from "./router/rankRouder.js";
 
 // Middlware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
@@ -31,6 +32,7 @@ app.use('/api/users', userRouter);
 app.use('/api/clothing', clothingRouter);
 app.use('/api/achivments', achivmentsRouter);
 app.use('/api/purchase', purchaseRouter);
+app.use('/api/rank', rankRouder);
 
 app.use('*', (req, res) => {
     res.status(404).json({ msg: 'not found' });

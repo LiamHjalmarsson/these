@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProgressBar = ({ points }) => {
-    let fillWidth = (points / 1000) * 100;
+    let fillWidth = (points / 100000) * 100;
 
     return (
         <div>
