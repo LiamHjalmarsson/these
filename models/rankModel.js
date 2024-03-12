@@ -20,12 +20,12 @@ const rankSchema = new mongoose.Schema(
                 type: String,
                 required: true,
             },
-            amount: {
-                type: Number,
-                required: true,
-            }
         }],
         thresholdPoints: { 
+            type: Number, 
+            required: true 
+        },
+        nextRank: {
             type: Number, 
             required: true 
         }

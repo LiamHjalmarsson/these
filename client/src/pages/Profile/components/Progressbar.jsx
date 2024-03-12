@@ -1,7 +1,9 @@
 import React from 'react';
 
-const ProgressBar = ({ points }) => {
+const ProgressBar = ({ points, rank }) => {
     let fillWidth = (points / 100000) * 100;
+
+    console.log(rank);
 
     return (
         <div>

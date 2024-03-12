@@ -3,8 +3,11 @@ import ProgressBar from './Progressbar';
 import Heading from '../../../components/Elements/Heading/Heading';
 import Image from '../../../components/Elements/Image';
 import img from "/images/x.jpg"
+import useFetch from '../../../hooks/useFetch';
 
-const Header = ({ data, rank }) => {
+const Header = ({ user }) => {
+    let { data } = useFetch(`/api/rank/${user.rank}`);
+
     return (
         <div className='w-full h-96 flex justify-start items-center relative'>
             <div className='h-full w-full bg-slate-950 absolute'>
@@ -12,12 +15,14 @@ const Header = ({ data, rank }) => {
             </div>
 
             <div className='w-96 flex lg:mx-auto p-4 z-10'>
-                <Heading heading={`Hej ${data.name} Välkommen till ditt account`} custom="text-white text-2xl md:text-3xl lg:text-4xl w-96" />
+                <Heading heading={`Hej ${user.name} Välkommen till ditt account`} custom="text-white text-2xl md:text-3xl lg:text-4xl w-96" />
             </div>
 
             <div className='absolute w-1/4 min-w-96 flex flex-col gap-4 p-4 -bottom-1/4 left-1/4 lg:left-1/2 bg-white bg-opacity-90 shadow-middle shadow-primary rounded-md'>
                 <h3 className='text-lg font-bold'>
-  
+                    {
+                        data && data.rank.rank
+                    }
                 </h3>
 
                 <div className='flex'>
@@ -26,12 +31,14 @@ const Header = ({ data, rank }) => {
                     </div>
                     <div>
                         {
-                            data.activePoints + " kr"
+                            user.activePoints + " kr"
                         }
                     </div>
                 </div>
 
-                <ProgressBar points={data.totalPointsEarned} />
+                {
+                    data && <ProgressBar points={user.totalPointsEarned} rank={data.rank} />
+                }
             </div>
         </div>
     );

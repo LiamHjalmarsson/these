@@ -15,3 +15,13 @@ export const getRanks = async (req, res) => {
     let ranks = await Rank.find({});
     res.status(StatusCodes.OK).json({ ranks });
 };
+
+export const getRank = async (req, res) => {
+    try {
+        let { id } = req.params;
+        let rank = await Rank.findById(id);
+        res.status(StatusCodes.OK).json({ rank });
+    } catch (error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error })
+    }
+}
