@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Devider from '../../../components/Elements/Devider';
-import { capitalizeFirstLetter } from '../../../utils/stringUtils';
 import SecondaryButton from '../../../components/Elements/SecondaryButton';
 
 const Details = ({data, onAddToCart}) => {
@@ -16,7 +15,7 @@ const Details = ({data, onAddToCart}) => {
 
             <h3 className='text-5xl'>
                 {
-                    capitalizeFirstLetter(data.category)
+                    data.category
                 }
             </h3>
 
@@ -49,7 +48,7 @@ const Details = ({data, onAddToCart}) => {
                         custom={`border-primary text-primary hover:bg-primary hover:text-white ${selectedSize === size ? 'bg-primary text-white bg-opacity-85' : ''}`}
                         onClick={() => handleSizeSelection(size)}>
                             {
-                                capitalizeFirstLetter(size)
+                                size
                             }
                         </SecondaryButton>
                     ))

@@ -18,10 +18,14 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 100
     },
-    activePoints:{
+    activePoints: {
         type: Number,
         default: 100
     },
+    purchases: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Purchase'
+    }],
     achivments: {
         type: [{
             name: {
@@ -35,7 +39,10 @@ const UserSchema = new mongoose.Schema({
             name: "member",
             points: 100
         }]
-    }
+    },
+    discounts:[{
+        type: String
+    }]
 });
 
 export default mongoose.model('User', UserSchema);

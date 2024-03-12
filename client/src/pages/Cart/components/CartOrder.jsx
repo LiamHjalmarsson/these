@@ -2,17 +2,12 @@ import React, { useState } from 'react';
 import CartOrderDetail from './CartOrderDetail';
 import SecondaryButton from '../../../components/Elements/SecondaryButton';
 import Input from '../../../components/Elements/Input';
-import useFetch from '../../../hooks/useFetch';
 import PrimaryButton from '../../../components/Elements/PrimaryButton';
 
-const CartOrder = ({ price }) => {
-    let activeUser = JSON.parse(localStorage.getItem("user"));
-    let { data } = useFetch(`/api/users/${activeUser}`);
+const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) => {
     
     let [userPoints, setUserPoints] = useState("");
     let [error, setError] = useState("");
-    let [pointsValidated, setPointsValidated] = useState(false);
-    let [discountedPrice, setDiscountedPrice] = useState(price);
 
     let handleUserPoints = (e) => {
         setUserPoints(e.target.value);
@@ -27,15 +22,17 @@ const CartOrder = ({ price }) => {
 
     let applyDiscount = () => {
         if (!error) {
-            setDiscountedPrice(price - userPoints); 
-            setPointsValidated(true);
-        } else {
-            setPointsValidated(false);
-        }
+            setDiscount(price - userPoints); 
+        } 
     }
 
-    let submitHandler = (e) => {
+    let submitHandler = async (e) => {
         e.preventDefault();
+        try {
+            await onSubmitCart();
+        } catch (error) {
+            console.error('Error purchasing:');
+        }
     }
 
     return (
@@ -45,14 +42,14 @@ const CartOrder = ({ price }) => {
                     Order
                 </h3>
 
-                <CartOrderDetail text="Summa artiklar" detail={discountedPrice  + " kr"} />
+                <CartOrderDetail text="Summa artiklar" detail={price  + " kr"} />
 
-                <CartOrderDetail text="Fraktavgifter" detail={discountedPrice >= 1000 && "0" || "75" + " kr"} />
+                <CartOrderDetail text="Fraktavgifter" detail={price >= 1000 && "0" || "75" + " kr"} />
 
-                <CartOrderDetail text="Totalt inkl. moms:" detail={discountedPrice  + " kr"} />
+                <CartOrderDetail text="Totalt inkl. moms:" detail={price  + " kr"} />
 
                 {
-                    activeUser &&
+                    user &&
                     <CartOrderDetail text={`Du tjänar ${price} poäng på ditt köp`} />
                     ||
                     <CartOrderDetail text={`Du tjänar ${price} poäng på ditt köp om du blir medlem`} />

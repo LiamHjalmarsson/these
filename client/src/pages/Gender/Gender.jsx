@@ -13,6 +13,7 @@ const Gender = () => {
 
     let { data: clothingData } = useFetch('/api/clothing');
     let { data: categoryData } = useFetch('/api/categories');
+
     let [categories, setCategories] = useState([]);
 
     let genderType = id === 'herr' ? 'male' : 'female';

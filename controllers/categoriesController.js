@@ -8,12 +8,29 @@ export const getAllCategories = async (req, res) => {
 
 export const createCategory = async (req, res) => {
     try {
-        let newCategory = await Category.create(req.body );
+        let { category } = req.body;
+        let gender = category.toLowerCase().includes('male') ? 'male' : 'female';
+
+        let defaultImages = {
+            male: [
+                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628178/dl-clothing/dam_nfsxjt.jpg",
+            ],
+            female: [
+                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1710164224/dl-clothing/xuklenumoldrgkd8kdif.jpg",
+            ]
+        };
+
+        let newCategory = await Category.create({
+            ...req.body,
+            image: defaultImages[gender] || defaultImages['male']
+        });
+        
         res.status(StatusCodes.CREATED).json({ data: newCategory });
     } catch (error) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({error})
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
     }
 };
+
 
 export const getCategory = async (req, res) => {
     try {

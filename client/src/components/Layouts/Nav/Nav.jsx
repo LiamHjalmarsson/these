@@ -4,11 +4,12 @@ import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Cart from './components/Cart';
-import { capitalizeFirstLetter } from '../../../utils/stringUtils';
 
 const Nav = () => {
-    let cartItems = useSelector(state => state.cart.cartItems);
     let [isCartOpen, setIsCartOpen] = useState(false);
+    
+    let cartItems = useSelector(state => state.cart.cartItems);
+
     let links = ["herr", "dam", "nyhetsbrev"];
 
     let cartShow = () => {
@@ -18,7 +19,7 @@ const Nav = () => {
     return (
         <nav className="flex w-full items-center text-xl p-8 z-50 bg-primary text-white">
             
-            <NavLink to="/" className="">
+            <NavLink to="/">
                 <h2 className='text-3xl tracking-wider font-bold'>
                     LD Klädder
                 </h2>
@@ -29,7 +30,7 @@ const Nav = () => {
                     links.map((link) => (
                         <NavLink to={`${link === "nyhetsbrev" ? `/${link}` : `/gender/${link}`}`} key={link}>
                             {
-                                capitalizeFirstLetter(link)
+                                link
                             }
                         </NavLink>
                     ))

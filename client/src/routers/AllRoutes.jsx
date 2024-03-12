@@ -10,6 +10,7 @@ import Register from '../pages/Register/Register';
 import Login from '../pages/Auth/Login';
 import Gender from '../pages/Gender/Gender';
 import Products from '../pages/Products/Products';
+import Admin from '../pages/Admin/Admin';
 
 const AllRoutes = () => {
     return (
@@ -25,6 +26,8 @@ const AllRoutes = () => {
                 <Route path='/profile/:id' element={<Profile/> } />
                 <Route path='/nyhetsbrev' element={<NewsletterPage/> } />
                 <Route path='/kassa' element={<Cart/> } />
+                
+                <Route path='/admin' element={<Admin />} />
             </Routes>
         </BrowserRouter>
     );
