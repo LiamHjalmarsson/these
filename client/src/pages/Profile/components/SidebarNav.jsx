@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { capitalizeFirstLetter } from '../../../utils/stringUtils';
 import { toast } from 'react-toastify';
 
 const SidebarNav = ({ id, links }) => {
@@ -25,7 +24,7 @@ const SidebarNav = ({ id, links }) => {
                 {
                     links.map((link) => (
                         <Link to={`/profile/${link}`} key={link} className={`${id === link ? "font-bold tracking-wider border-2 border-primary" : ""} text-xl p-4`}>
-                            {capitalizeFirstLetter(link)}
+                            {link}
                         </Link>
                     ))
                 }

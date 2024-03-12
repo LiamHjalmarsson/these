@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { capitalizeFirstLetter } from '../../../../utils/stringUtils';
+import CartItem from './CartItem';
 
 const Cart = ({ cartItems }) => {
     return (
@@ -12,14 +12,7 @@ const Cart = ({ cartItems }) => {
 
             <ul className='text-lg flex flex-col gap-2'>
                 {cartItems.map((item, index) => (
-                    <li key={index} className='flex pr-4'>
-                        <div className='flex-grow'>
-                            {capitalizeFirstLetter(item.name)} - {capitalizeFirstLetter(item.size)} - {item.price} kr
-                        </div>
-                        <div>
-                            {item.quantity}
-                        </div>
-                    </li>
+                    <CartItem item={item} index={index} key={index} />
                 ))}
             </ul>
 

@@ -7,49 +7,88 @@ import Heading from '../../components/Elements/Heading/Heading';
 import img from "/images/newsletter.jpg"
 import Input from '../../components/Elements/Input';
 import PrimaryButton from '../../components/Elements/PrimaryButton';
+import useFetch from '../../hooks/useFetch';
+import { toast } from 'react-toastify';
 
 const NewsletterPage = () => {
-    const [selectedGift, setSelectedGift] = useState(null);
-    const [submitted, setSubmitted] = useState(false);
+    let [selectedGift, setSelectedGift] = useState(null);
+    let [submitted, setSubmitted] = useState(false);
 
-    const handleGiftSelection = (index) => {
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    let { data } = useFetch(`api/users/${user}`);
+
+    let handleGiftSelection = (index) => {
         setSelectedGift(index);
     };
 
-    const submitHandler = (e) => {
+    let submitHandler = async (e) => {
         e.preventDefault();
-        console.log("Subscribed with gift:", selectedGift);
         setSubmitted(true);
+
+        if (data) {
+            let updatedDiscounts = [...data.user.discounts, selectedGift];
+
+            let ach;
+
+            if (data.user.achivments) {
+                let memberAch = data.user.achivments.find(achiv => achiv.name !== "Newsletter");
+
+                if (!memberAch) {
+                    ach = {
+                        name: "Newsletter",
+                        points: 100
+                    }
+                }
+            }
+
+            let updatedAch = [...data.user.achivments, ach];
+
+            let rep = await fetch(`/api/users/${user}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ discounts: updatedDiscounts })
+            });
+
+            if (!rep.ok) {
+                toast.error("Ett problem uppstod prova igen")
+            } else {
+                toast.success("Du har nu fått en gåva")
+            }
+        }
     };
 
     let gifts = [
         {
-            category: "1"
+            category: "3 för 2"
         },
         {
-            category: "1"
+            category: "30 % på ditt köp"
         },
         {
-            category: "1"
+            category: "500 poäng"
         },
     ];
 
     return (
         <Deafult>
+
             <Section>
                 <Gifts gifts={gifts} handleGiftSelection={handleGiftSelection} selectedGift={selectedGift} submitted={submitted} />
             </Section>
 
             <div className='w-full h-[500px] flex gap-8 relative'>
                 <div className='h-full w-full bg-slate-950'>
-                    <Image img={img} custom='w-full h-full object-cover opacity-60' />
+                    <Image img={img} custom='w-full h-full opacity-60 group-hover:scale-105 group-hover:opacity-90 w-full h-full object-cover' />
                 </div>
 
                 <div className='h-full w-full flex flex-col gap-8 justify-center items-center absolute '>
                     <form className='p-6 rounded-md bg-secondary bg-opacity-40 gap-4 text-white flex flex-col justify-center items-center max-w-md shadow-middle shadow-secondary' onSubmit={submitHandler}>
                         <Heading heading="Gå med för att ta del av din mystery gift" custom="text-white text-3xl" />
                         <Input
-                            input={{ type: "email" }}
+                            input={{ type: "email", placeholder: "Email" }}
                             custom="border-b-white text-white mb-4"
                         />
                         <PrimaryButton>
@@ -58,6 +97,7 @@ const NewsletterPage = () => {
                     </form>
                 </div>
             </div>
+
         </Deafult>
     );
 }

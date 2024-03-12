@@ -7,10 +7,9 @@ const Gifts = ({ gifts, handleGiftSelection, selectedGift, submitted }) => {
             {gifts.map((gift, index) => (
                 <Gift
                     key={index}
-                    index={index}
                     gift={gift}
                     handleGiftSelection={handleGiftSelection}
-                    selected={selectedGift === index}
+                    selected={gift.category === selectedGift}
                     submitted={submitted}
                 />
             ))}

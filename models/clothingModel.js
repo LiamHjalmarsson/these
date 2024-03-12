@@ -34,12 +34,16 @@ const ClothingSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        averageRating: {
+            type: Number,
+        },
+        totalRatings: {
+            type: Number
+        },
         image: {
             type: [String], 
             default: [
                 "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628178/dl-clothing/dam_nfsxjt.jpg",
-                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628181/dl-clothing/herr_m73hux.jpg",
-                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628177/dl-clothing/chris-murray-YGzEX5yLKeA-unsplash_pi3dyz.jpg"
             ],
         },
     },
@@ -48,7 +52,6 @@ const ClothingSchema = new mongoose.Schema(
 
 ClothingSchema.pre('save', async function(next) {
     try {
-        
         let existingCategory = await Category.findOne({ category: this.category });
 
         if (!existingCategory) {

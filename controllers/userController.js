@@ -12,11 +12,10 @@ export const getCurrentUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-    let userId = req.body.userId; 
-    let { name, email } = req.body; 
+    let { id } = req.params;
 
     try {
-        let updatedUser = await User.findByIdAndUpdate(userId, { name, email }, { new: true });
+        let updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
 
         if (!updatedUser) {
             return res.status(StatusCodes.NOT_FOUND).json({ error: 'User not found' });

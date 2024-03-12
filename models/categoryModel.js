@@ -15,6 +15,7 @@ const CategorySchema = new mongoose.Schema(
             type: [String], 
             default: [
                 "https://res.cloudinary.com/dx6tdy5de/image/upload/v1708628178/dl-clothing/dam_nfsxjt.jpg",
+                "https://res.cloudinary.com/dx6tdy5de/image/upload/v1710164224/dl-clothing/xuklenumoldrgkd8kdif.jpg",
             ],
         },
     },
