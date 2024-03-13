@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { redirect, useNavigate, useParams } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
 import SidebarNav from './components/SidebarNav';
 import SidebarRewards from './components/SidebarRewards';
@@ -14,6 +14,8 @@ const Profile = () => {
     let userId = JSON.parse(localStorage.getItem("user"));
 
     let { data } = useFetch(`/api/users/${userId}`);
+
+    let { data: achivmentsData } = useFetch("/api/achivments");
 
     let links = ["profile", "lojalitet", "achivments", "resentioner"];
 
@@ -41,7 +43,7 @@ const Profile = () => {
 
                             {
                                 id === "achivments" && (
-                                    <Achivments data={data.user} />
+                                    <Achivments data={data.user} achivment={achivmentsData} />
                                 )
                             }
 

@@ -7,6 +7,7 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import { updateAchievements } from '../../utils/updateAchievements ';
 
 const ProfileLanding = () => {
     let navigate = useNavigate()
@@ -24,13 +25,17 @@ const ProfileLanding = () => {
                 setNextRank(nextRank ? nextRank : {});
                 
                 if (nextRank && newRank) {
+
+                    let updatedAch = updateAchievements(data, newRank.rank, 100);
+
                     await fetch(`/api/users/${userId}`, {
                         method: "PATCH",
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({ 
-                            rank: newRank._id
+                            rank: newRank._id,
+                            achivments: updatedAch 
                         })
                     });
 

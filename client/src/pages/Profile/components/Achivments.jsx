@@ -1,11 +1,8 @@
 import React from 'react';
 import Heading from '../../../components/Elements/Heading/Heading';
-import useFetch from '../../../hooks/useFetch';
 import { IoLockClosedOutline } from "react-icons/io5";
 
-const Achivments = ({ data }) => {
-    let { data: achivmentsData } = useFetch("/api/achivments");
-
+const Achivments = ({ data, achivment }) => {
     let hasAchievement = (name) => {
         return data.achivments.some((achievement) => achievement.name === name);
     };
@@ -16,8 +13,8 @@ const Achivments = ({ data }) => {
 
             <div className='max-w-7xl w-full flex flex-wrap gap-12 justify-center'>
                 {
-                    achivmentsData && (
-                        achivmentsData.achivments.map((achivment, index) => (
+                    achivment && (
+                        achivment.achivments.map((achivment, index) => (
                             <div key={index} className='w-96 items-center flex flex-col group'>
                                 <div className='w-full h-full relative'>
                                     <img className={`w-full h-full`} src={achivment.image} />

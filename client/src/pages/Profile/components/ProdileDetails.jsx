@@ -6,7 +6,6 @@ import Heading from '../../../components/Elements/Heading/Heading';
 import {toast} from "react-toastify";
 
 const ProdileDetails = ({data}) => {
-    console.log(data);
     let [email, setEmail] = useState(data.email);
     let [name, setName] = useState(data.name);
 
@@ -42,11 +41,9 @@ const ProdileDetails = ({data}) => {
             console.log(error);
             toast.error("Failed to update user");
         }
-    
     }
 
     let logoutHandler = async () => {
-
         try {
             await fetch("/api/auth/logout");
             localStorage.removeItem("user");

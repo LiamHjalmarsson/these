@@ -50,13 +50,16 @@ const NewsletterPage = () => {
 
     let gifts = [
         {
-            category: "3 för 2"
+            category: "3 för 2",
+            code: "3f2"
         },
         {
-            category: "30 % på ditt köp"
+            category: "30 % på ditt köp",
+            code: "3%"
         },
         {
-            category: "500 poäng"
+            category: "500 poäng",
+            code: "puse"
         },
     ];
 

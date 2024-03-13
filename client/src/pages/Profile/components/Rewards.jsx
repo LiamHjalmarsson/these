@@ -3,10 +3,9 @@ import Heading from '../../../components/Elements/Heading/Heading';
 import ProgressBar from './Progressbar';
 import useFetch from '../../../hooks/useFetch';
 
-const Rewards = ({ data, nextRank }) => {
+const Rewards = ({ data }) => {
     let { data: ranks } = useFetch(`/api/rank/${data.rank}`);
-
-    console.log(ranks);
+    
     return (
         <div className='h-1/2 flex flex-col justify-between p-2 w-1/2'>
             <div className='flex flex-col gap-4 w-full items-center'>
@@ -35,7 +34,7 @@ const Rewards = ({ data, nextRank }) => {
                     {
                         data.discounts.length > 0 && (
 
-                            <div className='flex w-full gap-8 mt-4'>
+                            <div className='flex w-full flex-col gap-2 mt-4'>
                                 <h3 className='flex-grow'>
                                     Dinna insamlade rabbater
                                 </h3>
@@ -58,13 +57,13 @@ const Rewards = ({ data, nextRank }) => {
                 ranks && (
                     <div className='flex flex-col gap-4 w-full items-center my-12'>
                         <Heading heading={`Din ${ranks.rank.rank}`} />
-                        <div className='flex flex-col w-96 mt-4'>
-                            <ProgressBar points={data.totalPointsEarned} nextRank={ranks.rank} />
+                        <div className='flex flex-col w-96 mt-4 overflow-hidden rounded-md'>
+                            <ProgressBar points={data.totalPointsEarned} nextRank={ranks.rank.nextRank} />
                         </div>
                         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-12 mt-4'>
                             {
                                 ranks.rank.benefits.map((benefit, index) => (
-                                    <div className='p-4 shadow-middle shadow-primary rounded-md'>
+                                    <div className='p-4 shadow-middle shadow-primary rounded-md' key={index}>
                                         <h3 className='text-lg text-center'>
                                             {
                                                 benefit.name

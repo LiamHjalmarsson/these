@@ -8,6 +8,8 @@ import useFetch from '../../../hooks/useFetch';
 const Header = ({ user, nextRank, rankReach }) => {
     let { data } = useFetch(`/api/rank/${rankReach ? rankReach._id : user.rank}`);
 
+    console.log(nextRank);
+
     return (
         <div className='w-full h-96 flex justify-start items-center relative'>
             <div className='h-full w-full bg-slate-950 absolute'>
@@ -37,7 +39,7 @@ const Header = ({ user, nextRank, rankReach }) => {
                 </div>
 
                 {
-                    data && <ProgressBar points={user.totalPointsEarned} nextRank={nextRank} />
+                    data && <ProgressBar points={user.totalPointsEarned} nextRank={nextRank.thresholdPoints} />
                 }
             </div>
         </div>
