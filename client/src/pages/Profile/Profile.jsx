@@ -14,7 +14,6 @@ const Profile = () => {
     let userId = JSON.parse(localStorage.getItem("user"));
 
     let { data } = useFetch(`/api/users/${userId}`);
-    let { data: ranks } = useFetch("/api/rank");
 
     let links = ["profile", "lojalitet", "achivments", "resentioner"];
 

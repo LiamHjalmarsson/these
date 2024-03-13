@@ -21,7 +21,7 @@ const ProfileLanding = () => {
             if (data && ranks) {
                 let nextRank = ranks.ranks.find(rank => data.user.totalPointsEarned < rank.thresholdPoints);
                 let newRank = ranks.ranks.find(rank => data.user.totalPointsEarned > rank.thresholdPoints && data.user.rank !== rank._id);
-                setNextRank(newRank ? newRank : {});
+                setNextRank(nextRank ? nextRank : {});
                 
                 if (nextRank && newRank) {
                     await fetch(`/api/users/${userId}`, {
@@ -34,7 +34,7 @@ const ProfileLanding = () => {
                         })
                     });
 
-                    setRankReach(newRank._id);
+                    setRankReach(newRank);
                 }
             }
         }
@@ -42,7 +42,6 @@ const ProfileLanding = () => {
 
         fetchData()
     }, [data, ranks]);
-    
     
     useEffect(() => {
         if (!userId) {
@@ -58,10 +57,10 @@ const ProfileLanding = () => {
                         <Header user={data.user} nextRank={nextRank} rankReach={rankReach}/>
 
                         <div className='max-w-6xl grid grid-cols-2 gap-12 mx-auto mb-40 mt-56'>
-                            <ProfileCard heading="Profile" details="Justera profile detaljer och kontkat information" icon={<FaRegUser />} link="profile" data={data} />
-                            <ProfileCard heading="Lojalitet" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="lojalitet" data={data} />
-                            <ProfileCard heading="Achivments" details="Justera profile detaljer och kontkat information" icon={< GoTrophy />} link="achivments" data={data} />
-                            <ProfileCard heading="Recentioner" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="resentioner" data={data} />
+                            <ProfileCard heading="Profile" details="Justera profile detaljer och kontkat information" icon={<FaRegUser />} link="profile" />
+                            <ProfileCard heading="Lojalitet" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="lojalitet" />
+                            <ProfileCard heading="Achivments" details="Justera profile detaljer och kontkat information" icon={< GoTrophy />} link="achivments" />
+                            <ProfileCard heading="Recentioner" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="resentioner" />
                         </div>
                     </>
                 )

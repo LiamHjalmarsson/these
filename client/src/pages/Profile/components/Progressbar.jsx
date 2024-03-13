@@ -1,15 +1,10 @@
 import React from 'react';
 
 const ProgressBar = ({ points, nextRank }) => {
-    let fillWidth = (points / nextRank.thresholdPoints) * 100;
+    let fillWidth = (points / nextRank.nextRank) * 100;
 
     return (
         <>
-            <div className='text-sm'>
-                {
-                    "Poäng till nästa " + nextRank.rank
-                } 
-            </div>
             <div className="w-full h-8 bg-gray-500 rounded-md">
                 <div className="h-full bg-blue-500 rounded-md" style={{ width: `${fillWidth}%` }}></div>
             </div>
@@ -19,7 +14,7 @@ const ProgressBar = ({ points, nextRank }) => {
                 </div>
                 <div>
                     {
-                        nextRank.thresholdPoints
+                        nextRank.nextRank
                     }
                 </div>
             </div>

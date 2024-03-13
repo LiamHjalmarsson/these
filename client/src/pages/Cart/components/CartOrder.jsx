@@ -46,12 +46,12 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                 <CartOrderDetail text="Fraktavgifter" detail={price >= 1000 && "0" || "75" + " kr"} />
 
                 {
-                    discount > 0 && <CartOrderDetail text="Summa att betla" detail={discount + " kr"} />
+                    discount > 0 && <CartOrderDetail text="Summa att betla" detail={price - userPoints + " kr"} />
                 }
 
                 {
                     user &&
-                    <CartOrderDetail text={`Du tjänar ${discount} poäng på ditt köp`} />
+                    <CartOrderDetail text={`Du tjänar ${price - userPoints} poäng på ditt köp`} />
                     ||
                     <CartOrderDetail text={`Du tjänar ${price} poäng på ditt köp om du blir medlem`} />
                 }
@@ -89,6 +89,9 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                                 Dinna samlade poäng
                             </h2>
                             <div>
+                                {
+                                    data.user.activePoints - userPoints
+                                }
                             </div>
                         </div>
                     )
