@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Deafult from '../../components/Layouts/Deafult';
 import SidebarNav from './components/SidebarNav';
@@ -14,6 +14,7 @@ const Profile = () => {
     let userId = JSON.parse(localStorage.getItem("user"));
 
     let { data } = useFetch(`/api/users/${userId}`);
+    let { data: ranks } = useFetch("/api/rank");
 
     let links = ["profile", "lojalitet", "achivments", "resentioner"];
 
@@ -53,8 +54,6 @@ const Profile = () => {
                         </main>
                     )
                 }
-
-                {/* <SidebarRewards /> */}
 
             </div>
         </Deafult>

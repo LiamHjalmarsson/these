@@ -23,7 +23,7 @@ const Product = () => {
     return (
         <Deafult>
             <div className='min-h-[80vh] flex flex-col justify-center items-center'>
-                <div className='h-[80%] w-[80%] gap-8 flex justify-center items-center flex-wrap'>
+                <div className='h-[80%] w-[80%] gap-8 flex justify-center items-center flex-wrap max-lg:mt-10'>
                     {
                         data && (
                             <>

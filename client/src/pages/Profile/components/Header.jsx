@@ -5,8 +5,8 @@ import Image from '../../../components/Elements/Image';
 import img from "/images/x.jpg"
 import useFetch from '../../../hooks/useFetch';
 
-const Header = ({ user }) => {
-    let { data } = useFetch(`/api/rank/${user.rank}`);
+const Header = ({ user, nextRank, rankReach }) => {
+    let { data } = useFetch(`/api/rank/${rankReach ? rankReach : user.rank}`);
 
     return (
         <div className='w-full h-96 flex justify-start items-center relative'>
@@ -37,7 +37,7 @@ const Header = ({ user }) => {
                 </div>
 
                 {
-                    data && <ProgressBar points={user.totalPointsEarned} rank={data.rank} />
+                    data && <ProgressBar points={user.totalPointsEarned} nextRank={nextRank} />
                 }
             </div>
         </div>

@@ -37,7 +37,7 @@ const Details = ({data, onAddToCart}) => {
                 Artikel nummer
             </div>
 
-            <div className='mt-2    '>
+            <div className='mt-2'>
                 {
                     data.price + " kr"
                 }

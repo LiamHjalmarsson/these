@@ -16,7 +16,6 @@ const Cart = () => {
     let navigation = useNavigate();
 
     let user = JSON.parse(localStorage.getItem("user"));
-
     let { data } = useFetch(`/api/users/${user}`);
 
     let cartItems = useSelector(state => state.cart.cartItems);
@@ -57,8 +56,12 @@ const Cart = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ activePoints: updatedActivePoints, totalPointsEarned: totalPointsUpdate, achivments: updatedAch })
-                })
+                    body: JSON.stringify({ 
+                        activePoints: updatedActivePoints, 
+                        totalPointsEarned: totalPointsUpdate, 
+                        achivments: updatedAch 
+                    })
+                });
             }
 
             let cartData = {
@@ -81,9 +84,7 @@ const Cart = () => {
 
             if (response.ok) {
                 toast.success("Köp genomfört");
-
                 dispatch(clearCart());
-
                 navigation("/profile");
 
             } else {
@@ -102,6 +103,7 @@ const Cart = () => {
                     <Heading heading="Kundvagn" />
                     <div className='w-full flex justify-center mt-20'>
                         <div className='flex gap-20 w-full max-w-7xl'>
+
                             {!cartItems || cartItems.length === 0 ? (
                                 <EmptyCart />
                             ) : (
