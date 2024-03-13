@@ -21,8 +21,8 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
 
     let applyDiscount = () => {
         if (!error) {
-            setDiscount(price - userPoints); 
-        } 
+            setDiscount(price - userPoints);
+        }
     }
 
     let submitHandler = async (e) => {
@@ -46,12 +46,12 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                 <CartOrderDetail text="Fraktavgifter" detail={price >= 1000 && "0" || "75" + " kr"} />
 
                 {
-                    discount > 0 && <CartOrderDetail text="Summa att betla" detail={discount  + " kr"} />
+                    discount > 0 && <CartOrderDetail text="Summa att betla" detail={price - userPoints + " kr"} />
                 }
 
                 {
                     user &&
-                    <CartOrderDetail text={`Du tjänar ${price} poäng på ditt köp`} />
+                    <CartOrderDetail text={`Du tjänar ${price - userPoints} poäng på ditt köp`} />
                     ||
                     <CartOrderDetail text={`Du tjänar ${price} poäng på ditt köp om du blir medlem`} />
                 }
@@ -67,7 +67,7 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                             onChange={handleUserPoints}
                             value={userPoints}
                         />
-                        <SecondaryButton custom='border-primary text-primary' onClick={applyDiscount}>
+                        <SecondaryButton custom={`border-primary text-primary hover:bg-primary hover:text-white`} onClick={applyDiscount}>
                             Ange
                         </SecondaryButton>
                     </div>
@@ -90,7 +90,7 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                             </h2>
                             <div>
                                 {
-                                    data.user.activePoints
+                                    data.user.activePoints - userPoints
                                 }
                             </div>
                         </div>

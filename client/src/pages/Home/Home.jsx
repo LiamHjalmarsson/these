@@ -14,7 +14,7 @@ const Home = () => {
     let { data } = useFetch('/api/clothing');
 
     let filterClothingsByGender = (gender) => {
-        return data?.clothings.filter(clothing => clothing.genderType === gender).slice(0, 6);
+        return data?.clothings.filter(clothing => clothing.genderType === gender).slice(0, 8);
     };
 
     let menClothings = filterClothingsByGender('male');

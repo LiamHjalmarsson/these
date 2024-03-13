@@ -10,13 +10,13 @@ const Item = ({ item }) => {
                     item.category.charAt(0).toUpperCase() + item.category.slice(1)
                 }
             </div>
-            <div className=' absolute rounded-tl-md py-4 px-8 bg-opacity-85 flex justify-center items-center top-0 left-0 bg-primary text-white z-40'>
+            <div className=' absolute p-4 flex justify-center items-center -top-2 z-10 -left-4 bg-white bg-opcaity-90 shadow-middle rounded-md shadow-primary '>
                 {
-                    item.price + " kr"
+                    item.price + " -: Sek"
                 }
             </div>
             <div className='h-full w-full overflow-hidden shadow-middle shadow-black rounded-md'>
-                <Image img={item.image} custom='group-hover:scale-105 group-hover:opacity-90' />
+                <Image img={item.image} custom='h-full  w-full group-hover:scale-105 group-hover:opacity-90' />
             </div>
         </Link>
     );
