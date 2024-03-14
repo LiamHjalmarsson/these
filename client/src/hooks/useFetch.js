@@ -9,7 +9,6 @@ const useFetch = (url) => {
             let res = await rep.json();
 
             setData(res);
-
         }
         fetchData();
     }, [url]);

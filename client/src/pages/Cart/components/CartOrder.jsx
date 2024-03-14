@@ -81,7 +81,7 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                         )
                     }
                 </div>
-
+{/* 
                 {
                     data && (
                         <div className='flex w-full'>
@@ -95,7 +95,7 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                             </div>
                         </div>
                     )
-                }
+                } */}
 
                 <form onSubmit={submitHandler}>
                     <PrimaryButton custom="w-full mb-12">
