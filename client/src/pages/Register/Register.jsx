@@ -65,7 +65,7 @@ const Register = () => {
 
     return (
         <Deafult>
-            <div className='h-[72.5vh] flex relative'>
+            <div className='h-[76.5vh] flex relative'>
                 <img className='h-full w-full object-cover' src={img} />
                 <div className='flex-grow h-full absolute w-full flex justify-center items-center'>
                     <form className="flex flex-col w-1/4 min-w-96 gap-8 bg-white p-8" onSubmit={submitHandler}>

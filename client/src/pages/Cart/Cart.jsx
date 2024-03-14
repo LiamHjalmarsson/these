@@ -16,6 +16,7 @@ const Cart = () => {
     let navigation = useNavigate();
 
     let user = JSON.parse(localStorage.getItem("user"));
+
     let { data } = useFetch(`/api/users/${user}`);
 
     let cartItems = useSelector(state => state.cart.cartItems);
@@ -35,9 +36,11 @@ const Cart = () => {
 
     let submitCart = async () => {
         try {
+            let cartData
             if (user) {
                 let updatedActivePoints;
                 let updatedAch;
+                let userIdToSend = user ? user : null;
 
                 if (discountedPrice > 0) {
                     updatedActivePoints = data.user.activePoints - (totalPrice - discountedPrice);
@@ -62,17 +65,31 @@ const Cart = () => {
                         achivments: updatedAch 
                     })
                 });
+                cartData = {
+                    userId: userIdToSend,
+                    items: cartItems.map(item => ({
+                        productId: item.id,
+                        quantity: item.quantity,
+                        price: item.price
+                    })),
+                    totalPrice: discountedPrice
+                };
+            } else {
+                cartData = {
+                    items: cartItems.map(item => ({
+                        productId: item.id,
+                        quantity: item.quantity,
+                        price: item.price
+                    })),
+                    totalPrice: discountedPrice
+                };
             }
 
-            let cartData = {
-                userId: user,
-                items: cartItems.map(item => ({
-                    productId: item.id,
-                    quantity: item.quantity,
-                    price: item.price
-                })),
-                totalPrice: discountedPrice
-            };
+
+            if (cartData.items.length <= 0) {
+                toast.error("Inga varror tillagda")
+                return;
+            }
 
             let response = await fetch(`/api/purchase`, {
                 method: 'POST',
@@ -83,16 +100,21 @@ const Cart = () => {
             });
 
             if (response.ok) {
-                toast.success("Köp genomfört");
                 dispatch(clearCart());
-                navigation("/profile");
+                toast.success("Köp genomfört");
+                
+                if (user) {
+                    navigation("/profile");
+                } else {
+                    navigation("/")
+                }
 
             } else {
-                toast.success("Problem med att genomföra köp!");
+                toast.error("Problem med att genomföra köp!");
             }
 
         } catch (error) {
-            toast.success("Problem med att genomföra köp!");
+            toast.error("Problem med att genomföra köp!");
         }
     };
 

@@ -8,6 +8,7 @@ import { GoTrophy } from "react-icons/go";
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
 import { updateAchievements } from '../../utils/updateAchievements ';
+import { toast } from 'react-toastify';
 
 const ProfileLanding = () => {
     let navigate = useNavigate()
@@ -23,7 +24,7 @@ const ProfileLanding = () => {
                 let nextRank = ranks.ranks.find(rank => data.user.totalPointsEarned < rank.thresholdPoints);
                 let newRank = ranks.ranks.find(rank => data.user.totalPointsEarned > rank.thresholdPoints && data.user.rank !== rank._id);
                 setNextRank(nextRank ? nextRank : {});
-                
+
                 if (nextRank && newRank) {
 
                     let updatedAch = updateAchievements(data, newRank.rank, 100);
@@ -33,9 +34,9 @@ const ProfileLanding = () => {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ 
+                        body: JSON.stringify({
                             rank: newRank._id,
-                            achivments: updatedAch 
+                            achivments: updatedAch
                         })
                     });
 
@@ -43,29 +44,46 @@ const ProfileLanding = () => {
                 }
             }
         }
-    
 
         fetchData()
     }, [data, ranks]);
-    
+
     useEffect(() => {
         if (!userId) {
             navigate("/register");
         }
     }, []);
 
+    let logoutHandler = async () => {
+        try {
+            await fetch("/api/auth/logout");
+            localStorage.removeItem("user");
+    
+            toast.success("Loggade ut");
+            navigate("/");
+        } catch (error) {
+            toast.error("Error to Log out");
+        }
+    }
+
     return (
         <Deafult>
             {
                 data && ranks && nextRank && (
                     <>
-                        <Header user={data.user} nextRank={nextRank} rankReach={rankReach}/>
+                        <Header user={data.user} nextRank={nextRank} rankReach={rankReach} />
 
-                        <div className='max-w-6xl grid grid-cols-2 gap-12 mx-auto mb-40 mt-56'>
+                        <div className='max-w-6xl grid grid-cols-2 gap-12 mx-auto mt-40'>
                             <ProfileCard heading="Profile" details="Justera profile detaljer och kontkat information" icon={<FaRegUser />} link="profile" />
                             <ProfileCard heading="Lojalitet" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="lojalitet" />
                             <ProfileCard heading="Achivments" details="Justera profile detaljer och kontkat information" icon={< GoTrophy />} link="achivments" />
                             <ProfileCard heading="Recentioner" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="resentioner" />
+
+                        </div>
+                        <div className='mt-10 mb-20 flex justify-center items-center'>
+                            <button className='mx-auto px-8 rounded-md py-4 border border-primary' onClick={logoutHandler}>
+                                Logga ut
+                            </button>
                         </div>
                     </>
                 )
