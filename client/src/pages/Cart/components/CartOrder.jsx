@@ -46,7 +46,7 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                 <CartOrderDetail text="Fraktavgifter" detail={price >= 1000 && "0" || "75" + " kr"} />
 
                 {
-                    discount > 0 && <CartOrderDetail text="Summa att betla" detail={price - userPoints + " kr"} />
+                    discount > 0 && <CartOrderDetail text="Summa att betala" detail={price - userPoints + " kr"} />
                 }
 
                 {

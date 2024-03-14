@@ -17,7 +17,7 @@ const Header = ({ user, nextRank, rankReach }) => {
             </div>
 
             <div className='w-96 flex lg:w-1/2 justify-center p-4 z-10'>
-                <Heading heading={`Hej ${user.name} Välkommen till ditt account`} custom="text-white text-2xl md:text-3xl lg:text-4xl w-96" />
+                <Heading heading={`Hej ${user.name}, Välkommen till ditt konto`} custom="text-white text-2xl md:text-3xl lg:text-4xl w-96" />
             </div>
 
             <div className='absolute w-1/4 min-w-80 flex flex-col gap-4 p-4 -bottom-1/4 left-1/4 lg:left-1/2 bg-white bg-opacity-90 shadow-middle shadow-primary rounded-md'>

@@ -12,7 +12,7 @@ const Details = ({data, onAddToCart}) => {
 
     let addToCart = () => {
         if (!selectedSize) {
-            toast.error("Välj en storlek för attlägga till product");
+            toast.error("Välj en storlek för att lägga till product");
         } else {
             onAddToCart({
                 id: data._id,

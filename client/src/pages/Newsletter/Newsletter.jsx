@@ -83,7 +83,7 @@ const NewsletterPage = () => {
                             custom="border-b-white text-white mb-4"
                         />
                         <PrimaryButton>
-                            Premenurera
+                             Prenumerera
                         </PrimaryButton>
                     </form>
                 </div>

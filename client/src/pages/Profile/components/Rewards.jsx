@@ -36,7 +36,7 @@ const Rewards = ({ data }) => {
 
                             <div className='flex w-full flex-col gap-2 mt-4'>
                                 <h3 className='flex-grow'>
-                                    Dinna insamlade rabbater
+                                    Dina insamlade rabbater
                                 </h3>
                                 {
                                     data.discounts.map((discount, index) => (

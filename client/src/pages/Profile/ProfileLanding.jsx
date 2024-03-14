@@ -74,10 +74,10 @@ const ProfileLanding = () => {
                         <Header user={data.user} nextRank={nextRank} rankReach={rankReach} />
 
                         <div className='max-w-6xl grid grid-cols-2 gap-12 mx-auto mt-40'>
-                            <ProfileCard heading="Profile" details="Justera profile detaljer och kontkat information" icon={<FaRegUser />} link="profile" />
-                            <ProfileCard heading="Lojalitet" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="lojalitet" />
-                            <ProfileCard heading="Achivments" details="Justera profile detaljer och kontkat information" icon={< GoTrophy />} link="achivments" />
-                            <ProfileCard heading="Recentioner" details="Justera profile detaljer och kontkat information" icon={< MdOutlineRateReview />} link="resentioner" />
+                            <ProfileCard heading="Profile" details="Justera profil detaljer och kontakt information." icon={<FaRegUser />} link="profile" />
+                            <ProfileCard heading="Lojalitet" details="Visa lojalitetsstatus, poäng och exklusiva medlemsförmåner." icon={< MdOutlineRateReview />} link="lojalitet" />
+                            <ProfileCard heading="Prestationer" details="Spåra dina framsteg och prestationer." icon={< GoTrophy />} link="achievements" />
+                            <ProfileCard heading="recensioner" details="Granska och hantera dina recensioner" icon={< MdOutlineRateReview />} link="recensioner" />
 
                         </div>
                         <div className='mt-10 mb-20 flex justify-center items-center'>

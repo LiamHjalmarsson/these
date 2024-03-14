@@ -41,7 +41,7 @@ const Recensioner = ({data}) => {
                             </div>
                             <div className='flex gap-6 mt-4'>
                                 <SecondaryButton custom="border-primary text-primary">
-                                    Delete
+                                    Radera
                                 </SecondaryButton>
                                 <SecondaryButton custom="border-primary text-primary">
                                     Uppdatera

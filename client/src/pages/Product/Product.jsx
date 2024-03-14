@@ -17,7 +17,7 @@ const Product = () => {
     let handleAddToCart = (item) => {
         dispatch(addItemToCart(item));
 
-        toast.success("Product till lagd i varukorg");
+        toast.success("Produkt tilllagd i varukorg");
     };
 
     return (

@@ -17,7 +17,7 @@ const Profile = () => {
 
     let { data: achivmentsData } = useFetch("/api/achivments");
 
-    let links = ["profile", "lojalitet", "achivments", "resentioner"];
+    let links = ["profile", "lojalitet", "prestationer", "recensioner"];
 
     return (
         <Deafult>
@@ -42,13 +42,13 @@ const Profile = () => {
                             }
 
                             {
-                                id === "achivments" && (
+                                id === "prestationer" && (
                                     <Achivments data={data.user} achivment={achivmentsData} />
                                 )
                             }
 
                             {
-                                id === "resentioner" && (
+                                id === "recensioner" && (
                                     <Recensioner data={data.user} />
                                 )
                             }

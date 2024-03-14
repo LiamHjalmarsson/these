@@ -87,7 +87,7 @@ const Cart = () => {
 
 
             if (cartData.items.length <= 0) {
-                toast.error("Inga varror tillagda")
+                toast.error("Inga varor tillagda")
                 return;
             }
 

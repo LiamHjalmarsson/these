@@ -9,7 +9,7 @@ const Achivments = ({ data, achivment }) => {
 
     return (
         <div className='h-full w-full items-center flex flex-col gap-8 p-2'>
-            <Heading heading="Achivments" />
+            <Heading heading="Prestationer" />
 
             <div className='max-w-7xl w-full flex flex-wrap gap-12 justify-center'>
                 {
