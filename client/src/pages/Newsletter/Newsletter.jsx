@@ -12,15 +12,15 @@ import { toast } from 'react-toastify';
 import { updateAchievements } from '../../utils/updateAchievements ';
 
 const NewsletterPage = () => {
-    let [selectedGift, setSelectedGift] = useState(null);
+    let [selectedGift, setSelectedGift] = useState({});
     let [submitted, setSubmitted] = useState(false);
 
     let user = JSON.parse(localStorage.getItem('user'));
 
     let { data } = useFetch(`api/users/${user}`);
 
-    let handleGiftSelection = (index) => {
-        setSelectedGift(index);
+    let handleGiftSelection = (item) => {
+        setSelectedGift(item);
     };
 
     let submitHandler = async (e) => {
@@ -37,7 +37,10 @@ const NewsletterPage = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ discounts: updatedDiscounts, achivments: updatedAch }) 
+                body: JSON.stringify({
+                    discounts: updatedDiscounts,
+                    achivments: updatedAch
+                })
             });
 
             if (!response.ok) {
@@ -83,7 +86,7 @@ const NewsletterPage = () => {
                             custom="border-b-white text-white mb-4"
                         />
                         <PrimaryButton>
-                             Prenumerera
+                            Prenumerera
                         </PrimaryButton>
                     </form>
                 </div>

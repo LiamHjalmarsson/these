@@ -6,7 +6,7 @@ const Gift = ({ gift, handleGiftSelection, selected, submitted }) => {
 
     let handleClick = () => {
         if (!submitted) {
-            handleGiftSelection(gift.category);
+            handleGiftSelection(gift);
         }
     };
 
@@ -22,7 +22,9 @@ const Gift = ({ gift, handleGiftSelection, selected, submitted }) => {
                 {
                     selected && submitted && (
                         <div className=' absolute -bottom-5 p-4 text-center left-10 bg-white rounded-md shadow-middle shadow-primary'>
-                            {selected ? "Gåva: " + gift.category : null}
+                            {
+                                selected ? "Gåva: " + gift.category : null
+                            }
                         </div>
                     )
                 }
