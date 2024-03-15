@@ -3,6 +3,7 @@ import Heading from '../../../components/Elements/Heading/Heading';
 import { IoLockClosedOutline } from "react-icons/io5";
 
 const Achivments = ({ data, achivment }) => {
+    
     let hasAchievement = (name) => {
         return data.achivments.some((achievement) => achievement.name === name);
     };

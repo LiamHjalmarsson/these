@@ -17,11 +17,11 @@ const UserSchema = new mongoose.Schema({
     },
     totalPointsEarned: {
         type: Number,
-        default: 100
+        default: 200
     },
     activePoints: {
         type: Number,
-        default: 100
+        default: 200
     },
     purchases: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -44,11 +44,11 @@ const UserSchema = new mongoose.Schema({
     discounts: [{
         type: String
     }],
-    rank: {
+    rank: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Rank',
         default: "65f0c2fcdeac73dee618dbf7" 
-    }
+    }]
 });
 
 UserSchema.pre('save', async function (next) {

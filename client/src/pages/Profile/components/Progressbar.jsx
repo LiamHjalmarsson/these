@@ -1,13 +1,12 @@
 import React from 'react';
 
 const ProgressBar = ({ points, nextRank }) => {
-
     let fillWidth = (points / nextRank) * 100;
 
     return (
-        <>
-            <div className="w-full h-8 bg-gray-500 rounded-md">
-                <div className="h-full bg-blue-500 rounded-md" style={{ width: `${fillWidth}%` }}></div>
+        <div>
+            <div className="w-full h-8 bg-primary bg-opacity-80 rounded-md">
+                <div className="h-full bg-green-400 rounded-md" style={{ width: `${fillWidth}%` }}></div>
             </div>
             <div className='flex justify-between px-2'>
                 <div>
@@ -19,7 +18,7 @@ const ProgressBar = ({ points, nextRank }) => {
                     }
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

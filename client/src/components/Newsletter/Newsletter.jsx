@@ -17,7 +17,7 @@ const Newsletter = () => {
                     <div className='text-center'>
                         Gå med i vårt nyhetsbrev & få möjligheten att skrapa bilden för att få en belöning
                     </div>
-                    <LinkButton title="Gå med" link="/nyhetsbrev" />
+                    <LinkButton title="Gå med" link="/nyhetsbrev" custom="flex-grow" />
                 </div>
             </div>
 

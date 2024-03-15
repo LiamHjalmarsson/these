@@ -65,6 +65,7 @@ const Cart = () => {
                         achivments: updatedAch 
                     })
                 });
+
                 cartData = {
                     userId: userIdToSend,
                     items: cartItems.map(item => ({
@@ -74,6 +75,8 @@ const Cart = () => {
                     })),
                     totalPrice: discountedPrice
                 };
+
+                toast.success("Fått ny prestation");
             } else {
                 cartData = {
                     items: cartItems.map(item => ({

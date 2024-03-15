@@ -5,10 +5,10 @@ import Image from '../../../components/Elements/Image';
 import img from "/images/x.jpg"
 import useFetch from '../../../hooks/useFetch';
 
-const Header = ({ user, nextRank, rankReach }) => {
-    let { data } = useFetch(`/api/rank/${rankReach ? rankReach._id : user.rank}`);
-
-    console.log(nextRank);
+const Header = ({ user, nextRank, updatedUser  }) => {
+    let lastRankId = updatedUser.user ? updatedUser.user.rank[updatedUser.user.rank.length - 1] : user.rank[user.rank.length - 1];
+    
+    let { data } = useFetch(`/api/rank/${lastRankId}`);
 
     return (
         <div className='w-full h-96 flex justify-start items-center relative'>
@@ -38,8 +38,19 @@ const Header = ({ user, nextRank, rankReach }) => {
                     </div>
                 </div>
 
+                <div className='flex'>
+                    <div className='flex-grow'>
+                        Värde av poäng
+                    </div>
+                    <div>
+                        {
+                            user.activePoints / 10 + " kr"
+                        }
+                    </div>
+                </div>
+
                 {
-                    data && <ProgressBar points={user.totalPointsEarned} nextRank={nextRank.thresholdPoints} />
+                    data && <ProgressBar points={user.totalPointsEarned} nextRank={nextRank.thresholdPoints ? nextRank.thresholdPoints : " Max "} />
                 }
             </div>
         </div>
