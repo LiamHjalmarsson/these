@@ -26,7 +26,7 @@ const Rewards = ({ data }) => {
                 <div className='mt-4 w-96 flex flex-col gap-4'>
                     <div className='flex w-full gap-8 mt-4'>
                         <h3 className='flex-grow'>
-                            Poäng du kan använda på ditt köp
+                            Insamlade poäng
                         </h3>
                         <div>
                             {data.activePoints}

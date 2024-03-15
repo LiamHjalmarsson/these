@@ -25,7 +25,7 @@ const Items = ({ category, gender }) => {
                 {
                     clothes.length !== 0 && <Heading heading={clothes[0].category} />
                 }
-                <ul className='flex flex-wrap gap-12 w-full mt-8 px-10 justify-center'>
+                <ul className='flex flex-wrap gap-16 w-full mt-8 px-10 justify-center'>
                     {clothes.map((clothing, index) => (
                         <Item item={clothing} key={index} />
                     ))}

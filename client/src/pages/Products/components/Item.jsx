@@ -4,7 +4,7 @@ import Image from '../../../components/Elements/Image';
 
 const Item = ({ item }) => {
     return (
-        <Link to={`/products/${item._id}`} className='group max-w-sm mb-8 relative'>
+        <Link to={`/products/${item._id}`} className='group max-w-xs h-96 mb-8 relative'>
             <div className='flex items-center z-40 text-xl absolute -bottom-4 right-4 px-8 py-6 rounded-md shadow-md shadow-black bg-opacity-90 bg-white'>
                 {
                     item.category.charAt(0).toUpperCase() + item.category.slice(1)

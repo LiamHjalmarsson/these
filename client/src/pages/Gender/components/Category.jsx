@@ -6,7 +6,7 @@ const Category = ({ item }) => {
     let { id } = useParams()
 
     return (
-        <Link to={`/gender/${id}/${item._id}`} className='group flex-grow max-w-sm mb-8 relative'>
+        <Link to={`/gender/${id}/${item._id}`} className='group flex-grow max-w-xs h-96 mb-8 relative'>
             <div className='flex items-center text-xl absolute -bottom-4 right-4 px-8 py-6 z-10 rounded-md shadow-middle shadow-primary bg-opacity-90 bg-white'>
                 {
                     item.category.charAt(0).toUpperCase() + item.category.slice(1)

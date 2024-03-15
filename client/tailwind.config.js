@@ -18,7 +18,7 @@ export default {
       boxShadow: {
         middle: "0 0px 8px -2px",
       },
-      maxWidth: {
+      screens: {
         xs: "450"
       }
     },

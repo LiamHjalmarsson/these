@@ -11,7 +11,7 @@ const ProfileCard = ({ heading, details, icon, link }) => {
                 }
             </div>
 
-            <div className='p-4 border border-primary rounded-md h-full flex flex-col gap-4 justify-center items-center'>
+            <div className='p-4 rounded-md h-full flex flex-col gap-4 justify-center items-center shadow-middle shadow-primary'>
                 <h2 className='text-2xl text-center'>
                     {heading}
                 </h2>
