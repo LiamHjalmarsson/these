@@ -41,9 +41,16 @@ const UserSchema = new mongoose.Schema({
             points: 100
         }]
     },
-    discounts: [{
-        type: String
-    }],
+    discounts: {
+        type: [{
+            category: {
+                type: String
+            },
+            code: {
+                type: String
+            }
+        }]
+    },
     rank: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Rank',
