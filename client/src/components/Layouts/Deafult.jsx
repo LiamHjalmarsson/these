@@ -8,12 +8,6 @@ const Deafult = ({ children }) => {
     return (
         <>
             <Nav />
-            <ToastContainer
-                pauseOnHover={false}
-                closeOnClick
-                autoClose={1000}
-                className={"absolute top-24"}
-            />
             {
                 children
             }

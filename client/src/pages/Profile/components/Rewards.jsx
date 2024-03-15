@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Heading from '../../../components/Elements/Heading/Heading';
 import ProgressBar from './Progressbar';
 import useFetch from '../../../hooks/useFetch';
 
 const Rewards = ({ data }) => {
-    let { data: ranks } = useFetch(`/api/rank/${data.rank}`);
-    
+    let { data: ranksData } = useFetch(`/api/rank`);
+    let [rank, setRank] = useState({});
+
+    useEffect(() => {
+
+        if (ranksData) {
+            let lastRank = ranksData.ranks[ranksData.ranks.length - 1];
+            setRank(lastRank);
+        }
+    }, [ranksData]);
+
+    console.log(ranksData);
     return (
-        <div className='h-1/2 flex flex-col justify-between p-2 w-1/2'>
+        <div className='h-1/2 flex flex-col justify-between p-2'>
             <div className='flex flex-col gap-4 w-full items-center'>
                 <Heading heading="Din insamlade poäng" />
                 <div className='mt-4 w-96'>
@@ -54,21 +64,32 @@ const Rewards = ({ data }) => {
             </div>
 
             {
-                ranks && (
+                ranksData && rank && (
                     <div className='flex flex-col gap-4 w-full items-center my-12'>
-                        <Heading heading={`Din ${ranks.rank.rank}`} />
+                        <Heading heading={`Din ${rank.rank}`} />
                         <div className='flex flex-col w-96 mt-4 overflow-hidden rounded-md'>
-                            <ProgressBar points={data.totalPointsEarned} nextRank={ranks.rank.nextRank} />
+                            <ProgressBar points={data.totalPointsEarned} nextRank={rank.nextRank} />
                         </div>
-                        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-12 mt-4'>
+                        <div className='grid grid-cols-3 gap-12 mt-4'>
                             {
-                                ranks.rank.benefits.map((benefit, index) => (
-                                    <div className='p-4 shadow-middle shadow-primary rounded-md' key={index}>
-                                        <h3 className='text-lg text-center'>
-                                            {
-                                                benefit.name
-                                            }
+                                ranksData && ranksData.ranks.map((rank, index) => (
+                                    <div>
+                                        <h3 className='text-center mb-4 text-xl font-semibold'> 
+                                            {rank.rank}
                                         </h3>
+                                        <div className='flex flex-col gap-4' key={index}>
+                                            {
+                                                rank.benefits.map((benefit, index) => (
+                                                    <div className='p-4 shadow-middle shadow-primary rounded-md' key={index}>
+                                                        <h3 className='text-lg text-center'>
+                                                            {
+                                                                benefit.name
+                                                            }
+                                                        </h3>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
                                     </div>
                                 ))
                             }

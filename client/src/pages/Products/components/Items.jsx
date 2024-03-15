@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useFetch from '../../../hooks/useFetch';
 import Section from '../../../components/Layouts/Section/Section';
 import Item from './Item';
+import Heading from '../../../components/Elements/Heading/Heading';
 
 const Items = ({ category, gender }) => {
     let { data } = useFetch('/api/clothing');
@@ -20,7 +21,10 @@ const Items = ({ category, gender }) => {
 
     return (
         <Section>
-            <div className='w-full flex justify-center items-center'>
+            <div className='w-full flex flex-col justify-center items-center'>
+                {
+                    clothes.length !== 0 && <Heading heading={clothes[0].category} />
+                }
                 <ul className='flex flex-wrap gap-12 w-full mt-8 px-10 justify-center'>
                     {clothes.map((clothing, index) => (
                         <Item item={clothing} key={index} />

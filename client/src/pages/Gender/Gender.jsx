@@ -34,7 +34,7 @@ const Gender = () => {
             <Banner img={id === "herr" ? bannerImgHerr : bannerImgDam} heading={`LD Kläder ${id === 'herr' ? 'Herr' : 'Dam'}`} color="white" />
             {
                 categories && (
-                    <Categories heading={`Populära produkter ${id === 'herr' ? 'Herr' : 'Dam'}`} items={categories} />
+                    <Categories heading={`${id === 'herr' ? 'Herr' : 'Dam'} Kläder`} items={categories} />
                 )
             }
             <Newsletter />

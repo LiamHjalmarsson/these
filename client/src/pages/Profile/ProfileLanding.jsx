@@ -14,39 +14,47 @@ const ProfileLanding = () => {
     let navigate = useNavigate()
     let userId = JSON.parse(localStorage.getItem("user"));
     let { data } = useFetch(`/api/users/${userId}`);
-    let { data: ranks } = useFetch("/api/rank");
+    let { data: ranksData } = useFetch("/api/rank");
     let [nextRank, setNextRank] = useState({});
-    let [rankReach, setRankReach] = useState(null);
+    let [updatedUser, setUpdatedUser] = useState({});
 
     useEffect(() => {
         let fetchData = async () => {
-            if (data && ranks) {
-                let nextRank = ranks.ranks.find(rank => data.user.totalPointsEarned < rank.thresholdPoints);
-                let newRank = ranks.ranks.find(rank => data.user.totalPointsEarned > rank.thresholdPoints && data.user.rank !== rank._id);
-                setNextRank(nextRank ? nextRank : {});
+            if (data && ranksData) {
+                let upcomingRank = ranksData.ranks.find(rank => data.user.totalPointsEarned < rank.thresholdPoints);
 
-                if (nextRank && newRank) {
+                if (upcomingRank) {
+                    setNextRank(upcomingRank);
+                }
 
-                    let updatedAch = updateAchievements(data, newRank.rank, 100);
+                let rank = ranksData.ranks.find(rank => data.user.totalPointsEarned >= rank.thresholdPoints && !data.user.rank.includes(rank._id));
+                
+                if (data.user && rank) {
+                    console.log(rank);
+                    let updatedAch = updateAchievements(data, rank.rank, 100);
+                    let userRanks = [...data.user.rank, rank._id];
 
-                    await fetch(`/api/users/${userId}`, {
+                    let rep = await fetch(`/api/users/${userId}`, {
                         method: "PATCH",
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({
-                            rank: newRank._id,
-                            achivments: updatedAch
-                        })
+                        body: JSON.stringify({ 
+                            achivments: updatedAch,
+                            rank: userRanks
+                        }) 
                     });
 
-                    setRankReach(newRank);
+                    let res = await rep.json();
+
+                    setUpdatedUser(res);
                 }
             }
         }
 
         fetchData()
-    }, [data, ranks]);
+    }, [data, ranksData]);
+
 
     useEffect(() => {
         if (!userId) {
@@ -58,7 +66,7 @@ const ProfileLanding = () => {
         try {
             await fetch("/api/auth/logout");
             localStorage.removeItem("user");
-    
+
             toast.success("Loggade ut");
             navigate("/");
         } catch (error) {
@@ -69,14 +77,17 @@ const ProfileLanding = () => {
     return (
         <Deafult>
             {
-                data && ranks && nextRank && (
+                data && <Header user={data.user} nextRank={nextRank} updatedUser={updatedUser} />
+            }
+
+            {
+                data && (
                     <>
-                        <Header user={data.user} nextRank={nextRank} rankReach={rankReach} />
 
                         <div className='max-w-6xl grid grid-cols-2 gap-12 mx-auto mt-40'>
                             <ProfileCard heading="Profile" details="Justera profil detaljer och kontakt information." icon={<FaRegUser />} link="profile" />
                             <ProfileCard heading="Lojalitet" details="Visa lojalitetsstatus, poäng och exklusiva medlemsförmåner." icon={< MdOutlineRateReview />} link="lojalitet" />
-                            <ProfileCard heading="Prestationer" details="Spåra dina framsteg och prestationer." icon={< GoTrophy />} link="achievements" />
+                            <ProfileCard heading="Prestationer" details="Spåra dina framsteg och prestationer." icon={< GoTrophy />} link="prestationer" />
                             <ProfileCard heading="recensioner" details="Granska och hantera dina recensioner" icon={< MdOutlineRateReview />} link="recensioner" />
 
                         </div>

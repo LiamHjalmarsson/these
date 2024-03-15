@@ -28,7 +28,7 @@ const Nav = () => {
             <ul className="flex flex-grow justify-center items-center gap-4">
                 {
                     links.map((link) => (
-                        <NavLink to={`${link === "nyhetsbrev" ? `/${link}` : `/gender/${link}`}`} key={link}>
+                        <NavLink to={`${link === "nyhetsbrev" ? `/${link}` : `/gender/${link}`}`} key={link} className="px-4">
                             {
                                 link.charAt(0).toUpperCase() + link.slice(1)
 
