@@ -3,7 +3,6 @@ import Heading from '../../../components/Elements/Heading/Heading';
 import { IoLockClosedOutline } from "react-icons/io5";
 
 const Achivments = ({ data, achivment }) => {
-    
     let hasAchievement = (name) => {
         return data.achivments.some((achievement) => achievement.name === name);
     };
@@ -23,7 +22,7 @@ const Achivments = ({ data, achivment }) => {
                                         <IoLockClosedOutline className='text-white text-7xl font-bold'/>
                                     </div>
                                 </div>
-                                <div className='flex flex-grow gap-2 p-2 text-sm'>
+                                <div className='flex flex-grow gap-2 p-2 text-sm rounded-md'>
                                     <span>
                                         {
                                             achivment.name.charAt(0).toUpperCase() + achivment.name.slice(1)

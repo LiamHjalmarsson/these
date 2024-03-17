@@ -17,6 +17,7 @@ const Rewards = ({ data }) => {
         }
     }, [ranksData, data]);
 
+
     return (
         <div className='h-1/2 flex flex-col justify-between p-2'>
 
@@ -37,7 +38,7 @@ const Rewards = ({ data }) => {
                             Poäng värde
                         </h3>
                         <div>
-                            {data.activePoints / 10}
+                            {data.activePoints / 10} kr 
                         </div>
                     </div>
 
@@ -66,7 +67,7 @@ const Rewards = ({ data }) => {
                 </div>
             </div>
 
-            <div className='flex gap-8 w-full my-12 overflow-x-auto p-8'>
+            <div className='flex flex-wrap justify-center gap-8 w-full my-12 overflow-x-auto p-8'>
 
                 {
                     unlockedRanks.map((rank, index) => (
@@ -78,10 +79,15 @@ const Rewards = ({ data }) => {
                             <div className='flex flex-col gap-4 mt-4'>
                                 {
                                     rank.benefits.map((benefit, index) => (
-                                        <div className='p-4 shadow-middle shadow-primary rounded-md' key={index}>
+                                        <div className='p-4 shadow-middle shadow-primary rounded-md hover:bg-primary hover:bg-opacity-10 transition duration-300 cursor-pointer ' key={index}>
                                             <h3 className='text-lg text-center'>
                                                 {benefit.name}
                                             </h3>
+                                            <p className='text-sm mt-2 text-center'>
+                                                {
+                                                    benefit.description
+                                                }
+                                            </p>
                                         </div>
                                     ))
                                 }
