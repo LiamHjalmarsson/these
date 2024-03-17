@@ -25,6 +25,7 @@ const NewsletterPage = () => {
 
     let submitHandler = async (e) => {
         e.preventDefault();
+        
         setSubmitted(true);
 
         if (data) {
@@ -67,7 +68,7 @@ const NewsletterPage = () => {
     ];
 
     return (
-        <Deafult>
+        <Deafult>   
 
             <Section>
                 <Gifts gifts={gifts} handleGiftSelection={handleGiftSelection} selectedGift={selectedGift} submitted={submitted} />

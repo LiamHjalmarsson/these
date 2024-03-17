@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../../../components/Elements/Image';
+import { textUtilUpper } from '../../../../utils/textUtil';
 
 const BestSeller = ({ item }) => {
     return (
-        <div className='flex-grow w-60 h-80'>
-            <Link to={`/products/${item._id}`} className='group h-full mb-8 relative flex'>
-                <div className='flex items-center text-xl absolute z-10 rounded-md -bottom-4 right-4 px-8 py-6 shadow-middle shadow-primary bg-opacity-90 bg-white'>
+        <div className='flex-grow flex flex-col max-w-sm'>
+            <Link to={`/products/${item._id}`} className='group w-full mb-8 relative flex h-80 '>
+                <div className='flex items-center flex-col text-xl absolute z-10 rounded-md -bottom-4 right-4 px-6 py-4  shadow-middle shadow-primary bg-opacity-90 bg-white'>
                     <div>
                         {
-                            item.name.charAt(0).toUpperCase() + item.name.slice(1)
+                            textUtilUpper(item.name)
+                        }
+                    </div>
+                    <div className='text-sm'>
+                        {
+                            item.price + " kr"
                         }
                     </div>
                 </div>

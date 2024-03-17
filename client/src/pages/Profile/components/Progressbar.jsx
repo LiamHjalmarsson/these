@@ -4,7 +4,7 @@ const ProgressBar = ({ points, nextRank }) => {
     let fillWidth = (points / nextRank) * 100;
 
     return (
-        <>
+        <div className='p-4'>
             <div className="w-full h-8  bg-opacity-80 rounded-md shadow-primary shadow-middle">
                 <div className="h-full bg-green-400 max-w-full rounded-md" style={{ width: `${fillWidth}%` }}></div>
             </div>
@@ -18,7 +18,7 @@ const ProgressBar = ({ points, nextRank }) => {
                     }
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

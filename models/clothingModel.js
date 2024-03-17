@@ -46,6 +46,10 @@ const ClothingSchema = new mongoose.Schema(
                 "https://res.cloudinary.com/dx6tdy5de/image/upload/v1710247670/dl-clothing/kzifiwkrz73k6bx4qpv2.jpg",
             ],
         },
+        description: {
+            type: String,
+            default: "Höj din avslappnade stil med vårt plagg. Tillverkad av premiumkvalitetsdenim, har detta plagg en klassisk design. Oavsett om du ska ut på äventyr en helg eller bara utföra ärenden i stan, kommer vårt plagg att hålla dig snygg och bekväm."
+        }
     },
     { timestamps: true }
 );
