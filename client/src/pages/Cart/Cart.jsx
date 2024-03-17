@@ -50,21 +50,35 @@ const Cart = () => {
 
                 let totalPointsUpdate = data.user.totalPointsEarned + (totalPrice - discountedPrice);
                 
-                if (data.user.purchases.length <= 0) {
+                if (data.user.purchases.length <= 0 && !data.user.achivments.some(ach => ach.name === "första beställning")) {
                     updatedAch = updateAchievements(data, "första beställning", 100);
-                }
 
-                await fetch(`/api/users/${user}`, {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ 
-                        activePoints: updatedActivePoints, 
-                        totalPointsEarned: totalPointsUpdate, 
-                        achivments: updatedAch 
-                    })
-                });
+                    await fetch(`/api/users/${user}`, {
+                        method: "PATCH",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ 
+                            activePoints: updatedActivePoints, 
+                            totalPointsEarned: totalPointsUpdate, 
+                            achivments: updatedAch 
+                        })
+                    });
+
+                    toast.success("Fått ny prestation");
+
+                } else {
+                    await fetch(`/api/users/${user}`, {
+                        method: "PATCH",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ 
+                            activePoints: updatedActivePoints, 
+                            totalPointsEarned: totalPointsUpdate, 
+                        })
+                    });
+                }
 
                 cartData = {
                     userId: userIdToSend,
@@ -76,7 +90,6 @@ const Cart = () => {
                     totalPrice: discountedPrice
                 };
 
-                toast.success("Fått ny prestation");
             } else {
                 cartData = {
                     items: cartItems.map(item => ({
@@ -87,7 +100,6 @@ const Cart = () => {
                     totalPrice: discountedPrice
                 };
             }
-
 
             if (cartData.items.length <= 0) {
                 toast.error("Inga varor tillagda")
