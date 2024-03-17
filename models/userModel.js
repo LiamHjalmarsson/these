@@ -36,10 +36,16 @@ const UserSchema = new mongoose.Schema({
                 type: Number,
             }
         }],
-        default: [{
-            name: "medlem",
-            points: 100
-        }]
+        default: [
+            {
+                name: "medlem",
+                points: 100
+            },
+            {
+                name: "Nivå 1",
+                points: 100
+            }
+        ]
     },
     discounts: {
         type: [{
@@ -54,7 +60,7 @@ const UserSchema = new mongoose.Schema({
     rank: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Rank',
-        default: "65f0c2fcdeac73dee618dbf7" 
+        default: "65f0c2fcdeac73dee618dbf7"
     }]
 });
 

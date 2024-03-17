@@ -27,7 +27,7 @@ const Product = () => {
                     {
                         data && (
                             <>
-                                <div className='max-w-md overflow-hidden shadow-middle shadow-black rounded-md group'>
+                                <div className='max-w-md overflow-hidden shadow-middle shadow-black rounded-md group my-10'>
                                     <Image img={data.clothing.image} custom='group-hover:scale-105 group-hover:opacity-90' />
                                 </div>
 

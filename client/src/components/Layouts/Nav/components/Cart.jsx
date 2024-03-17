@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, open }) => {
     return (
-        <div className="absolute top-14 -right-8 bg-primary shadow-md shadow-primary text-white w-96 p-4 z-50 flex flex-col gap-4">
+        <div className={`absolute top-14 -right-8 bg-primary shadow-md shadow-primary text-white w-96 p-4 z-40 flex flex-col gap-4 transition transform ${open ? 'translate-x-0' : ' translate-x-96'}`}>
 
             <h2 className='text-2xl'>
                 Kundvagn

@@ -18,14 +18,14 @@ const Cart = () => {
     let user = JSON.parse(localStorage.getItem("user"));
 
     let { data } = useFetch(`/api/users/${user}`);
-
+    
     let cartItems = useSelector(state => state.cart.cartItems);
     let totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-
+    
     let [discountedPrice, setDiscountedPrice] = useState(0);
-
+    
     let dispatch = useDispatch();
-
+    
     let handleIncreaseQuantity = (item) => {
         dispatch(increaseQuantity(item));
     };
@@ -33,41 +33,25 @@ const Cart = () => {
     let handleDecreaseQuantity = (item) => {
         dispatch(decreaseQuantity(item));
     };
-
+    
     let submitCart = async () => {
         try {
             let cartData
-            if (user) {
-                let updatedActivePoints;
-                let updatedAch;
-                let userIdToSend = user ? user : null;
+            let updatedActivePoints;
+            let updatedAch;
+            let totalPointsUpdate;
 
+            if (user !== null && data) {
                 if (discountedPrice > 0) {
                     updatedActivePoints = data.user.activePoints - (totalPrice - discountedPrice);
                 } else {
                     updatedActivePoints = data.user.activePoints + totalPrice;
                 }
 
-                let totalPointsUpdate = data.user.totalPointsEarned + (totalPrice - discountedPrice);
-                
-                if (data.user.purchases.length <= 0) {
-                    updatedAch = updateAchievements(data, "första beställning", 100);
-                }
-
-                await fetch(`/api/users/${user}`, {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ 
-                        activePoints: updatedActivePoints, 
-                        totalPointsEarned: totalPointsUpdate, 
-                        achivments: updatedAch 
-                    })
-                });
+                totalPointsUpdate = data.user.totalPointsEarned + (totalPrice - discountedPrice);
 
                 cartData = {
-                    userId: userIdToSend,
+                    userId: user,
                     items: cartItems.map(item => ({
                         productId: item.id,
                         quantity: item.quantity,
@@ -75,8 +59,6 @@ const Cart = () => {
                     })),
                     totalPrice: discountedPrice
                 };
-
-                toast.success("Fått ny prestation");
             } else {
                 cartData = {
                     items: cartItems.map(item => ({
@@ -84,10 +66,9 @@ const Cart = () => {
                         quantity: item.quantity,
                         price: item.price
                     })),
-                    totalPrice: discountedPrice
+                    totalPrice: totalPrice
                 };
             }
-
 
             if (cartData.items.length <= 0) {
                 toast.error("Inga varor tillagda")
@@ -102,18 +83,49 @@ const Cart = () => {
                 body: JSON.stringify(cartData)
             });
 
-            if (response.ok) {
-                dispatch(clearCart());
-                toast.success("Köp genomfört");
-                
-                if (user) {
-                    navigation("/profile");
-                } else {
-                    navigation("/")
-                }
+            let res = await response.json();
 
+            if (user !== null) {
+                if (data.user.purchases.length <= 0 && !data.user.achivments.find(ach => ach.name === "första beställning")) {
+                    updatedAch = updateAchievements(data, "första beställning", 100);
+                    
+                    await fetch(`/api/users/${user}`, {
+                        method: "PATCH",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            activePoints: updatedActivePoints + 100,
+                            totalPointsEarned: totalPointsUpdate,
+                            achivments: updatedAch,
+                            purchases: res.data._id
+                        })
+                    });
+    
+                    toast.success("Fått ny prestation");
+    
+                } else {
+                    await fetch(`/api/users/${user}`, {
+                        method: "PATCH",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            activePoints: updatedActivePoints,
+                            totalPointsEarned: totalPointsUpdate,
+                            purchases: [...data.user.purchases, res.data._id]
+                        })
+                    });
+                }
+            }
+
+            dispatch(clearCart());
+            toast.success("Köp genomfört");
+
+            if (user) {
+                navigation("/profile");
             } else {
-                toast.error("Problem med att genomföra köp!");
+                navigation("/")
             }
 
         } catch (error) {

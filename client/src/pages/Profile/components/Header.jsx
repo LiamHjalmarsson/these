@@ -1,8 +1,6 @@
 import React from 'react';
 import ProgressBar from './Progressbar';
 import Heading from '../../../components/Elements/Heading/Heading';
-import Image from '../../../components/Elements/Image';
-import img from "/images/x.jpg"
 import useFetch from '../../../hooks/useFetch';
 
 const Header = ({ user, nextRank, updatedUser  }) => {
@@ -12,8 +10,8 @@ const Header = ({ user, nextRank, updatedUser  }) => {
 
     return (
         <div className='w-full h-96 flex justify-start items-center relative'>
-            <div className='h-full w-full bg-slate-950 absolute'>
-                <Image img={img} custom='w-full h-full opacity-60 group-hover:scale-105 group-hover:opacity-90 w-full h-full object-cover' />
+            <div className='h-full w-full  absolute'>
+                <div className="bg-gradient-to-br from-amber-500 to-primary h-full w-full"></div>
             </div>
 
             <div className='w-96 flex lg:w-1/2 justify-center p-4 z-10'>

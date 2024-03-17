@@ -5,7 +5,7 @@ import Input from '../../../components/Elements/Input';
 import PrimaryButton from '../../../components/Elements/PrimaryButton';
 
 const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) => {
-    let [userPoints, setUserPoints] = useState("");
+    let [userPoints, setUserPoints] = useState(0);
     let [error, setError] = useState("");
 
     let handleUserPoints = (e) => {
@@ -81,9 +81,9 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                         )
                     }
                 </div>
-{/* 
+
                 {
-                    data && (
+                    data && user && (
                         <div className='flex w-full'>
                             <h2 className='flex-grow'>
                                 Dinna samlade poäng
@@ -95,7 +95,7 @@ const CartOrder = ({ data, price, onSubmitCart, discount, setDiscount, user }) =
                             </div>
                         </div>
                     )
-                } */}
+                }
 
                 <form onSubmit={submitHandler}>
                     <PrimaryButton custom="w-full mb-12">

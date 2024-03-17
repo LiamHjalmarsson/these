@@ -10,7 +10,9 @@ function App() {
         pauseOnHover={false}
         closeOnClick
         autoClose={5000}
-        className={"absolute top-24"}
+        className={"top-24"}
+        position="top-center"
+        limit={3}
       />
     </>
   )

@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Devider from '../../../components/Elements/Devider';
 import SecondaryButton from '../../../components/Elements/SecondaryButton';
 import { toast } from 'react-toastify';
+import { textUtilUpper } from '../../../utils/textUtil';
 
 const Details = ({data, onAddToCart}) => {
     let [selectedSize, setSelectedSize] = useState(null);
+    let [showDescription, setShowDescription] = useState(false);
 
     let handleSizeSelection = (size) => {
         setSelectedSize(size);
@@ -24,17 +26,23 @@ const Details = ({data, onAddToCart}) => {
         }
     }
 
+    let descriptionShow = () => {
+
+        console.log(showDescription);
+        setShowDescription(!showDescription);
+    }
+
     return (
         <div className='w-fit h-full justify-center flex flex-col p-6 mb-10'>
 
             <h3 className='text-5xl'>
                 {
-                    data.category.charAt(0).toUpperCase() + data.category.slice(1)
+                    data && textUtilUpper(data.category)
                 }
             </h3>
 
-            <div className='mt-4'>
-                Artikel nummer
+            <div className='mt-4 text-sm'>
+                Artikel nummer: { data._id}
             </div>
 
             <div className='mt-2'>
@@ -44,10 +52,6 @@ const Details = ({data, onAddToCart}) => {
             </div>
 
             <Devider />
-
-            <div className='mt-4'>
-                Beskrivning
-            </div>
 
             <div className='mt-4'>
                 <p>
@@ -77,8 +81,13 @@ const Details = ({data, onAddToCart}) => {
 
             <Devider />
 
-            <div className='mt-4 mb-4'>
+            <div className={`my-4`}>
                 Detaljer
+                <div className={`max-w-lg mt-2 text-sm ${showDescription ? "line-clamp-5" : " line-clamp-2"}`} onClick={descriptionShow}>
+                    {
+                        data.description
+                    }
+                </div>
             </div>
 
             <Devider />

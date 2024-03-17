@@ -25,6 +25,7 @@ const NewsletterPage = () => {
 
     let submitHandler = async (e) => {
         e.preventDefault();
+        
         setSubmitted(true);
 
         if (data) {
@@ -46,7 +47,7 @@ const NewsletterPage = () => {
             if (!response.ok) {
                 toast.error("Ett problem uppstod, försök igen");
             } else {
-                toast.success("Du har nu fått en gåva och prenumererar på nyhetsbrevet");
+                toast.success("Du har nu fått en gåva och börjat prenumererar på vårt nyhetsbreve");
             }
         }
     };
@@ -54,20 +55,20 @@ const NewsletterPage = () => {
     let gifts = [
         {
             category: "3 för 2",
-            code: "3f2"
+            code: "treförrvå"
         },
         {
             category: "30 % på ditt köp",
-            code: "3%"
+            code: "30%påköp"
         },
         {
-            category: "500 poäng",
-            code: "puse"
+            category: "500 kr",
+            code: "500kr"
         },
     ];
 
     return (
-        <Deafult>
+        <Deafult>   
 
             <Section>
                 <Gifts gifts={gifts} handleGiftSelection={handleGiftSelection} selectedGift={selectedGift} submitted={submitted} />

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiShoppingBagLine } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Cart from './components/Cart';
 
@@ -20,7 +20,7 @@ const Nav = () => {
         <nav className="flex w-full items-center text-xl p-8 z-50 bg-primary text-white">
 
             <NavLink to="/">
-                <h2 className='text-3xl tracking-wider font-bold'>
+                <h2 className='text-3xl tracking-wider font-bold hover:text-amber-400  duration-300 transition'>
                     LD Klädder
                 </h2>
             </NavLink>
@@ -28,7 +28,7 @@ const Nav = () => {
             <ul className="flex flex-grow justify-center items-center gap-4">
                 {
                     links.map((link) => (
-                        <NavLink to={`${link === "nyhetsbrev" ? `/${link}` : `/gender/${link}`}`} key={link} className="px-4">
+                        <NavLink to={`${link === "nyhetsbrev" ? `/${link}` : `/gender/${link}`}`} key={link} className={`px-4 hover:text-amber-400  duration-300 transition`}>
                             {
                                 link.charAt(0).toUpperCase() + link.slice(1)
 
@@ -39,18 +39,14 @@ const Nav = () => {
 
             </ul>
 
-            <div className="flex gap-4 relative">
-                <div>
-                    <RiShoppingBagLine onClick={cartShow} />
+            <div className="flex relative">
+                <div className='p-4 cursor-pointer' onClick={cartShow}>
+                    <RiShoppingBagLine className={` hover:text-amber-400  duration-300 transition ${isCartOpen ? "text-amber-400" : ""}`} />
                 </div>
-                <Link to="/profile">
-                    <FaUserAlt />
+                <Link to="/profile" className='p-4 cursor-pointer'>
+                    <FaUserAlt className=' hover:text-amber-400  duration-300 transition' />
                 </Link>
-                {
-                    isCartOpen && (
-                        <Cart cartItems={cartItems} />
-                    )
-                }
+                <Cart cartItems={cartItems} open={isCartOpen} />
             </div>
 
         </nav >
