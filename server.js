@@ -5,7 +5,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 
-
 // Routes
 import authRouter from "./router/authRouter.js";
 import categoryRouter from "./router/categoryRouter.js";
@@ -15,11 +14,11 @@ import achivmentsRouter from "./router/achivmentsRouter.js";
 import purchaseRouter from "./router/purchaseRouter.js";
 import rankRouder from "./router/rankRouder.js";
 
-// Middlware
+// Middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 
 import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url'; 
 import path from 'path';
 
 const app = express();
@@ -44,7 +43,6 @@ app.use('/api/rank', rankRouder);
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
 });
-
 
 app.use('*', (req, res) => {
     res.status(404).json({ msg: 'not found' });

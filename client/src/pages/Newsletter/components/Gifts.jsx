@@ -4,7 +4,7 @@ import Gift from './Gift';
 const Gifts = ({ gifts, handleGiftSelection, selectedGift, submitted }) => {
 
     return (
-        <ul className='flex gap-12 w-full px-10 justify-center items-center'>
+        <ul className='flex gap-12 w-full px-10 justify-center items-center mt-8'>
             {gifts.map((gift, index) => (
                 <Gift
                     key={index}
