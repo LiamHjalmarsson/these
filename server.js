@@ -17,13 +17,22 @@ import rankRouder from "./router/rankRouder.js";
 
 // Middlware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import { fileURLToPath } from 'url';
+
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 const app = express();
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
+app.user(express.static(path.resolve(__dirname, "./public")))
 app.use(express.json());
 
 app.use('/api/auth', authRouter);
@@ -33,6 +42,10 @@ app.use('/api/clothing', clothingRouter);
 app.use('/api/achivments', achivmentsRouter);
 app.use('/api/purchase', purchaseRouter);
 app.use('/api/rank', rankRouder);
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+})
 
 app.use('*', (req, res) => {
     res.status(404).json({ msg: 'not found' });
