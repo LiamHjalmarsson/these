@@ -10,9 +10,9 @@ const Rewards = ({ data }) => {
 
     useEffect(() => {
         if (ranksData) {
-            let unlockedRanks = ranksData.ranks.filter(rank => data.rank.includes(rank._id));
+            let unlockedRank = ranksData.ranks.filter(rank => data.rank.includes(rank._id));
             let lockedRanks = ranksData.ranks.filter(rank => !data.rank.includes(rank._id));
-            setUnlockedRanks(unlockedRanks);
+            setUnlockedRanks(unlockedRank);
             setLockedRanks(lockedRanks);
         }
     }, [ranksData, data]);
