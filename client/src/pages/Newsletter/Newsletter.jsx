@@ -73,11 +73,13 @@ const NewsletterPage = () => {
             <Section>
 
                 <Heading heading="Nyhetsbrev" />
+
                 <div className='text-center mt-2'>
                     Klicka på kort och skri upp dig på vårt nyhetsbrev för att ta del av en gåva
                 </div>
 
                 <Gifts gifts={gifts} handleGiftSelection={handleGiftSelection} selectedGift={selectedGift} submitted={submitted} />
+                
             </Section>
 
             <div className='w-full h-[500px] flex gap-8 relative'>

@@ -150,16 +150,16 @@ const ProfileLanding = () => {
 
                     <div className='mt-4'>
                         {
-                            unlockedRanks.map((rank) => (
-                                <div className='mt-4 p-4 rounded-md shadow-middle shadow-primary'>
+                            unlockedRanks.map((rank, index) => (
+                                <div className='mt-4 p-4 rounded-md shadow-middle shadow-primary' key={index}>
                                     <div className='text-lg'>
                                         {
                                             rank.rank
                                         }
                                     </div>
                                     {
-                                        rank.benefits.map((benefit) => (
-                                            <div className='text-sm'>
+                                        rank.benefits.map((benefit, index) => (
+                                            <div className='text-sm' key={index}>
                                                 {
                                                     benefit.name
                                                 }
