@@ -9,7 +9,7 @@ const ClothingSchema = new mongoose.Schema(
         },
         brand: {
             type: String,
-            required: true,
+            default: "dl"
         },
         price: {
             type: Number,
@@ -21,7 +21,7 @@ const ClothingSchema = new mongoose.Schema(
         },
         genderType: {
             type: String, 
-            required: true,
+            default: "female"
         },
         size: {
             type: [{

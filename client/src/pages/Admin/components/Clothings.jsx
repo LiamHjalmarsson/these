@@ -74,14 +74,19 @@ const Clothings = () => {
                 create && (
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required className="border p-2 w-full" />
-                        <input type="text" name="brand" value={formData.brand} onChange={handleChange} placeholder="Brand" required className="border p-2 w-full" />
+                        <input type="text" name="brand" value={formData.brand} onChange={handleChange} placeholder="Brand" className="border p-2 w-full" />
                         <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Price" required className="border p-2 w-full" />
                         <input type="text" name="category" value={formData.category} onChange={handleChange} placeholder="Category" required className="border p-2 w-full" />
                         <input type="text" name="color" value={formData.color} onChange={handleChange} placeholder="Color" required className="border p-2 w-full" />
-                        <input type="text" name="genderType" value={formData.genderType} onChange={handleChange} placeholder="Gender Type" required className="border p-2 w-full" />
-                        <input type="number" name="averageRating" value={formData.averageRating} onChange={handleChange} placeholder="Average Rating" required className="border p-2 w-full" />
-                        <input type="number" name="totalRatings" value={formData.totalRatings} onChange={handleChange} placeholder="Total Ratings" required className="border p-2 w-full" />
+                        <input type="text" name="genderType" value={formData.genderType} onChange={handleChange} placeholder="Gender Type" className="border p-2 w-full" />
+                        <input type="number" name="averageRating" value={formData.averageRating} onChange={handleChange} placeholder="Average Rating" className="border p-2 w-full" />
+                        <input type="number" name="totalRatings" value={formData.totalRatings} onChange={handleChange} placeholder="Total Ratings" className="border p-2 w-full" />
                         <input type="url" name="image" value={formData.image} onChange={handleChange} placeholder="Image URL" required className="border p-2 w-full" />
+                        {
+                            formData.image && (
+                                <img src={formData.image} />
+                            )
+                        }
                         <button type="submit" className="bg-blue-500 text-white p-2 rounded-md w-full">Create Item</button>
                     </form>
                 )
