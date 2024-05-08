@@ -48,7 +48,7 @@ const Cart = () => {
                     updatedActivePoints = data.user.activePoints + totalPrice;
                 }
 
-                totalPointsUpdate = data.user.totalPointsEarned + (totalPrice - discountedPrice);
+                totalPointsUpdate = data.user.totalPointsEarned + (totalPrice - discountedPrice)
 
                 cartData = {
                     userId: user,

@@ -27,7 +27,6 @@ const Details = ({data, onAddToCart}) => {
     }
 
     let descriptionShow = () => {
-
         console.log(showDescription);
         setShowDescription(!showDescription);
     }

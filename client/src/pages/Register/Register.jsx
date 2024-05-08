@@ -70,15 +70,6 @@ const Register = () => {
                 <div className='flex-grow h-full absolute w-full flex justify-center items-center'>
                     <form className="flex flex-col w-1/4 min-w-96 gap-8 bg-white p-8" onSubmit={submitHandler}>
                         <Heading heading="Register" />
-                        {
-                            error && (
-                                <div className='text-center mt-2'>
-                                    {
-                                        error.message
-                                    }
-                                </div>
-                            )
-                        }
                         <Input
                             input={{
                                 id: "Name",

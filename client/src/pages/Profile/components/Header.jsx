@@ -14,14 +14,14 @@ const Header = ({ user, nextRank, updatedUser }) => {
                 data && (
                     <div className='w-full h-96 flex justify-start items-center relative'>
                         <div className='h-full w-full  absolute'>
-                            <div className={`bg-gradient-to-br to-primary h-full w-full ${data.rank.rank === "Nivå 1" ? "from-orange-500" : ""} ${data.rank.rank === "Nivå 2" ? "from-slate-500" : ""} ${data.rank.rank === "Nivå 3" ? "from-yellow-500" : ""} ${data.rank.rank === "Nivå 4" ? "from-blue-500" : ""} `}></div>
+                            <div className={`bg-gradient-to-br to-primary h-full w-full ${data.rank.rank === "nivå 1" ? "from-orange-500" : ""} ${data.rank.rank === "nivå 2" ? "from-slate-500" : ""} ${data.rank.rank === "nivå 3" ? "from-yellow-500" : ""} ${data.rank.rank === "nivå 4" ? "from-blue-500" : ""} `}></div>
                         </div>
 
                         <div className='w-96 flex lg:w-1/2 justify-center p-4 z-10'>
                             <Heading heading={`Hej ${user.name}, Välkommen till ditt konto`} custom="text-white text-2xl md:text-3xl lg:text-4xl w-96" />
                         </div>
 
-                        <div className={`absolute w-1/4 min-w-80 font-bold flex flex-col gap-4 p-4 -bottom-1/4 left-1/4 lg:left-1/2 bg-opacity-80 shadow-middle shadow-primary rounded-md ${data.rank.rank === "Nivå 1" ? "bg-orange-200" : ""} ${data.rank.rank === "Nivå 2" ? "bg-slate-300" : ""} ${data.rank.rank === "Nivå 3" ? "bg-yellow-400" : ""} ${data.rank.rank === "Nivå 4" ? "bg-blue-200" : ""}`}>
+                        <div className={`absolute w-1/4 min-w-80 font-bold flex flex-col gap-4 p-4 -bottom-1/4 left-1/4 lg:left-1/2 bg-opacity-80 shadow-middle shadow-primary rounded-md ${data.rank.rank === "nivå 1" ? "bg-orange-200" : ""} ${data.rank.rank === "nivå 2" ? "bg-slate-300" : ""} ${data.rank.rank === "nivå 3" ? "bg-yellow-400" : ""} ${data.rank.rank === "nivå 4" ? "bg-blue-200" : ""}`}>
                             <h3 className='text-2xl'>
                                 {
                                     data && data.rank.rank
