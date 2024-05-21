@@ -31,7 +31,7 @@ const Achivments = ({ data, achivment }) => {
                                         <IoLockClosedOutline className='text-white text-7xl font-bold' />
                                     </div>
                                 </div>
-                                <div className='flex flex-grow gap-2 p-2 text-sm rounded-md'>
+                                <div className='flex flex-grow gap-2 p-4 text-sm rounded-md'>
                                     <span>
                                         {
                                             achivment.name.charAt(0).toUpperCase() + achivment.name.slice(1)

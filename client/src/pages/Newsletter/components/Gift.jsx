@@ -11,8 +11,8 @@ const Gift = ({ gift, handleGiftSelection, selected, submitted }) => {
     };
 
     return (
-        <li className={`group w-80 h-sm max-h-[600px] cursor-pointer`} onClick={handleClick}>
-            <div className='flex items-center text-xl h-96 rounded-md shadow-middle relative shadow-primary bg-opacity-90 bg-primary'>
+        <li className={`group w-80 h-sm max-h-[400px] cursor-pointer`} onClick={handleClick}>
+            <div className='flex items-center text-xl h-80 rounded-md shadow-middle relative shadow-primary bg-opacity-90 bg-primary'>
                 <div className='h-full w-full overflow-hidden shadow-middle shadow-primary rounded-md absolute'>
                     <Image img={image} custom='group-hover:scale-105 group-hover:opacity-90 w-full h-full object-cover' />
                 </div>

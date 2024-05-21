@@ -48,7 +48,7 @@ const Rewards = ({ data }) => {
                     </h3>
                     {
                         data.discounts.length > 0 && (
-                            <div className='flex w-full flex-col gap-2 mt-4'>
+                            <div className='flex w-full flex-col gap-2'>
                                 {
                                     data.discounts.map((discount, index) => (
                                         <div key={index} className='flex gap-8'>
@@ -67,25 +67,25 @@ const Rewards = ({ data }) => {
                 </div>
             </div>
 
-            <div className='flex flex-wrap justify-center gap-8 w-full my-12 overflow-x-auto p-8'>
+            <div className='flex flex-wrap justify-center gap-8 w-full overflow-x-auto p-8'>
 
                 {
                     unlockedRanks.map((rank, index) => (
                         <div className='p-4 shadow-middle shadow-primary rounded-md w-96' key={index}>
-                            <Heading heading={`Uppnåt ${rank.rank}`} />
+                            <Heading heading={`Uppnåt ${rank.rank.toUpperCase().slice(0, 1) + rank.rank.slice(1)}`} />
                             <div className='mt-4 overflow-hidden rounded-md'>
-                                <ProgressBar points={data.totalPointsEarned} nextRank={rank.nextRank} />
+                                <ProgressBar points={data.points} nextRank={rank.threshold} />
                             </div>
                             <div className='flex flex-col gap-4 mt-4'>
                                 {
                                     rank.benefits.map((benefit, index) => (
                                         <div className='p-4 shadow-middle shadow-primary rounded-md hover:bg-primary hover:bg-opacity-10 transition duration-300 cursor-pointer ' key={index}>
                                             <h3 className='text-lg text-center'>
-                                                {benefit.name}
+                                                {benefit.name.toUpperCase().slice(0, 1) + benefit.name.slice(1)}
                                             </h3>
                                             <p className='text-sm mt-2 text-center'>
                                                 {
-                                                    benefit.description
+                                                    benefit.description.toUpperCase().slice(0, 1) + benefit.description.slice(1)
                                                 }
                                             </p>
                                         </div>
@@ -99,7 +99,7 @@ const Rewards = ({ data }) => {
                 {
                     lockedRanks.map((rank, index) => (
                         <div className='p-4 shadow-middle shadow-primary rounded-md w-96 opacity-50' key={index}>
-                            <Heading heading={`${rank.rank}`} />
+                            <Heading heading={`${rank.rank.toUpperCase().slice(0, 1) + rank.rank.slice(1)}`} />
                             <div className='mt-4 overflow-hidden rounded-md'>
                                 <ProgressBar points={data.totalPointsEarned} nextRank={rank.nextRank} />
                             </div>
@@ -107,7 +107,7 @@ const Rewards = ({ data }) => {
                                 {rank.benefits.map((benefit, index) => (
                                     <div className='p-4 shadow-middle shadow-primary rounded-md' key={index}>
                                         <h3 className='text-lg text-center'>
-                                            {benefit.name}
+                                            {benefit.name.toUpperCase().slice(0, 1) + benefit.name.slice(1)}
                                         </h3>
                                     </div>
                                 ))}
